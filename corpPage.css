@@ -1,0 +1,41 @@
+.title
+{
+	font-size: 30pt;
+	text-align: center;
+	margin-top: 100px;
+}
+
+#corpPageMain
+{
+	margin-left: 10vw;
+	width: 80vw;
+	height: 85vh;
+}
+
+.nav
+{	
+	margin-top: 100px;
+	margin-left: 100px;
+	float left;
+	border:2px orange solid;
+	padding-left: 2vw;
+	padding-right: 2vw;
+	padding-top: 6vh;
+	padding-bottom: 4vh;
+	width: 300px;
+	height: 300px;
+	display: block;
+    justify-content: center;
+}
+
+
+.navButton
+{
+	width: 300px;
+	height: 70px;
+	font-size: 2em;
+	background-color: white;
+	display: block;
+	margin-bottom: 50px;
+	overflow: auto;
+}

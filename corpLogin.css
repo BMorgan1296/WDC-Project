@@ -1,0 +1,46 @@
+.corpLoginMain
+{
+	margin-top: 30px;
+	position: sticky;
+	/*border:1px solid black;*/
+	margin-left:25vw; 
+	width: 50vw;
+	height: 60vh;
+	text-align: center; 	
+}
+
+.gwestyTitle
+{
+	font-family: 'Open Sans', sans-serif;
+	margin-bottom: 50px
+}
+
+.title
+{
+	margin-bottom: 40px;
+}
+
+.login
+{
+	background-color: orange; 
+}
+
+.return
+{
+	position:absolute;
+	margin-top: 5px;
+    margin-right: 5px;
+	top: 0;
+	right: 0;
+	background-color: white;
+	border: 1px solid orange;
+}
+
+#contactUs
+{
+	padding-top: 0.5vw;
+	padding-left: 2vw;
+	color: white;
+	font-style: italic;
+	font-size: 1vw;
+}

@@ -3,33 +3,15 @@
 	box-sizing: border-box;
 	font-size: 100%;
 	font-family: 'Oswald', sans-serif;
-	overflow: scroll;
-	position: absolute;
+	position: absolute;	
+	overflow: visible;
 }
 
-#main
+#corpPageMain
 {
-	margin-top: 30px;
-	position: sticky;
-	/*border:1px solid black;*/
-	margin-left:25vw; 
-	margin-right:25vw; 
-	width: 50vw;
-	height: 60vh;
-	text-align: center; 
-	
-}
-
-.gwestyTitle
-{
-	font-family: 'Open Sans', sans-serif;
-	font
-	margin-bottom: 50px
-}
-
-.title
-{
-	margin-bottom: 40px;
+	margin-left: 10vw;
+	width: 80vw;
+	height: 85vh;
 }
 
 .button
@@ -37,11 +19,6 @@
 	font-family: 'Oswald', sans-serif;
 	cursor: pointer;
 	border: 1px solid black;
-}
-
-.login
-{
-	background-color: orange; 
 }
 
 .input
@@ -57,17 +34,6 @@
 	margin-bottom: 5px;
 }
 
-.return
-{
-	position:absolute;
-	margin-top: 5px;
-    margin-right: 5px;
-	top: 0;
-	right: 0;
-	background-color: white;
-	border: 1px solid orange;
-}
-
 #footer
 {
 	position: fixed;
@@ -80,11 +46,13 @@
 	border-bottom: 2vh solid black;
 }
 
-#contactUs
+#gwestyFooter
 {
-	padding-top: 0.5vw;
-	padding-left: 2vw;
+	font-family: 'Open Sans', sans-serif;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	padding-right: 1vw;
 	color: white;
-	font-style: italic;
-	font-size: 1vw;
+	font-size: 2vw;
 }
