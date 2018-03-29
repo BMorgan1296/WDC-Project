@@ -1,0 +1,33 @@
+body{
+    padding:0px;
+    margin: 0px;
+    font-family: 'Open Sans', sans-serif;
+}
+.fullPage{
+    height:100vh;
+    display: block;
+}
+
+#half1{
+    color:grey;
+    background-color: white;
+}
+
+#half2{
+    background-color: blue;
+}
+
+.header{
+    float:right;
+    position: relative;
+    display: block;
+    margin-right:2vw;
+    color:gray;
+}
+.title{
+    float:left;
+    margin-left:auto;
+    margin-right:auto;
+    height:25vh;
+    width:25vw;
+}
