@@ -1,4 +1,4 @@
-#body
+#parentContainer
 {
 	box-sizing: border-box;
 	font-size: 100%;
@@ -42,6 +42,7 @@
 #gwestyFooter
 {
 	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
 	position: fixed;
 	right: 0;
 	bottom: 0;
