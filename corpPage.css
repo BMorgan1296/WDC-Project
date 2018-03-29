@@ -1,5 +1,6 @@
 .title
 {
+	display: block;
 	font-size: 30pt;
 	text-align: center;
 	margin-top: 100px;
@@ -15,7 +16,7 @@
 .nav
 {	
 	margin-top: 100px;
-	margin-left: 100px;
+	margin-left: 25px;
 	float left;
 	border:2px orange solid;
 	padding-left: 2vw;
@@ -24,18 +25,49 @@
 	padding-bottom: 4vh;
 	width: 300px;
 	height: 300px;
-	display: block;
+	display: inline-block;
     justify-content: center;
 }
-
 
 .navButton
 {
 	width: 300px;
 	height: 70px;
+	line-height: 70px;
+    text-align: center;
 	font-size: 2em;
 	background-color: white;
 	display: block;
 	margin-bottom: 50px;
 	overflow: auto;
+}
+
+.rooms
+{
+	margin: 100px;
+	position: absolute;
+	display: inline-block;
+	border: 1px solid black;
+	float right;
+	width: 1000px;
+}
+
+.room
+{
+	display: block;
+	border: 1px solid grey;
+	width:100px;
+	height: 100px;
+}
+
+#corpLogout
+{
+	font-size: 20pt;
+	width: 140px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	margin-top: 100px;
+	margin-right: 10px;
+	background-color: rgb(204,235,252);
 }
