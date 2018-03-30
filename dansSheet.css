@@ -26,8 +26,66 @@ body{
 }
 .title{
     float:left;
-    margin-left:auto;
-    margin-right:auto;
-    height:25vh;
-    width:25vw;
+    width: 25vw;
+    margin-left: calc((50vw)/2);
+    margin-top: 8vh;
+    color: orange;
+    width:50vw;
+    text-align: center;
+    font-size: calc((25vh + 25vw)/6);
+    padding-top: calc((25vh + 25vw)/12);
+    display: block;
+}
+
+.searchContainer{
+    float:left;
+    margin-top: 8vh;
+    width:100%;
+    text-align: left;
+    font-size: calc((12.5vh + 12.5vw)/6);
+    padding-top: calc((12.5vh + 12.5vw)/12);
+}
+
+#search1{
+    margin-left: calc((50vw)/2);
+    display: block;
+    width:20vw;
+    float: left;
+    color:gray;
+}
+
+#searchText{
+    color:dodgerblue;
+}
+
+#search2{
+    margin-top: calc((12.5vh + 12.5vw)/6);
+    width:30vw;
+    display: block;
+    float: left;
+}
+
+#searchBar{
+    float:left;
+    font-size:calc((12.5vh + 12.5vw)/12);
+    width:calc(100% - 2px - 1vw - 8vw);
+    border: solid;
+    border-color:gainsboro;
+    border-width: 1px;
+}
+
+#searchBar::placeholder { 
+    color: gainsboro;
+}
+
+#searchButton{
+    width:8vw;
+    font-size:calc((12.5vh + 12.5vw)/12);
+    height:calc((12.5vh + 12.5vw)/9.5);
+    padding:2px;
+    display: block;
+    float:left;
+    background-color: dodgerblue;
+    color: white;
+    text-align: center;
 }
