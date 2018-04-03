@@ -8,7 +8,7 @@
 
 	<title>GWESTY Corporate Page</title>
 </head>
-<body id="body">
+<body id="parentContainer">
 	<div id="corpPageMain">
 		<h1 class="title">View/Edit Rooms</h1>
 		<div class="nav">
@@ -19,9 +19,14 @@
 
 		<div class="rooms">
 			<div class="room">
-				<button class="removeRoom"></button>
-				<div class="roomTitle">blurrrrrrrrrr</div>
-				<div class="roomPrice"></div>
+				<button class="removeRoom">X</button>
+				<div class="roomTitle">Room Title</div>
+				<div class="roomPrice">$XX</div>
+			</div>
+			<div class="room">
+				<button class="removeRoom">X</button>
+				<div class="roomTitle">Room Title</div>
+				<div class="roomPrice">$XX</div>
 			</div>
 		</div>
 		
@@ -31,6 +36,8 @@
 		<p id="gwestyFooter">gwesty.</p>
 	</div>
 
-	<button id="corpLogout" class="button">Sign Out</button>
+	<form>
+		<input class="button" id="corpLogout" type="button" value="Sign Out" onclick="window.location.href='landing.html'" />
+	</form>
 </body>
 </html>
