@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="mappage.css">
+<link rel="stylesheet" type="text/css" href="gwestyStyle.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+<meta charset="utf-8"/>
+<title>mappage</title>
+</head>
+<body>
+<div class="fullpage">
+
+
+
+<div id="filter_nav" class="extra_filters">
+  <span class="closebtn" onclick="closeNav()">&#215;</span>
+  <button class="dropdown-btn">Amenities
+    <i class = "fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+  <label class="container_check">Pool
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span>
+  </label>
+  <label class="container_check">Spa
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span>
+  </label>
+  <label class="container_check">Wi-Fi
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span>
+  </label>
+  <label class="container_check">Fitness
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span>
+  </label>
+  <label class="container_check">Parkings
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span>
+  </label>
+  <label class="container_check">Restaurant
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span>
+  </label>
+
+  </div>
+
+  <button class="dropdown-btn">Location
+  <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <p> Distance from the city</p>
+  
+  </div>
+  <button class="dropdown-btn">Ratings 
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+   <p> buttons </p>
+  </div>
+  </div>
+
+<button class="btn" type="button" onclick="openNav()">&#8658;</button>
+
+<!-- for Price dropdown --> 
+<div class="dropdown">
+  <button class="dropbtn">Price</button>
+  <div class="dropdown-content">
+   <p>havent added slider yet!<span id="demo"></span></p>
+  </div>
+</div>
+
+
+<!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
+<div class="custom-select" style="width:200px;">
+  <select>
+    <option value="0">Rooms</option>
+    <option value="1">Single</option>
+    <option value="2">Double</option>
+    <option value="3">Family</option>
+    <option value="4">Multiple</option>
+   </select>
+  </div>
+
+  <div class="search_bar">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+<div id="footer">
+    <p id="gwestyFooter">gwesty.</p>
+  </div>
+</div>
+
+<script src="mappage.js"></script>
+     
+</body>
+</html> 
