@@ -1,7 +1,7 @@
 .title
 {
 	display: block;
-	font-size: 30pt;
+	font-size: calc((10vh + 10vw)/7);
 	text-align: center;
 	margin-top: 100px;
 }
@@ -15,27 +15,25 @@
 
 .nav
 {	
-	margin-top: 100px;
-	margin-left: 25px;
+	margin-top: calc((10vh)/5);
+	margin-left: calc((10vw)/5);
 	float left;
 	border:2px orange solid;
-	padding-left: 2vw;
-	padding-right: 2vw;
-	padding-top: 6vh;
-	padding-bottom: 4vh;
-	width: 300px;
-	height: 300px;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-top: 60px;
+	padding-bottom: 60px;
+	width: 15vw;
+	height: calc((25vw + 25vh)/3);
 	display: inline-block;
     justify-content: center;
 }
 
 .navButton
 {
-	width: 300px;
-	height: 70px;
-	line-height: 70px;
+	width: 15vw;
     text-align: center;
-	font-size: 2em;
+	font-size: calc((10vw + 10vh)/10);
 	background-color: white;
 	display: block;
 	margin-bottom: 50px;
@@ -44,47 +42,56 @@
 
 .rooms
 {
-	margin: 100px;
+	margin: calc((10vh + 10vw)/5);
 	position: absolute;
 	display: inline-block;
 	border: 1px solid black;
 	float right;
-	width: 1000px;
+	width: 40vw;
+	height: 100px/5vh;
+	overflow: auto;
 }
 
 .room
 {
 	display: block;
 	border: 1px solid grey;
-	width:400px;
-	height: 100px;
+	height: 4vh;
+	margin-bottom: 1vh;	
+	overflow: auto;
+	min-height: 35px;
 }
 
 .removeRoom
 {
+	margin-left: 1vw;
+	margin-top: 1vh;
 	display: inline-block;
-	width: 50px;
-	height: 50px;
+	width: 50px/2vw;
+	height: 50px/2vw;
+	overflow: auto;
 }
 
 .roomTitle
 {
+	margin-left: 2vw;
  	display: inline-block;
 }
 
 .roomPrice
 {
 	display: inline-block;
+	margin-left: 5vw;
 }
 
 #corpLogout
 {
-	font-size: 20pt;
-	width: 140px;
+	font-size: calc((10vh + 10vw)/10);
+	width: calc((10vh + 10vw))/1.5;
 	position: absolute;
 	right: 0;
 	top: 0;
-	margin-top: 100px;
+	margin-top: 10px;
 	margin-right: 10px;
 	background-color: rgb(204,235,252);
 }
