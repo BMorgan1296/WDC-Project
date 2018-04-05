@@ -1,0 +1,74 @@
+
+.titles
+{
+	margin-top: calc((10vh + 10vw)/5);
+	margin-left: calc((10vh + 10vw)/5);
+	padding-top: 2vh;
+    position: absolute;
+    display:inline-block;
+	/*border: 1px solid black;*/
+	float right;
+	height: 100px/5vh;
+	
+	
+}
+.t1
+{
+	height: 4vh;
+	margin-bottom: 1vh;	
+	overflow: auto;
+	min-height: 35px;
+}
+
+.textboxes
+{
+	margin-top: calc((10vh + 10vw)/5);
+	margin-left: 15vw;
+	padding-top: 8vh;
+    position: absolute;
+    display: inline-block;
+	/*border: 1px solid black;*/
+	float right;
+	height: 100px/6vh;
+	width: 60vw;		
+}
+
+.textbox
+{
+	display: block;
+	border: 1px solid grey;
+	height: 2vh;
+	margin-bottom: 1vh;	
+	overflow: auto;
+	min-height: 30px;
+	width: 40vw;
+	font-size: calc((10vh + 10vw)/10);
+}
+
+.radiobuttons{
+	padding-top: 2vh;
+	display: inline-block;
+	margin-top: calc((10vh + 10vw)/5);
+	margin-bottom: 300px;
+	margin-left: 15vw;
+    position: absolute;
+
+}
+.radiobutton{
+	padding-left: 6vw;
+	padding-top: 2vh;
+}
+
+select {
+    
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    width:40vw;
+}
+.done{
+		background-color: rgb(204,235,252);
+		font-size: calc((10vh + 10vw)/10);
+}
+

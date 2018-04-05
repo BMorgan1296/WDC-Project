@@ -1,0 +1,138 @@
+/*havent changed*/
+.title
+{
+	display: block;
+	font-size: calc((10vh + 10vw)/7);
+	text-align: center;
+	margin-top: 100px;
+}
+/*havent chnaged*/
+#corpPageMain
+{
+	margin-left: 10vw;
+	width: 80vw;
+	height: 85vh;
+}
+
+.nav
+{	
+	margin-top: calc((10vh)/30);
+	margin-left: calc((10vw)/5);
+	margin-right: calc((10vw)/5);
+	float left;
+	border:2px orange solid;
+	border-radius: 5px;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-top: 60px;
+	padding-bottom: 60px;
+	width: 15%;
+	height: calc((40vw + 40vh)/3);
+	display: inline-block;
+    justify-content: center;
+}
+
+.navButton
+{
+	width: 15vw;
+    text-align: center;
+	font-size: calc((10vw + 10vh)/10);
+	background-color: white;
+	display: block;
+	margin-bottom: 30px;
+	margin-top: -20px; 
+    overflow: auto;
+    margin-left:-15px;
+}
+/*not edited*/
+.navButton:active{
+    background:orange;
+}
+
+
+/*not edited*/
+#corpLogout
+{
+	font-size: calc((10vh + 10vw)/10);
+	width: calc((10vh + 10vw))/1.5;
+	position: absolute;
+	right: 0;
+	top: 0;
+	margin-top: 10px;
+	margin-right: 10px;
+	background-color: rgb(204,235,252);
+}
+
+
+.titles
+{
+	margin-top: calc((10vh + 10vw)/5);
+	margin-left: calc((10vh + 10vw)/5);
+	padding-top: 2vh;
+    position: absolute;
+    display:inline-block;
+	/*border: 1px solid black;*/
+	float right;
+	height: 100px/5vh;
+	
+	
+}
+.t1
+{
+	height: 4vh;
+	margin-bottom: 1vh;	
+	overflow: auto;
+	min-height: 35px;
+}
+
+.textboxes
+{
+	margin-top: calc((10vh + 10vw)/5);
+	margin-left: 15vw;
+	padding-top: 8vh;
+    position: absolute;
+    display: inline-block;
+	/*border: 1px solid black;*/
+	float right;
+	height: 100px/6vh;
+	width: 60vw;		
+}
+
+.textbox
+{
+	display: block;
+	border: 1px solid grey;
+	height: 2vh;
+	margin-bottom: 1vh;	
+	overflow: auto;
+	min-height: 30px;
+	width: 40vw;
+	font-size: calc((10vh + 10vw)/10);
+}
+
+.radiobuttons{
+	padding-top: 2vh;
+	display: inline-block;
+	margin-top: calc((10vh + 10vw)/5);
+	margin-bottom: 300px;
+	margin-left: 15vw;
+    position: absolute;
+
+}
+.radiobutton{
+	padding-left: 6vw;
+	padding-top: 2vh;
+}
+
+select {
+    
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    width:40vw;
+}
+.done{
+		background-color: rgb(204,235,252);
+		font-size: calc((10vh + 10vw)/10);
+}
