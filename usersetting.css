@@ -25,10 +25,11 @@
 	padding-right: 40px;
 	padding-top: 60px;
 	padding-bottom: 60px;
-	width: 15%;
+	width: 13.5vw;
 	height: calc((40vw + 40vh)/3);
 	display: inline-block;
     justify-content: center;
+    overflow: hidden;
 }
 /*edited*/
 .navButton
