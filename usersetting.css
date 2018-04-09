@@ -6,6 +6,7 @@
 	margin-top: 100px;
 }
 
+
 #corpPageMain
 {
 	margin-left: 10vw;
@@ -128,7 +129,10 @@
 	margin-bottom: 1vh;	
 	overflow: auto;
 	min-height: 35px;
+	margin-left: 2vw;
 }
 .info:active{
     background:#0D5B8E;
 }
+
+

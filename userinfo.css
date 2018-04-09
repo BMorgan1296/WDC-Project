@@ -72,3 +72,54 @@ select {
 		font-size: calc((10vh + 10vw)/10);
 }
 
+.done_password {
+	margin-left: 42vw;
+	background-color: rgb(204,235,252);
+	font-size: calc((10vh + 10vw)/10);
+
+}
+
+#done_password
+{
+	font-size: calc((10vh + 10vw)/15);
+	width: calc((10vh + 10vw))/1.5;
+	position: absolute;
+	right: 0;
+	top: 0;
+	margin-top: -30px; 
+	margin-right: 200px;
+	background-color: rgb(204,235,252);
+}
+
+#done_email
+{
+	font-size: calc((10vh + 10vw)/15);
+	width: calc((10vh + 10vw))/1.5;
+	position: absolute;
+	right: 0;
+	top: 0;
+	margin-top: 60px; 
+	margin-right: 200px;
+	background-color: rgb(204,235,252);
+}
+.t2  /*for title change password*/
+{
+	height: 4vh;
+	margin-bottom: 1vh;	
+	overflow: auto;
+	min-height: 35px;
+	font-weight: bold;
+	font-size: calc((10vh + 10vw)/11);
+}
+
+.textboxes_email
+{
+	
+	padding-top: 8vh;
+    position: absolute;
+    display: inline-block;
+	/*border: 1px solid black;*/
+	float right;
+	height: 100px/6vh;
+	width: 60vw;		
+}
