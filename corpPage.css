@@ -3,7 +3,7 @@
 	display: block;
 	font-size: calc((10vh + 10vw)/7);
 	text-align: center;
-	margin-top: 100px;
+	margin-top: 50px;
 }
 
 #corpPageMain
@@ -61,7 +61,8 @@
 	display: block;
 	border: 1px solid grey;
 	height: 4vh;
-	margin-bottom: 1vh;	
+	margin-bottom: 1vh;
+	margin-top: 1vh;	
 	overflow: hidden;
 	min-height: 35px;
 }
@@ -100,7 +101,7 @@
 	display: inline;
 	position: absolute;
 	right:0;
-	margin-right: 6vw;
+	margin-right: 5vw;
 	height: 4vh;
 	padding: 1px;
 	margin-bottom: 1vh;	
@@ -134,7 +135,8 @@
 	background-color: green;
 	color: white;
 	margin-left: 1vw;
-	margin-top: 1vh;
+	margin-top: 8vh;
+	position: absolute;
 	display: inline;
 	width: 50px/2vw;
 	height: 50px/2vw;
@@ -144,6 +146,11 @@
 .addRoom:active
 {
 	background-color: darkgreen;
+}
+
+.edit
+{
+	background-color: hsla(360, 0%, 41%, 0.55);
 }
 
 
