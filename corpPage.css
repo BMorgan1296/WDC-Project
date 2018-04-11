@@ -3,7 +3,7 @@
 	display: block;
 	font-size: calc((10vh + 10vw)/7);
 	text-align: center;
-	margin-top: 100px;
+	margin-top: 50px;
 }
 
 #corpPageMain
@@ -21,7 +21,7 @@
 	border:2px orange solid;
 	padding-left: 40px;
 	padding-right: 40px;
-	padding-top: 60px;
+	padding-top: calc((25vw + 25vh)/12);;
 	padding-bottom: 60px;
 	width: 15vw;
 	height: calc((25vw + 25vh)/3);
@@ -36,8 +36,12 @@
 	font-size: calc((10vw + 10vh)/10);
 	background-color: white;
 	display: block;
-	margin-bottom: 50px;
+	margin-bottom: calc((25vw + 25vh)/15);;
 	overflow: auto;
+}
+
+.navButton:active{
+    background:orange;
 }
 
 .rooms
@@ -45,7 +49,7 @@
 	margin: calc((10vh + 10vw)/5);
 	position: absolute;
 	display: inline-block;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 	float right;
 	width: 40vw;
 	height: 100px/5vh;
@@ -57,32 +61,98 @@
 	display: block;
 	border: 1px solid grey;
 	height: 4vh;
-	margin-bottom: 1vh;	
-	overflow: auto;
+	margin-bottom: 1vh;
+	margin-top: 1vh;	
+	overflow: hidden;
 	min-height: 35px;
 }
 
 .removeRoom
 {
+	border: 1px solid black;
+	background-color: red;
+	color: white;
 	margin-left: 1vw;
 	margin-top: 1vh;
-	display: inline-block;
+	display: inline;
 	width: 50px/2vw;
 	height: 50px/2vw;
 	overflow: auto;
 }
 
+.removeRoom:active
+{
+	background-color: darkred;
+}
+
 .roomTitle
 {
 	margin-left: 2vw;
- 	display: inline-block;
+ 	display: inline;
+	height: 4vh;
+	margin-bottom: 1vh;
+	padding:1px;
+	overflow: auto;
+	min-height: 35px;
 }
 
 .roomPrice
 {
-	display: inline-block;
-	margin-left: 5vw;
+	display: inline;
+	position: absolute;
+	right:0;
+	margin-right: 5vw;
+	height: 4vh;
+	padding: 1px;
+	margin-bottom: 1vh;	
+	overflow: auto;
+	min-height: 35px;
 }
+
+.info
+{
+	border: 1px solid black;
+	background-color: #169CF3;
+	color: white;
+	position: absolute;
+	right:0;
+	margin-right: 1vw;
+	margin-top: 1vh;
+	display: inline;
+	width: 50px/2vw;
+	height: 50px/2vw;
+	overflow: auto;
+}
+
+.info:active
+{
+	background-color: #0D5B8E;
+}
+
+.addRoom
+{
+	border: 1px solid black;
+	background-color: green;
+	color: white;
+	margin-left: 1vw;
+	margin-top: 8vh;
+	position: absolute;
+	display: inline;
+	width: 50px/2vw;
+	height: 50px/2vw;
+	overflow: auto;
+}
+
+.addRoom:active
+{
+	background-color: darkgreen;
+}
+
+.edit
+{
+	background-color: hsla(360, 0%, 41%, 0.55);
+}
+
 
 #corpLogout
 {

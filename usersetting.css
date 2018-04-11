@@ -1,0 +1,138 @@
+.title
+{
+	display: block;
+	font-size: calc((10vh + 10vw)/7);
+	text-align: center;
+	margin-top: 100px;
+}
+
+
+#corpPageMain
+{
+	margin-left: 10vw;
+	width: 80vw;
+	height: 85vh;
+}
+/*edited*/
+.nav
+{	
+	margin-top: calc((10vh)/30);
+	margin-left: calc((10vw)/5);
+	margin-right: calc((10vw)/5);
+	float left;
+	border:2px orange solid;
+	border-radius: 5px;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-top: 60px;
+	padding-bottom: 60px;
+	width: 13.5vw;
+	height: calc((40vw + 40vh)/3);
+	display: inline-block;
+    justify-content: center;
+    overflow: hidden;
+}
+/*edited*/
+.navButton
+{
+	width: 15vw;
+    text-align: center;
+	font-size: calc((10vw + 10vh)/10);
+	background-color: white;
+	display: block;
+	margin-bottom: 30px;
+	margin-top: -20px;
+    overflow: auto;
+    margin-left:-15px;
+}
+.navButton:active{
+    background:orange;
+}
+
+.rooms
+{
+	margin: calc((10vh + 10vw)/5);
+	position: absolute;
+	display: inline-block;
+	/*border: 1px solid black;*/
+	float right;
+	width: 40vw;
+	height: 100px/5vh; 
+	overflow: auto;
+
+	
+}
+/* seperate room*/
+.room
+{
+	display: block;
+	border: 1px solid grey;
+	height: 4vh;
+	margin-bottom: 1vh;	
+	overflow: auto;
+	min-height: 35px;
+}
+
+.removeRoom
+{
+	margin-left: 1vw;
+	margin-top: 1vh;
+	display: inline-block;
+	width: 50px/2vw;
+	height: 50px/2vw;
+	overflow: auto;
+}
+
+.roomTitle
+{
+	margin-left: 2vw;
+ 	display: inline-block;
+}
+
+.roomPrice
+{
+	display: inline-block;
+	margin-left: 5vw;
+}
+
+#corpLogout
+{
+	font-size: calc((10vh + 10vw)/10);
+	width: calc((10vh + 10vw))/1.5;
+	position: absolute;
+	right: 0;
+	top: 0;
+	margin-top: 10px;
+	margin-right: 10px;
+	background-color: rgb(204,235,252);
+}
+/* info container*/
+.information
+{
+	margin: calc((10vh + 10vw)/5);
+	position: absolute;
+	display: inline-block;
+	float right;
+	width: 40vw;
+	height: 100px/5vh;
+	overflow: auto;
+	margin-left: 85vh;
+}
+/* info buttons*/
+.info
+{
+	display: block;
+	background-color: #169CF3;
+	color:white;
+	height: 4vh;
+	border: 1px solid black;
+	margin-bottom: 1vh;	
+	overflow: auto;
+	min-height: 35px;
+	margin-left: 2vw;
+}
+.info:active{
+    background:#0D5B8E;
+}
+
+

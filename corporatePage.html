@@ -3,6 +3,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="gwestyStyle.css">
 	<link rel="stylesheet" type="text/css" href="corpPage.css">
+	<script type="text/javascript" src="corpPage.js" defer></script>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
@@ -15,19 +16,17 @@
 			<button class="button navButton">View/Edit Rooms</button>
 			<button class="button navButton">Business Details</button>
 			<button class="button navButton">Manage Account</button>
-		</div>
+		</div>	
+		
+		<button class="addRoom" onclick="addRoom()">+</button>
 
 		<div class="rooms">
 			<div class="room">
-				<button class="removeRoom">X</button>
-				<div class="roomTitle">Room Title</div>
-				<div class="roomPrice">$XX</div>
-			</div>
-			<div class="room">
-				<button class="removeRoom">X</button>
-				<div class="roomTitle">Room Title</div>
-				<div class="roomPrice">$XX</div>
-			</div>
+				<button class="removeRoom" onclick="removeRoom('room')">X</button>
+				<div class="roomTitle">Room Name</div>
+				<div class="roomPrice">$</div>
+				<button class="info" onclick="editRoom()">i</button>		
+			</div>			
 		</div>
 		
 	</div>
