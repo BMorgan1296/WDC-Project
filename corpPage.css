@@ -150,7 +150,97 @@
 
 .edit
 {
-	background-color: hsla(360, 0%, 41%, 0.55);
+	background-color: hsla(360, 0%, 41%, 0.5);
+	border: 1px solid hsla(360, 0%, 41%, 0.5);
+	width: 100vw;
+	height: 88vh;
+	position: fixed;
+	left: 0;
+	top: 0;
+}
+
+.editBox
+{
+	background-color: white;
+	border:1px solid black;
+	width: 30vw;
+	height:47vh;
+	position: fixed;
+	left: 0;
+	top: 0;
+	margin-top: 20vh;
+	margin-left: 35vw;
+	overflow-x:hidden;
+	overflow-y: auto;
+}
+
+.editBoxTitle
+{
+	background-color: orange;
+	border-bottom:0.1vh solid black;
+	width: 30vw;
+	height:4.5vh;
+	font-size: 3vh;
+	text-align: center;
+}
+
+.editBoxInput
+{
+	font-size: 2.5vh;
+	display: inline-block;
+	margin-top: 4vh;
+	margin-left: 1vw;
+	margin-right: 1vw;
+}
+
+#editRoomTitle
+{
+
+	position: absolute;
+	width: 20vw;
+	right: 0;
+
+}
+
+#editRoomDescription
+{
+	overflow: auto;
+	text-align: left;
+	position: absolute;
+	right: 0;
+	width: 20vw;
+	height: 10vh;
+}
+
+#editRoomCurrencyLabel
+{
+	margin-top: 10vh;
+}
+
+#editRoomCurrency
+{
+	margin-top: 10vh;
+	position: absolute;
+	right: 0;
+	width: 20vw;
+	text-align: left;
+}
+
+#editRoomPrice
+{
+	position: absolute;
+	right: 0;
+	width: 10vw;
+}
+
+#Done
+{
+	position: absolute;
+	text-align: center;
+	font-size: 2.5vh;
+	margin-left: 14vw;
+	margin-top: 1vh;
+	background-color: rgb(204,235,252);
 }
 
 
