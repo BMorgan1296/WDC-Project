@@ -101,6 +101,19 @@
 	min-height: 35px;
 }
 
+.roomCurr
+{
+	display: inline;
+	position: absolute;
+	right:0;
+	margin-right: 8vw;
+	height: 4vh;
+	padding: 1px;
+	margin-bottom: 1vh;	
+	overflow: auto;
+	min-height: 35px;
+}
+
 .roomPrice
 {
 	display: inline;
@@ -218,6 +231,7 @@
 
 #editRoomDescription
 {
+	font-family: 'Open Sans', sans-serif;
 	overflow: auto;
 	text-align: left;
 	position: absolute;

@@ -13,26 +13,26 @@
 	width: 80vw;
 	height: 85vh;
 }
-/*edited*/
 .nav
 {	
-	margin-top: calc((10vh)/30);
-	margin-left: calc((10vw)/5);
-	margin-right: calc((10vw)/5);
+	/*margin-top: calc((10vh)/5);*/
+	position: absolute;
+	left: 0;
+	top: 0;
+	margin-top: calc(40vh/2);
+	margin-left: calc((50vw)/5);
 	float left;
 	border:2px orange solid;
-	border-radius: 5px;
 	padding-left: 40px;
 	padding-right: 40px;
-	padding-top: 60px;
+	padding-top: calc((25vw + 25vh)/12);;
 	padding-bottom: 60px;
-	width: 13.5vw;
-	height: calc((40vw + 40vh)/3);
+	width: 15vw;
+	height: calc((45vw + 45vh)/3);
 	display: inline-block;
     justify-content: center;
-    overflow: hidden;
 }
-/*edited*/
+
 .navButton
 {
 	width: 15vw;
@@ -40,11 +40,10 @@
 	font-size: calc((10vw + 10vh)/10);
 	background-color: white;
 	display: block;
-	margin-bottom: 30px;
-	margin-top: -20px;
-    overflow: auto;
-    margin-left:-15px;
+	margin-bottom: calc((25vw + 25vh)/15);;
+	overflow: auto;
 }
+
 .navButton:active{
     background:orange;
 }
@@ -52,47 +51,177 @@
 .rooms
 {
 	margin: calc((10vh + 10vw)/5);
-	position: absolute;
+	margin-left: calc((30vh + 40vw)/2); 
+	position: relative;
 	display: inline-block;
 	/*border: 1px solid black;*/
 	float right;
 	width: 40vw;
-	height: 100px/5vh; 
+	height: 100px/5vh;
 	overflow: auto;
-
-	
 }
-/* seperate room*/
+
 .room
 {
 	display: block;
 	border: 1px solid grey;
-	height: 4vh;
-	margin-bottom: 1vh;	
-	overflow: auto;
+	height: 5vh;
+	margin-bottom: 1vh;
+	margin-top: 1vh;	
+	overflow: hidden;
 	min-height: 35px;
 }
 
 .removeRoom
 {
+	border: 1px solid black;
+	background-color: red;
+	color: white;
 	margin-left: 1vw;
 	margin-top: 1vh;
-	display: inline-block;
+	display: inline;
 	width: 50px/2vw;
 	height: 50px/2vw;
 	overflow: auto;
 }
 
+.removeRoom:active
+{
+	background-color: darkred;
+}
+
 .roomTitle
 {
 	margin-left: 2vw;
- 	display: inline-block;
+ 	display: inline;
+	height: 4vh;
+	margin-bottom: 1vh;
+	padding:1px;
+	overflow: auto;
+	min-height: 35px;
 }
 
 .roomPrice
 {
+	display: inline;
+	position: absolute;
+	right:0;
+	margin-right: 6vw;
+	height: 4vh;
+	padding: 1px;
+	margin-bottom: 1vh;	
+	overflow: auto;
+	min-height: 35px;
+}
+
+.info
+{
+	border: 1px solid black;
+	background-color: #169CF3;
+	color: white;
+	position: absolute;
+	right:0;
+	margin-right: 1vw;
+	margin-top: -25px;
+	display: inline;
+	width: 50px/2vw;
+	height: 50px/2vw;
+}
+
+.info:active
+{
+	background-color: #0D5B8E;
+}
+
+#edit
+{
+	width: 100vw;
+	height: 88vh;
+	position: fixed;
+	left: 0;
+	top: 0;
+}
+
+#editBackground
+{
+	background-color: hsla(360, 0%, 41%, 0.5);
+	border: 1px solid hsla(360, 0%, 41%, 0.5);
+	width: 100vw;
+	height: 88vh;
+	position: fixed;
+	left: 0;
+	top: 0;
+}
+
+.editBox
+{
+	background-color: white;
+	border:1px solid black;
+	width: 30vw;
+	height:60vh;
+	position: fixed;
+	left: 0;
+	top: 0;
+	margin-top: 15vh;
+	margin-left: 35vw;
+	overflow-x:hidden;
+	overflow-y: auto;
+}
+
+.editBoxTitle
+{
+	background-color: orange;
+	border-bottom:0.1vh solid black;
+	width: 30vw;
+	height:4.5vh;
+	font-size: 3vh;
+	text-align: center;
+}
+
+.editBoxInput
+{
+	font-size: 2.5vh;
 	display: inline-block;
-	margin-left: 5vw;
+	margin-top: 4vh;
+	margin-left: 1vw;
+	margin-right: 1vw;
+}
+
+#editRoomTitle
+{
+	position: absolute;
+	width: 20vw;
+	right: 0;
+
+}
+
+#editRoomDescription
+{
+	border:1px solid black;
+	overflow: auto;
+	text-align: left;
+	position: absolute;
+	right: 0;
+	width: 20vw;
+	height: 14.5vh;
+	word-wrap: break-word;
+}
+
+#editRoomPrice
+{
+	position: absolute;
+	width: 20vw;
+	right: 0;
+}
+
+#Done
+{
+	position: absolute;
+	text-align: center;
+	font-size: 2.5vh;
+	margin-left: 14vw;
+	margin-top: 1vh;
+	background-color: rgb(204,235,252);
 }
 
 #corpLogout

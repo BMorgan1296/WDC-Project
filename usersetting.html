@@ -4,6 +4,7 @@
 	<meta charset="utf-8" />
 	<link rel="stylesheet" type="text/css" href="gwestyStyle.css">
 	<link rel="stylesheet" type="text/css" href="usersetting.css">
+	<script type="text/javascript" src="usersettings.js" defer></script>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
@@ -31,21 +32,14 @@
 			</div>
 		<div class="rooms">
 			<div class="room">
-				<button class="removeRoom">X</button>
-				<div class="roomTitle">Room Title</div>
-				<div class="roomPrice">$XX</div>
-			</div>
-			<div class="room">
-				<button class="removeRoom">X</button>
-				<div class="roomTitle">Room Title</div>
-				<div class="roomPrice">$XX</div>
-			</div>
+				<button class="removeRoom" onclick="removeRoom('room')">X</button>
+				<div class="roomTitle">Room Name</div>
+				<div class="roomPrice">$</div>
+				<button class="info" onclick="editRoom()">i</button>		
+			</div>			
 		</div>
-		<div class="information">
-			<button class="info">i</button>
-			<button class="info">i</button>
-		</div>
-		</div>
+
+		
 		
 	</div>
 
