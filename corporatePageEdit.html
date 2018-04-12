@@ -13,12 +13,18 @@
 	<div id="corpPageMain">
 		<h1 class="title">View/Edit Rooms</h1>
 		<div class="nav">
-			<button class="button navButton">View/Edit Rooms</button>
-			<button class="button navButton">Business Details</button>
-			<button class="button navButton">Manage Account</button>
+			<form>
+				<input class="button navButton" type="button" value="View/Edit Rooms" onclick="window.location.href='corporatePageEdit.html'" />
+			</form>
+			<form>
+				<input class="button navButton" type="button" value="Business Details" onclick="window.location.href='corporatePageBDetails.html'" />
+			</form>
+			<form>
+				<input class="button navButton" type="button" value="Manage Account" onclick="window.location.href='corporatePageManage.html'" />
+			</form>
 		</div>	
 		
-		<button class="addRoom" onclick="addRoom()">+</button>
+		<button class="addRoom" onclick="addRoom(), editRoom()">+</button>
 
 		<div class="rooms">
 			<div class="room">
