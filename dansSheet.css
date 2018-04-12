@@ -23,7 +23,46 @@ body{
     top:1vh;
     margin-right:2vw;
     color:gray;
+    font-size: 1em;
 }
+
+.headerLabel{
+    float: left;
+    position: relative;
+    text-align: center;
+    width:calc(1em * 5);
+    display: block;
+}
+
+#currency:hover{
+    background:rgba(205,205,205,0.25)
+}
+
+.divider{
+    width:auto;
+}
+
+.fixedPopDownList{
+    position: absolute;
+    background: white;
+    width:calc(1em * 3);
+    margin-left:calc((100% - (1em * 3))/2);
+    box-shadow: 0 .25vmin 0.5vmin 0 rgba(0, 0, 0, 0.2), 0 .375vmin 1.25vmin 0 rgba(0, 0, 0, 0.19);
+    display:none;
+}
+
+.fixedPopDownItem{
+    position: relative;
+    float: left;
+    width:100%;
+    font-size: 0.75em;
+}
+
+.fixedPopDownItem:hover{
+    background:rgba(205,205,205,0.25)
+}
+
+
 .title{
     float:left;
     width: 25vw;
@@ -86,9 +125,13 @@ body{
     padding-top:1px;
     display: block;
     float:left;
-    background-color: dodgerblue;
+    background-color: rgb(30,144,255);
     color: white;
     text-align: center;
+}
+
+#searchButton:hover{
+    background-color:rgba(30,144,255,.75);
 }
 
 .secHalfBox{
