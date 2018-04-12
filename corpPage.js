@@ -11,8 +11,8 @@ function addRoom()
     newRoom.innerHTML = `    		
 				<button class="removeRoom" onclick="removeRoom(this)">X</button>
 				<div class="roomTitle">Room Name</div>
-				<div class="roomCurr"></div>
-				<div class="roomPrice"></div>
+				<div class="roomCurr">Australia Dollars - AUD</div>
+				<div class="roomPrice">0</div>
 				<button class="info" onclick="editRoom(this)">i</button>
 				`;
 
