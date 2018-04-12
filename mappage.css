@@ -9,11 +9,11 @@ body {
 .container_check {
     display: block;
     position: relative;
-    padding-left: 35px;
-    margin-bottom: 2px;
-    margin-top: 2px;
+    padding-left: 3vw;
+    margin-bottom: 0.2vh;
+    margin-top: 0.2vh;
     cursor: pointer;
-    font-size: 15px;
+    font-size:calc((6vh + 6vw)/8);
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -30,9 +30,9 @@ body {
 .checkmark {
     position: absolute;
     top: 0;
-    left: 15px;
-    height: 15px;
-    width: 15px;
+    left: 1.5vw;
+    height: 2.4vh;
+    width: 1.2vw;
     background-color: white;
 }
 
@@ -58,14 +58,14 @@ body {
     display: block;
 }
 
-/* Style the checkmark/indicator */
+/* tick */
 .container_check .checkmark:after {
-    left: 4px;
-    top: 3px;
-    width: 3px;
-    height: 7px;
+    left: 0.6vw;
+    top: 0.2vh;
+    width: 0.2vw;
+    height: 1.5vh;
     border: solid white;
-    border-width: 0 3px 3px 0;
+    border-width: 0 0.2vw 0.2vw 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
@@ -83,14 +83,14 @@ body {
     background-color: #F0F0F0;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 50px;
-    margin-top: 150px;
+    padding-top: 7vh;
+    margin-top: 20vh;
 }
 
 .extra_filters a, .dropdown-btn{
-    padding: 6px 8px 6px 16px;
+    padding: 0.6vh 0.8vh 0.6vw 2vw; 
     text-decoration: none;
-    font-size: 20px;
+    font-size:calc((6vh + 6vw)/6); /*font for the titles*/
     color: black; /*text colour*/
     display: block;
     border: none;
@@ -106,12 +106,6 @@ body {
     color: grey;
 }
 
-.main{
-  margin-left: 200px;
-  font-size: 20px;
-  padding: 0px 10px;
-}
-
 .active{
   background-color: #074256;
   color: white;
@@ -119,10 +113,10 @@ body {
 
 .extra_filters .closebtn {
     position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
+    top: 1vh;
+    right: 2vw;
+    font-size:calc((6vh + 6vw)/6);    
+    margin-left: 10vw;
     color: black;
     cursor: pointer;
 }
@@ -131,57 +125,61 @@ body {
   display: none;
   /*background-color: #262626;*/
   background-color: #F0F0F0;
-  padding-left: 8px;
+  padding-left: 1vw;
 }
 
 .fa-caret-down {
   float: right;
-  padding-right: 8px;
+  padding-right: 1vw;
 }
 
 /* sidenav opening button*/ 
 .btn{
-   margin-top:100px;
-   font-size: 15px;
+   margin-top:18vh;
+  font-size:calc((6vh + 6vw)/6); 
    color:blue;
    border:none;
    background-color: white;
 }
 
 
-@media screen and (max-height: 450px) {
-  .extra_filters {padding-top: 15px;}
-  .extra_filters a {font-size: 18px;}
+@media screen and (max-height: 50vh) {
+  .extra_filters {padding-top: 1.5vh }
+  .extra_filters a {font-size:calc((6vh + 6vw)/6)}
 }
 
-/*////////// CSS code for  Price dropdown/////////*/
+/*////////// CSS code for  rooms dropdown/////////*/
 
 /*the container must be positioned relative:*/
 .custom-select {
   position: absolute;
   font-family: Arial;
-  margin-top: -45px;
-  margin-left: 500px;
-  text-align: center; 
-}
+ /* margin-top: -7.8vh;*/
+  margin-top: 17vh;
+  margin-left: 44vw;
+  text-align: center;
+  font-size:calc((8vh + 8vw)/10);}
 .custom-select select {
   display: none; /*hide original SELECT element:*/
 }
 .select-selected {
   background-color: Orange;
-  border: 5px solid;
-  border-color:black;
+  border: 0.5vh solid;
+  /*border-color:black;*/
   color:white;
+  height:6.5vh;
+  margin-top:-1.2vh;
+  margin-left: -1.2vw;
   /*margin-left:300px;*/
-  width: 150px;
+  width: 19vw;
 }
 
 /*style the items (options), including the selected item:*/
 .select-items div,.select-selected {
   
  /* color: white;*/
-  padding: 8px 16px;
-  border: 1px solid transparent;
+  padding: 1.4vh 1.6vh;
+  border: 1px solid;
   border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
   cursor: pointer;
   user-select: none;
@@ -189,9 +187,10 @@ body {
 /*style items (options):*/
 .select-items {
   /*margin-left:300px;*/
-  width:183px;
+  width:19vw;
   position: absolute;
   background-color: #f9f9f9;
+  margin-top:1vh;
   top: 100%;
   left: 0;
   right: 0;
@@ -213,33 +212,35 @@ body {
 .dropbtn {
     background-color: orange;
     margin-bottom:10px;
-    height:38px;
+    height:6.5vh;
     color: white;
-    padding: 16px;
-    font-size: 16px;
+    /*padding: 2vw;*/
+    font-size:calc((8vh + 8vw)/10);
     border: none;
     cursor: pointer;
-    width:183px;
-    padding-top: 9px;
+    width:19vw;
+    padding-top: 0.1vw;
+
     
 }
 
 .dropdown {
-    position: relative;
+    position: absolute;
     display: inline-block;
-    margin-left:700px;
-    margin-top: -50px;
+    margin-left:65vw;
+  /*  margin-top: 15vh;*/
+     margin-top: 17vh;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;*/
-   
+    background-color: #f9f9f9;
+
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    width:183px;
+    width:19vw;
 }
 
 .dropdown-content a {
@@ -261,34 +262,33 @@ body {
 
 .search_bar {
   position: relative;
-  margin-top: -110px;
-  margin-left:130px;
+  /*margin-top: -18vh; ---- original --- */
+  margin-top: -18vh;
+  margin-left:15vw;
  
 }
 /*input box*/
 .search_bar input[type=text] {
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  border: none;
-  border-style:solid;
-  border-width: 1px;
-  border-color: grey;
-  width:650px;
+  padding: 0.4vw;
+  margin-top: 0.6vw;
+  font-size:calc((10.5vh + 10.5vw)/10);
+    border: 1px solid grey;
+    width:60vw;
  
 }
 /*search button*/
  .search_bar button {
-  position: relative;
+  position: absolute;
   /*float: centre;*/
-  width:120px;
-  height:34px;
-  padding: 6px;
+  width:10vw;
+  height:6.8vh;
+  padding: 0.4vw;
   color:white;
-  margin-top: 8px;
-  margin-right: 16px;
+  margin-top: 0.8vh;
+  margin-right: 1vw;
+  margin-left: 1.5vw;
   background: #169CF3;
-  font-size: 16px;
+  font-size:calc((8vh + 8vw)/10);
   border: none;
   cursor: pointer;
   
@@ -297,4 +297,92 @@ body {
 .search_bar button:hover {
   background: #0D5B8E;
  
+}
+.footer_mappage{
+   margin-top:76vh;
+    width:100%;
+    height:16.66vh;
+    background:gray;
+    float:left; 
+}
+/*review buttons*/
+.btn-group button {
+    margin-left:0.5vw;
+    margin-top: 3vh;
+    color: white; /* White text */
+    padding:0.3vw;
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    /*float:center;*/
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.btn1{
+background-color:rgb(218, 165, 32,0.6);
+
+}
+.btn2{
+background-color:rgb(255,127,80,0.6);
+}
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: black;
+}
+
+.cal-container{
+    position: absolute;
+    display: inline-block;
+    margin-left:11vw;
+    /*margin-top: -7.8vh;*/
+    margin-top:16vh;
+    width:15vw;
+    text-align: center;
+    padding:0.6vw;
+    /*border: 1px solid orange;*/
+       
+}
+.cal-container input[type=text] {
+  padding:0.4vh;
+  width:30vw;
+  border:1px solid ornage;
+  text-align: center;
+  }
+
+.cal-container_two{
+    position: absolute;
+    display: inline-block;
+    margin-left:33vw;
+    margin-top: -7.8vh;
+    width:15vw;
+    text-align: center;
+    padding:0.6vw;
+   border: 1px solid orange;
+}
+
+
+
+.btn-group button {
+    margin-left:0.5vw;
+    margin-top: 3vh;
+    color: white; /* White text */
+    padding:0.3vw;
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
 }

@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="daterangepicker.css" />
+   <!--  <link rel="stylesheet" href="../../../WebstormProjects/untitled2/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 <link rel="stylesheet" type="text/css" href="mappage.css">
 <link rel="stylesheet" type="text/css" href="gwestyStyle.css">
+<link rel="stylesheet" type="text/css" href="dansSheet.css">
+
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
 <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 <meta charset="utf-8"/>
 <title>mappage</title>
+
 </head>
 <body>
 <div class="fullpage">
@@ -46,22 +55,33 @@
 
   </div>
 
-  <button class="dropdown-btn">Location
+  <!-- <button class="dropdown-btn">Location
   <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
     <p> Distance from the city</p>
   
-  </div>
+  </div> -->
   <button class="dropdown-btn">Ratings 
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-   <p> buttons </p>
+   <div class="btn-group">
+  <button class="btn1">0+</button>
+  <button class="btn2">2+</button>
+  <button class="btn1">4+</button>
+  <button class="btn2">6+</button>
+  <button class="btn1">8+</button>
+</div>
   </div>
-  </div>
+</div>
 
 <button class="btn" type="button" onclick="openNav()">&#8658;</button>
+
+
+ <div class="cal-container">
+      <input type="text" class="daterange" placeholder="Check-in  /  Check-Out ">
+</div>
 
 <!-- for Price dropdown --> 
 <div class="dropdown">
@@ -71,6 +91,11 @@
   </div>
 </div>
 
+
+ <!-- <form>
+  <input type="date" class="cal-container">
+ <input type="date" class="cal-container_two">
+</form> -->
 
 <!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
 <div class="custom-select" style="width:200px;">
@@ -83,19 +108,43 @@
    </select>
   </div>
 
+<!--   <form>
+  <input type="date" class="cal-container">
+ <input type="date" class="cal-container_two">
+</form> -->
+
   <div class="search_bar">
-    <form action="/action_page.php">
+    <form>
       <input type="text" placeholder="Search.." name="search">
       <button type="submit">Submit</button>
     </form>
   </div>
-
-<div id="footer">
-    <p id="gwestyFooter">gwesty.</p>
-  </div>
 </div>
 
+
+ <div class="footer_mappage">
+                <div class="footerQuarter">
+                    <div class="footerQuarterTitle">Guests</div>
+                    <div class="footerQuarterText">Sign-in<br><a href="manage_acc.html">Manage Account</a><br> <a href="usersetting.html">Bookings</a><br><a href="landing.html">Search Hotels</a></div>       
+                </div>
+                <div class="footerQuarter">
+                    <div class="footerQuarterTitle">Hotels</div>
+                    <div class="footerQuarterText"><a href="corporateLogin.html">Hotel Sign-in</a><br>Manage Rooms<br> Register</div>       
+                </div> 
+                <div class="footerHalf">gwesty</div>  
+              </div>
+
 <script src="mappage.js"></script>
+
+
+ <!-- Optional JavaScript -->
+   <!--  jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   <script type="text/javascript" src="moment.min.js"></script>
+   <script type="text/javascript" src="daterangepicker.js"></script>
+   <script type="text/javascript" src="datepicker.js"></script>
      
 </body>
 </html> 
