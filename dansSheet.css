@@ -38,8 +38,13 @@ body{
     background:rgba(205,205,205,0.25)
 }
 
+#Sign-in:hover{
+    background:rgba(205,205,205,0.25)
+}
+
 .divider{
     width:auto;
+    top:-0.1em;
 }
 
 .fixedPopDownList{
@@ -51,6 +56,30 @@ body{
     display:none;
 }
 
+#signDrop{
+    width:100%;
+    margin-left:0px;
+    top:1.5em;
+    text-align: left;
+    padding-bottom:0.5em;
+}
+
+#signDrop input{
+    border-color: gainsboro;
+    border-style:solid;
+    border-width:0.5px;
+    width:calc(100% - 2.25em);
+    margin-left:1em;
+    
+}
+
+.sign .button{
+    width:50%;
+    margin-left:25%;
+    margin-top:0.5em;
+}
+
+
 .fixedPopDownItem{
     position: relative;
     float: left;
@@ -58,10 +87,29 @@ body{
     font-size: 0.75em;
 }
 
+.signTitle{
+    margin-top:0.5em;
+    margin-left:1em;
+}
+
+.signMidTitle{
+    margin-top:0.25em;
+    text-align: center;
+}
+
+
 .fixedPopDownItem:hover{
     background:rgba(205,205,205,0.25)
 }
 
+
+.signTitle:hover{
+    background:none;
+}
+
+.signMidTitle:hover{
+    background:none;
+}
 
 .title{
     float:left;

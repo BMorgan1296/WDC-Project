@@ -27,6 +27,10 @@ $(document).ready(function(){
         $("#currencyDrop").slideDown();
     })
     
+    $("#Sign-in").on("click",function(){
+        $("#signDrop").slideDown();
+    })
+    
     $(document).on("click",".fixedPopDownItem",function(){
         var val = $(this).attr('value');
         updateCurrency(val);
@@ -36,9 +40,13 @@ $(document).ready(function(){
     //off-clicks
     $(document).click(function(event){
         var id = event.target.id;
+        var classes = event.target.classList;
         if((id!='currency'&&id!="currencyText")&&$("#currencyDrop").css('display') == 'block') {
             $("#currencyDrop").slideUp();
-        }   
+        }
+        if((classes[0]!="sign")&&$("#signDrop").css('display') == 'block') {
+            $("#signDrop").slideUp();
+        }
     })
     
     function updateCurrency(current){
