@@ -3,17 +3,14 @@
 <head>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" type="text/css" href="gwestyStyle.css">
-	<link rel="stylesheet" type="text/css" href="styles/userinfo.css"> 
-    <link rel="stylesheet" type="text/css" href="styles/usersetting.css"> 
+	<link rel="stylesheet" type="text/css" href="styles/usersetting.css">
+	<script type="text/javascript" src="usersettings.js" defer></script>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
+	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 	<script type="application/javascript" src="scripts/jquery-1.12.4.js"></script>
 	<script type="application/javascript" src="scripts/shared.js"></script>
 
-
-
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
-	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-
-	<title> User Payment Details </title>
+	<title>Settings - Bookings</title>
 </head>
 <body id="parentContainer">
     <div class="popupCon" id="newSignup">
@@ -60,71 +57,41 @@
             </div>
         </div>
 	<div id="corpPageMain">
-		<h1 class="title">Payment Details</h1>
-			<div class="nav">
+		<h1 class="title">Bookings</h1>
+		<div class="nav">
 			<form>
-				<input class="button navButton" value="View/Manage Bookings" onclick="window.location.href='usersetting.html'" type="button"/>
+				<input class="button navButton" value="View/Manage Bookings" onclick="window.location.href='settings_booking.html'" type="button"/>
 			</form>
  			<form>
-				<input class="button navButton" value="Your Information" onclick="window.location.href='your_info.html'" type="button" />
+				<input class="button navButton" value="Your Information" onclick="window.location.href='settings_details.html'" type="button" />
 			</form>
   			<form>
-				<input class="button navButton" value="Payment Details" onclick="window.location.href='payment.html'" type="button"/>
+				<input class="button navButton" value="Payment Details" onclick="window.location.href='settings_payment.html'" type="button"/>
 			</form>           
 			<form>
-				<input class="button navButton" value="Manage Account" onclick="window.location.href='manage_acc.html'" type="button"/>
+				<input class="button navButton" value="Manage Account" onclick="window.location.href='settings_login.html'" type="button"/>
 			</form> 
 		 	<form>
 				<input class="button navButton" value="Log Out" onclick="window.location.href='landing.html'" type="button"/>
 			</form> 
 		</div>
-	<div class="titles">
-
-			<div class="t1">
-				<div class="roomTitle">Card Type</div>
-			</div>
-			<div class="t1">
-				<div class="roomTitle">Card No</div>
-			</div>
-			<div class="t1">
-				<div class="roomTitle">CVV</div>
-			</div>
-			<div class="t1">
-				<div class="roomTitle">Card Holder</div>
-			</div>
-			<div class="t1">
-				<div class="roomTitle">Expiry Date</div>
-			</div>
+		<div class="rooms">
+			<div id="0" class="room">
+				<button class="removeRoom" onclick="removeRoom('room')">X</button>
+				<div class="roomTitle">Room Name</div>
+				<div class="roomType">Standard</div>
+				<div class="roomPrice">100 AUD</div>
+				<button class="info" onclick="editRoom(this)">i</button>		
+			</div>			
 		</div>	
-<!-- Input boxes -->
-        <div class="userOptions">
-            <div class="textboxes" id="paymentOptions">
-                <input type="text" class="textbox" />
-                <input type="text" class="textbox" />
-                <input type="text" class="textbox" />
-                <form class="radiobuttons" id = "paymentRadios">
-                    <label>
-                      <input type="radio" name="visa">Visa
-                    </label>
-                    <label class="radiobutton">
-                      <input type="radio" name="MasterCard">MasterCard
-                    </label>
-                    <label class="radiobutton">
-                      <input type="radio" name="American Express">American Express
-                    </label>
-                </form>
-                <input class="cc" type="text" name="Month" placeholder="Month MM ">
-                <input class="cc" type="text" name="fname" placeholder="Year YY">
-
-            </div>
-        </div>
-    </div>
+        
+	</div>
     <div class="footer">
                 <div class="footerQuarter">
                     <div class="footerQuarterTitle">Guests</div>
                     <div class="footerQuarterText">
-                        <a href="manage_acc.html">Manage Account</a><br> 
-                        <a href="usersetting.html">Bookings</a><br>
+                        <a href="settings_details.html">Manage Account</a><br> 
+                        <a href="settings_bookings.html">Bookings</a><br>
                         <a href="landing.html">Search Hotels</a></div>       
                 </div>
                 <div class="footerQuarter">
@@ -133,7 +100,6 @@
                 </div> 
                 <div class="footerHalf">gwesty</div>   
             </div>
-	
 
 </body>
 </html>
