@@ -6,22 +6,21 @@ $(document).ready(function(){
     //on-clicks
     $("#currency").on("click",function(){
         $("#currencyDrop").slideDown();
-    })
+    });
     
     $("#Sign-in").on("click",function(){
         $("#signDrop").slideDown();
-    })
+    });
     
     $(document).on("click",".fixedPopDownItem",function(){
         var val = $(this).attr('value');
         updateCurrency(val);
-        $("#currencyText").text(val)
-    })
+        $("#currencyText").text(val);
+    });
     
     $("#Signup").on("click",function(){
-        console.log("whadup")
         $("#newSignup").fadeIn();
-    })
+    });
     
     //off-clicks
     $(document).click(function(event){
@@ -37,7 +36,7 @@ $(document).ready(function(){
         if(id=="newSignup"){
             $("#newSignup").fadeOut();
         }
-    })
+    });
     
     function updateCurrency(current){
         $("#currencyDrop").empty();
