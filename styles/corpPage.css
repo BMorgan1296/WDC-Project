@@ -11,6 +11,7 @@
 	margin-left: 10vw;
 	width: 80vw;
 	height: 85vh;
+	font-size: calc((10vh + 10vw)/12.5);
 }
 
 .nav
@@ -27,7 +28,7 @@
 {
 	width: 15vw;
     text-align: center;
-	font-size: calc((10vw + 10vh)/10);
+	font-size: calc((10vw + 10vh)/12.5);
 	background-color: white;
 	display: block;
 	margin-bottom: calc((25vw + 25vh)/30);;
@@ -54,10 +55,9 @@
 {
 	display: block;
 	border: 1px solid grey;
-	height: 4vh;
+	height: 5vh;
 	margin-bottom: 1vh;
 	overflow: hidden;
-	min-height: 35px;
 	overflow: auto;
 	width:40vw;
 }
@@ -82,7 +82,6 @@
 
 .roomTitle
 {
-	margin-left: 2vw;
  	display: inline;
 	height: 4vh;
 	margin-bottom: 1vh;
@@ -109,7 +108,7 @@
 	display: inline;
 	float right;
 	margin-left: 3vw;
-	margin-right: 5vw;
+	margin-right: 0.5vw;
 	height: 4vh;
 	padding: 1px;
 	margin-top: 0.5vh;
