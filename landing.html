@@ -11,26 +11,48 @@
 </head>
 <body>
     <div id="container">
+        <div class="popupCon" id="newSignup">
+            <div class="popup">
+                <form>
+                    <h3 class="popupItem center">Sign-up</h3>
+                    <div class="popupItem">Full name:</div>
+                    <input id = "nameS" type="text" class="">
+                    <br>
+                    <div class="popupItem">Email:</div>
+                    <input id = "emailS" type="email" class="">
+                    <br>
+                    <div class="popupItem">Password:</div>
+                    <input id = "passwordS" type="password" class="">
+                    <br>
+                    <div class="popupItem">Confirm password:</div>
+                    <input id = "password2S" type="password" class="">
+                    <br>
+                    <button class="button">Sign-up</button>
+                    <div class="popupItem center">or</div>
+                    <div class="popupItem">Sign-up with </div>
+                </form>
+            </div>
+        </div>
         <div class="fullPage" id="half1">
 
         <div class="header">
             <div id="currency" class="headerLabel"><span id="currencyText"> AUD </span>
-                <div id = "currencyDrop" class="fixedPopDownList">
-                </div>
             </div>
             <div class="headerLabel divider">|</div>
             <div id="Sign-in" class="sign headerLabel">Sign-in
             </div>
+            <div id = "currencyDrop" class="fixedPopDownList">
+            </div>
             <div id = "signDrop" class="sign fixedPopDownList">
                 <form>
-                    <div class="sign fixedPopDownItem signTitle">Username:</div>
-                    <input id = "username" type="text" class="sign">
+                    <div class="sign fixedPopDownItem signTitle">Email:</div>
+                    <input id = "email" type="text" class="sign">
                     <div class="sign fixedPopDownItem signTitle">Password:</div>
                     <input id = "username" type="password" class="sign">
                     <button class="sign button">Sign-in</button>
                 </form>
                 <div class="sign fixedPopDownItem signMidTitle">or</div>
-                <div class="sign fixedPopDownItem signMidTitle">Sign-up</div>
+                <div class="sign fixedPopDownItem signMidTitle" id="Signup">Sign-up</div>
                 
             </div>
         </div>
@@ -96,7 +118,6 @@
                     <div class="footerQuarterText"><a href="corporateLogin.html">Hotel Sign-in</a><br>Manage Rooms<br> Register</div>       
                 </div> 
                 <div class="footerHalf">gwesty</div>   
-            </div>
             </div>
         </div>
     </div>

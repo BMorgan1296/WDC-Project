@@ -37,6 +37,11 @@ $(document).ready(function(){
         $("#currencyText").text(val)
     })
     
+    $("#Signup").on("click",function(){
+        console.log("whadup")
+        $("#newSignup").fadeIn();
+    })
+    
     //off-clicks
     $(document).click(function(event){
         var id = event.target.id;
@@ -46,6 +51,10 @@ $(document).ready(function(){
         }
         if((classes[0]!="sign")&&$("#signDrop").css('display') == 'block') {
             $("#signDrop").slideUp();
+        }
+        
+        if(id=="newSignup"){
+            $("#newSignup").fadeOut();
         }
     })
     
