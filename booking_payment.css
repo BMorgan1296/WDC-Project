@@ -59,9 +59,9 @@
 
 .booking_detail_btn
 {
-	width: 15vw;
+	width: 18vw;
     text-align: center;
-	font-size: calc((10vw + 10vh)/6);
+	font-size: calc((10vw + 10vh)/7);
 	background-color: white;
 	display: inline-block;
 	margin-top: 10vh;
@@ -75,9 +75,9 @@
 
 .contact_detail_btn
 {
-	width: 15vw;
+	width: 18vw;
     text-align: center;
-	font-size: calc((10vw + 10vh)/6);
+	font-size: calc((10vw + 10vh)/7);
 	background-color: white;
 	display: inline-block;
 	margin-top: 10vh;
@@ -91,9 +91,9 @@
 
 .confirm_btn
 {
-	width: 15vw;
+	width: 18vw;
     text-align: center;
-	font-size: calc((10vw + 10vh)/6);
+	font-size: calc((10vw + 10vh)/7);
 	background-color: white;
 	display: inline-block;
 	margin-top: 10vh;
@@ -197,7 +197,7 @@ input[type=date]{
 {
 	margin-top:27vh;
 	margin-left: 37vw; 
-	position: absolute;
+	position: fixed;
 	display: inline-block;
 	float: right;
 	width: 40vw;
@@ -218,6 +218,15 @@ input[type=date]{
 	margin-top:22vh;
 	margin-left: 37vw;
 	display: inline-block;
+	position: fixed;
  
+}
+.footerpayment-container{
+    margin-top:84vh;
+    width:100vw;
+    height:16.66vh;
+    background:gray;
+    float:left; 
+}
 }
 
