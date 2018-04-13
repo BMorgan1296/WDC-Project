@@ -1,24 +1,39 @@
+ /*jshint unused:false*/
+
+var counter = 1;
+
+var id;
+
 function addRoom()
 {
     var newRoom = document.createElement('div');
 
     newRoom.className = 'room';
 
-    newRoom.innerHTML = '<button class="removeRoom" onclick="removeRoom()">X</button>\
-		 <div class="roomTitle">Room Name</div>\
-		 <div class="roomPrice">$</div>\
-		 <button class="info" onclick="editRoom()">i</button>';
+    newRoom.innerHTML = `    		
+				<button class="removeRoom" onclick="removeRoom(this)">X</button>
+				<div class="roomTitle">Room Name</div>
+				<div class="roomCurr">Australia Dollars - AUD</div>
+				<div class="roomPrice">0</div>
+				<button class="info" onclick="editRoom(this)">i</button>
+				`;
 
     document.getElementsByClassName('rooms')[0].appendChild(newRoom);
+
+	newRoom.id = counter;
+	counter = counter + 1;
 }
 
-function removeRoom() 
+function removeRoom(input) 
 {
-	var room = document.getElementsByClassName('room')[0];
+	var idNum = input.parentNode.getAttribute('id');
+	var room = document.getElementById(idNum);
 	room.parentNode.removeChild(room);
+
+	counter = counter - 1;
 }
 
-function editRoom()
+function editRoom(currRoom, type)
 {
 	var edit = document.createElement('div');
 	document.body.appendChild(edit);
@@ -170,29 +185,51 @@ function editRoom()
 				<br>
 
 				<label id="editRoomPriceLabel" class="editBoxInput">Price/day</label>
-				<input type="text" id="editRoomPrice" class="editBoxInput">
+				<input type="text" id="editRoomPrice" class="editBoxInput" pattern="[0-9]+" maxlength="5">
 				<br>
 
-				<button id="Done" class="button" onclick="closeEdit()">Done</button>	
+				<button id="Done" class="button" onclick="checkInput(this)">Done</button>	
 				<br>
 			</div>`;
 
-
-
-		document.getElementById('editBackground').addEventListener('click', function() 
+		document.getElementById('editBackground').addEventListener('click', function() //closes the textbox, doesn't save values
         {
             var edit = document.getElementById('edit');
 			edit.parentNode.removeChild(edit);
         });
+        
+		id = currRoom.parentNode.id; //settings room ID for future use
 
-		document.getElementById("editRoomTitle").value = "woo"; 
-		document.getElementById("editRoomDescription").value = "woo1"; 		
-		document.getElementById("editRoomCurrency").value = "Australia Dollars - AUD"
-		document.getElementById("editRoomPrice").value = "10"; 
+		if(type === 0) //setting popup values to the page values
+		{
+			document.getElementById("editRoomTitle").value = currRoom.parentNode.getElementsByClassName('roomTitle')[0].innerHTML; //room title page to popup
+			//document.getElementById("editRoomDescription").value = ; //get this from database, it won't show atm 
+			document.getElementById("editRoomCurrency").value = currRoom.parentNode.getElementsByClassName('roomCurr')[0].innerHTML; //currency page to popup
+			document.getElementById("editRoomPrice").value = currRoom.parentNode.getElementsByClassName('roomPrice')[0].innerHTML; //price page to popup
+		}
+        
+}
+
+function checkInput(input)//checking price input for only numbers
+{
+	var priceInput = document.getElementById("editRoomPrice").value;
+
+	if(isFinite(priceInput)) //checks if it is a number, then runs closeEdit() if it is
+	{
+		closeEdit();
+	}
 }
 
 function closeEdit()
 {
+	var currRoom = document.getElementById(id); //putting values back into the webpage from the popup
+	
+	currRoom.getElementsByClassName('roomTitle')[0].innerHTML = document.getElementById("editRoomTitle").value;
+	//document.getElementById(id).getElementsByClassName('')[0].innerHTML = document.getElementById("editRoomTitle").value; //description to server
+	currRoom.getElementsByClassName('roomCurr')[0].innerHTML = document.getElementById("editRoomCurrency").value;
+	currRoom.getElementsByClassName('roomPrice')[0].innerHTML = document.getElementById("editRoomPrice").value;
+
+	//removing elements
 	var edit = document.getElementById('edit');
 	edit.parentNode.removeChild(edit);
 }

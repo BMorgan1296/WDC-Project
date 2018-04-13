@@ -24,15 +24,16 @@
 			</form>
 		</div>	
 		
-		<button class="addRoom" onclick="addRoom(), editRoom()">+</button>
+		<button class="addRoom" onclick="addRoom()">+</button>
 
 		<div class="rooms">
-			<div class="room">
-				<button class="removeRoom" onclick="removeRoom('room')">X</button>
+			<div class="room" id="0">
+				<button class="removeRoom" onclick="removeRoom(this)">X</button>
 				<div class="roomTitle">Room Name</div>
-				<div class="roomPrice">$</div>
-				<button class="info" onclick="editRoom()">i</button>		
-			</div>			
+				<div class="roomCurr">Australia Dollars - AUD</div>
+				<div class="roomPrice">0</div>
+				<button class="info" onclick="editRoom(this, 0)">i</button>		
+			</div>		
 		</div>
 		
 	</div>

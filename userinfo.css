@@ -2,7 +2,7 @@
 .titles
 {
 	margin-top: calc((10vh + 10vw)/5);
-	margin-left: calc((10vh + 10vw)/5);
+	margin-left: calc((20vh + 80vw)/3);
 	padding-top: 2vh;
     position: absolute;
     display:inline-block;
@@ -14,7 +14,7 @@
 }
 .t1
 {
-	height: 4vh;
+	height: 5.5vh;
 	margin-bottom: 1vh;	
 	overflow: auto;
 	min-height: 35px;
@@ -23,10 +23,10 @@
 .textboxes
 {
 	margin-top: calc((10vh + 10vw)/5);
-	margin-left: 15vw;
+	margin-left: 40vw;
 	padding-top: 8vh;
     position: absolute;
-    display: inline-block;
+    display: inline;
 	/*border: 1px solid black;*/
 	float right;
 	height: 100px/6vh;
@@ -35,14 +35,62 @@
 
 .textbox
 {
-	display: block;
+	display: inline-block;
 	border: 1px solid grey;
 	height: 2vh;
-	margin-bottom: 1vh;	
+	margin-bottom: 2.5vh;	
 	overflow: auto;
 	min-height: 30px;
 	width: 40vw;
 	font-size: calc((10vh + 10vw)/10);
+}
+
+.t1
+{
+	height: 5.5vh;
+	margin-bottom: 1vh;	
+	overflow: auto;
+	min-height: 35px;
+}
+.t2  /*for title change password*/
+{
+	height: 4vh;
+	margin-bottom: 1vh;	
+	overflow: auto;
+	min-height: 35px;
+	font-weight: bold;
+	font-size: calc((10vh + 10vw)/11);
+}
+
+.t1Account
+{
+	height: 5.5vh;
+	margin-bottom: 3vh;
+	min-height: 35px;
+}
+.t2Account  /*for title change password*/
+{
+	height: 4vh;
+	margin-bottom: 1vh;	
+	min-height: 35px;
+	font-weight: bold;
+	font-size: calc((10vh + 10vw)/11);
+}
+
+.textboxAccount
+{
+	border: 1px solid grey;
+	height: 2vh;
+	margin-bottom: 2.5vh;	
+	min-height: 30px;
+	width: 40vw;
+	font-size: calc((10vh + 10vw)/10);
+}
+
+.cc
+{
+	height: 2vh;
+	min-height: 30px;
 }
 
 .radiobuttons{
@@ -50,7 +98,7 @@
 	display: inline-block;
 	margin-top: calc((10vh + 10vw)/5);
 	margin-bottom: 300px;
-	margin-left: 15vw;
+	margin-left: 40vw;
     position: absolute;
 
 }
@@ -102,15 +150,27 @@ select {
 	margin-right: 200px;
 	background-color: rgb(204,235,252);
 }
-.t2  /*for title change password*/
+
+#donePW
 {
-	height: 4vh;
-	margin-bottom: 1vh;	
-	overflow: auto;
-	min-height: 35px;
-	font-weight: bold;
-	font-size: calc((10vh + 10vw)/11);
+	position: absolute;
+	text-align: center;
+	font-size: 2.5vh;
+	margin-left: 45vw;
+	margin-top: -7vh;
+	background-color: rgb(204,235,252);
 }
+
+#doneEmail
+{
+	position: absolute;
+	text-align: center;
+	font-size: 2.5vh;
+	margin-left: 45vw;
+	margin-top: -7vh;
+	background-color: rgb(204,235,252);
+}
+
 
 .textboxes_email
 {

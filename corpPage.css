@@ -101,6 +101,19 @@
 	min-height: 35px;
 }
 
+.roomCurr
+{
+	display: inline;
+	position: absolute;
+	right:0;
+	margin-right: 8vw;
+	height: 4vh;
+	padding: 1px;
+	margin-bottom: 1vh;	
+	overflow: auto;
+	min-height: 35px;
+}
+
 .roomPrice
 {
 	display: inline;
@@ -209,7 +222,6 @@
 
 #editRoomTitle
 {
-
 	position: absolute;
 	width: 20vw;
 	right: 0;
@@ -218,6 +230,7 @@
 
 #editRoomDescription
 {
+	font-family: 'Open Sans', sans-serif;
 	overflow: auto;
 	text-align: left;
 	position: absolute;
@@ -286,13 +299,21 @@
 
 .infoLabel
 {
-	display: inline-block;
+	display: inline;
 	margin-top: 0.5vh;
 }
 
 #country
-{
+{	
+	font-size: calc((10vh + 10vw)/15);
+	display: inline;
 	overflow: hidden;
+}
+
+#countryForm
+{
+	display: inline;
+	overflow: visible;
 }
 
 .textbox
@@ -308,9 +329,9 @@
 	min-height: 30px;
 	display: inline;
 	width: calc((10vh + 10vw));
-	font-size: calc((10vh + 10vw)/10);
-
+	font-size: calc((10vh + 10vw)/15);
 }
+
 .t2  /*for title change password*/
 {
 	height: 4vh;
@@ -323,14 +344,14 @@
 
 .t1
 {
-	height: 4vh;
+	height: 5vh;
 	margin-bottom: 1vh;	
+	overflow: visible;
 	min-height: 35px;
 }
 
 .textboxes_email
-{
-	
+{	
 	padding-top: 8vh;
     position: absolute;
     display: inline-block;

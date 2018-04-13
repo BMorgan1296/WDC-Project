@@ -16,23 +16,6 @@
 <body id="parentContainer">
 	<div id="corpPageMain">
 		<h1 class="title">Payment Details</h1>
-		<div class="nav">
-			<form>
-			<input class="button navButton" value="View/Manage Bookings" onclick="window.location.href='usersetting.html'"/>
-		</form>
- 	<form>
-			<input class="button navButton" value="Your Information" onclick="window.location.href='your_info.html'"/>
-		</form>
-  <form>
-			<input class="button navButton" value="Payment Details" onclick="window.location.href='payment.html'"/>
-		</form>           
-		  <form>
-			<input class="button navButton" value="Manage Account" onclick="window.location.href='manage_acc.html'"/>
-		</form> 
-		 <form>
-			<input class="button navButton" value="Log Out" onclick="window.location.href='landing.html'"/>
-		</form> 
-			</div>
 			
 	<div class="titles">
 
@@ -51,34 +34,57 @@
 			<div class="t1">
 				<div class="roomTitle">Expiry Date</div>
 			</div>
-		</div>
-	<!-- radio buttons -->	
-   <form class="radiobuttons">
-    <label>
-      <input type="radio" name="visa">Visa
-    </label>
-    <label class="radiobutton">
-      <input type="radio" name="MasterCard">MasterCard
-    </label>
-    <label class="radiobutton">
-      <input type="radio" name="American Express">American Express
-    </label>
-  </form>
+		</div>	
 <!-- Input boxes -->
 		<div class="textboxes">
 			<input type="text" class="textbox" />
 			<input type="text" class="textbox" />
 			<input type="text" class="textbox" />
-			<input type="text" name="Month" placeholder="Month MM ">
-			<input type="text" name="fname" placeholder="Year YY">
-			
-<form>
-<button class="done">Done</button>	 
-</form>
+			<br>
+			<input class="cc" type="text" name="Month" placeholder="Month MM ">
+			<input class="cc" type="text" name="fname" placeholder="Year YY">
+
+			<form>
+				<br>
+				<button class="done button">Done</button>	 
+			</form>
 		</div>
+
+		<!-- radio buttons -->	
+	   <form class="radiobuttons">
+	    <label>
+	      <input type="radio" name="visa">Visa
+	    </label>
+	    <label class="radiobutton">
+	      <input type="radio" name="MasterCard">MasterCard
+	    </label>
+	    <label class="radiobutton">
+	      <input type="radio" name="American Express">American Express
+	    </label>
+	  </form>
 	</div>
 
-		<div id="footer">
+
+	
+		<div class="nav">
+			<form>
+				<input class="button navButton" value="View/Manage Bookings" onclick="window.location.href='usersetting.html'"/>
+			</form>
+			<form>
+				<input class="button navButton" value="Your Information" onclick="window.location.href='your_info.html'"/>
+			</form>
+	  		<form>
+				<input class="button navButton" value="Payment Details" onclick="window.location.href='payment.html'"/>
+			</form>           
+			  <form>
+				<input class="button navButton" value="Manage Account" onclick="window.location.href='manage_acc.html'"/>
+			</form> 
+			 <form>
+				<input class="button navButton" value="Log Out" onclick="window.location.href='landing.html'"/>
+			</form> 
+		</div>
+
+	<div id="footer">
 		<p id="gwestyFooter">gwesty.</p>
 	</div>
 

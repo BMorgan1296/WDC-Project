@@ -12,6 +12,7 @@
 .gwestyTitle
 {
 	font-family: 'Open Sans', sans-serif;
+	font-size: calc((10vw + 10vh)/5);
 	font-weight: 300;
 	margin-top: 10vh;
 	margin-bottom: 50px
@@ -19,11 +20,13 @@
 
 .title
 {
+	font-size: calc((10vw + 10vh)/10);
 	margin-bottom: 30px;
 }
 
 .login
 {
+	font-size: calc((10vw + 10vh)/15);
 	background-color: orange; 
 }
 
