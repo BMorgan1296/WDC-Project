@@ -5,6 +5,8 @@
 	<link rel="stylesheet" type="text/css" href="gwestyStyle.css">
 	<link rel="stylesheet" type="text/css" href="userinfo.css"> 
 	<link rel="stylesheet" type="text/css" href="usersetting.css"> 
+	<script type="application/javascript" src="scripts/jquery-1.12.4.js"></script>
+	<script type="application/javascript" src="scripts/shared.js"></script>
 
 
 
@@ -14,6 +16,28 @@
 	<title>Your Information Page</title>
 </head>
 <body id="parentContainer">
+    <div class="popupCon" id="newSignup">
+            <div class="popup">
+                <form>
+                    <h3 class="popupItem center">Sign-up</h3>
+                    <div class="popupItem">Full name:</div>
+                    <input id = "nameS" type="text" class="">
+                    <br>
+                    <div class="popupItem">Email:</div>
+                    <input id = "emailS" type="email" class="">
+                    <br>
+                    <div class="popupItem">Password:</div>
+                    <input id = "passwordS" type="password" class="">
+                    <br>
+                    <div class="popupItem">Confirm password:</div>
+                    <input id = "password2S" type="password" class="">
+                    <br>
+                    <button class="button">Sign-up</button>
+                    <div class="popupItem center">or</div>
+                    <div class="popupItem">Sign-up with </div>
+                </form>
+            </div>
+        </div>
     <div class="header">
             <div id="currency" class="headerLabel"><span id="currencyText"> AUD </span>
             </div>
@@ -39,19 +63,19 @@
 		<h1 class="title">Your Information</h1>
 		<div class="nav">
 			<form>
-				<input class="button navButton" value="View/Manage Bookings" onclick="window.location.href='usersetting.html'"/>
+				<input class="button navButton" value="View/Manage Bookings" onclick="window.location.href='usersetting.html'" type="button"/>
 			</form>
  			<form>
-				<input class="button navButton" value="Your Information" onclick="window.location.href='your_info.html'"/>
+				<input class="button navButton" value="Your Information" onclick="window.location.href='your_info.html'" type="button" />
 			</form>
   			<form>
-				<input class="button navButton" value="Payment Details" onclick="window.location.href='payment.html'"/>
+				<input class="button navButton" value="Payment Details" onclick="window.location.href='payment.html'" type="button"/>
 			</form>           
 			<form>
-				<input class="button navButton" value="Manage Account" onclick="window.location.href='manage_acc.html'"/>
+				<input class="button navButton" value="Manage Account" onclick="window.location.href='manage_acc.html'" type="button"/>
 			</form> 
 		 	<form>
-				<input class="button navButton" value="Log Out" onclick="window.location.href='lading.html'"/>
+				<input class="button navButton" value="Log Out" onclick="window.location.href='landing.html'" type="button"/>
 			</form> 
 		</div>
 			

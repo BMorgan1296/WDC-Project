@@ -1,26 +1,8 @@
 $(document).ready(function(){
-    //Words shown next to search-bar
-    var searchWords = ["see","experience","find","explore","go"];
-  
-    //updateCurrency("AUD");
+    var currencies = ["AUD","CAD","USD","EUR"];
     
-    //Animate words next to search-bar
-    var textCount = Math.floor(Math.random()*searchWords.length);
-    textChange((textCount-1)%searchWords.length);
-    var textEnd = textCount+searchWords.length-1;
-    var textChanger = setInterval(function(){
-        textChange(textCount%searchWords.length);
-        textCount++;
-        if(textEnd==textCount){
-            clearInterval(textChanger);
-        }
-    }, 1500);
-    function textChange(index){
-        $("#searchText").fadeOut(function() {
-            $(this).text(searchWords[index]).fadeIn();
-        });
-    }
-    /*
+    updateCurrency("AUD");
+    
     //on-clicks
     $("#currency").on("click",function(){
         $("#currencyDrop").slideDown();
@@ -65,5 +47,6 @@ $(document).ready(function(){
             }
         }
     }
-    */
+
+
 });

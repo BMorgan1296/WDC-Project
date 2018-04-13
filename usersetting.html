@@ -7,10 +7,34 @@
 	<script type="text/javascript" src="usersettings.js" defer></script>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+	<script type="application/javascript" src="scripts/jquery-1.12.4.js"></script>
+	<script type="application/javascript" src="scripts/shared.js"></script>
 
 	<title>User Settings Page</title>
 </head>
 <body id="parentContainer">
+    <div class="popupCon" id="newSignup">
+            <div class="popup">
+                <form>
+                    <h3 class="popupItem center">Sign-up</h3>
+                    <div class="popupItem">Full name:</div>
+                    <input id = "nameS" type="text" class="">
+                    <br>
+                    <div class="popupItem">Email:</div>
+                    <input id = "emailS" type="email" class="">
+                    <br>
+                    <div class="popupItem">Password:</div>
+                    <input id = "passwordS" type="password" class="">
+                    <br>
+                    <div class="popupItem">Confirm password:</div>
+                    <input id = "password2S" type="password" class="">
+                    <br>
+                    <button class="button">Sign-up</button>
+                    <div class="popupItem center">or</div>
+                    <div class="popupItem">Sign-up with </div>
+                </form>
+            </div>
+        </div>
     <div class="header">
             <div id="currency" class="headerLabel"><span id="currencyText"> AUD </span>
             </div>
@@ -35,22 +59,22 @@
 	<div id="corpPageMain">
 		<h1 class="title">Bookings</h1>
 		<div class="nav">
-		<form>
-			<input class="button navButton" value="View/Manage Bookings" onclick="window.location.href='usersetting.html'"/>
-		</form>
- 	<form>
-			<input class="button navButton" value="Your information" onclick="window.location.href='your_info.html'"/>
-		</form>
-  <form>
-			<input class="button navButton" value="Payment Details" onclick="window.location.href='payment.html'"/>
-		</form>           
-		  <form>
-			<input class="button navButton" value="Manage Account" onclick="window.location.href='manage_acc.html'"/>
-		</form> 
-		 <form>
-			<input class="button navButton" value="Log Out" onclick="window.location.href='landing.html'"/>
-		</form> 
-			</div>
+			<form>
+				<input class="button navButton" value="View/Manage Bookings" onclick="window.location.href='usersetting.html'" type="button"/>
+			</form>
+ 			<form>
+				<input class="button navButton" value="Your Information" onclick="window.location.href='your_info.html'" type="button" />
+			</form>
+  			<form>
+				<input class="button navButton" value="Payment Details" onclick="window.location.href='payment.html'" type="button"/>
+			</form>           
+			<form>
+				<input class="button navButton" value="Manage Account" onclick="window.location.href='manage_acc.html'" type="button"/>
+			</form> 
+		 	<form>
+				<input class="button navButton" value="Log Out" onclick="window.location.href='landing.html'" type="button"/>
+			</form> 
+		</div>
 		<div class="rooms">
 			<div id="0" class="room">
 				<button class="removeRoom" onclick="removeRoom('room')">X</button>

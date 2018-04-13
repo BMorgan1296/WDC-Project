@@ -106,51 +106,45 @@ select {
     width:30vw;
 }
 .done{
-		background-color: rgb(204,235,252);
-		font-size: calc((10vh + 10vw)/10);
+		font-size: calc((10vh + 10vw)/12.5);
 }
 
 .done_password {
 	margin-left: 42vw;
-	background-color: rgb(204,235,252);
-	font-size: calc((10vh + 10vw)/10);
+	font-size: calc((10vh + 10vw)/12.5)
 
 }
 
 #done_password
 {
-	font-size: calc((10vh + 10vw)/15);
+	font-size: calc((10vh + 10vw)/12.5)
 	width: calc((10vh + 10vw))/1.5;
 	float:left;
 	right: 0;
 	top: 0;
-	background-color: rgb(204,235,252);
 }
 
 #done_email
 {
-	font-size: calc((10vh + 10vw)/15);
+	font-size: calc((10vh + 10vw)/12.5)
 	width: calc((10vh + 10vw))/1.5;
 	float:left;
 	right: 0;
 	top: 0; 
-	background-color: rgb(204,235,252);
 }
 
 #donePW
 {
 	float:left;
 	text-align: center;
-	font-size: 2.5vh;
-	background-color: rgb(204,235,252);
+	font-size: calc((10vh + 10vw)/12.5);
 }
 
 #doneEmail
 {
 	float:left;
 	text-align: center;
-	font-size: 2.5vh;
-	background-color: rgb(204,235,252);
+	font-size: calc((10vh + 10vw)/12.5);
 }
 
 
