@@ -1,3 +1,4 @@
+//navigation bar//
 function openNav() {
     document.getElementById("filter_nav").style.width = "250px";
 }
@@ -5,7 +6,15 @@ function openNav() {
 function closeNav() {
     document.getElementById("filter_nav").style.width = "0";
 }
+//slider
+var slider = document.getElementById("Range");
+var output = document.getElementById("price");
+output.innerHTML = slider.value;
 
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+//dropdown on the side navigation
 var dropdown = document.getElementsByClassName("dropdown-btn");
 var i;
 
@@ -21,71 +30,69 @@ for (i = 0; i < dropdown.length; i++) {
   });
 } 
 
-var x, i, j, selElmnt, a, b, c;
+
+
+
+var x, i, j, sel, newdiv, optndiv, optn_item;
 /*look for any elements with the class "custom-select":*/
 x = document.getElementsByClassName("custom-select");
 for (i = 0; i < x.length; i++) {
-  selElmnt = x[i].getElementsByTagName("select")[0];
+  sel = x[i].getElementsByTagName("select")[0];
   /*for each element, create a new DIV that will act as the selected item:*/
-  a = document.createElement("DIV");
-  a.setAttribute("class", "select-selected");
-  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-  x[i].appendChild(a);
+  newdiv = document.createElement("DIV");
+  newdiv.setAttribute("class", "select-selected");
+  newdiv.innerHTML = sel.options[sel.selectedIndex].innerHTML;
+  x[i].appendChild(newdiv);
   /*for each element, create a new DIV that will contain the option list:*/
-  b = document.createElement("DIV");
-  b.setAttribute("class", "select-items select-hide");
-  for (j = 1; j < selElmnt.length; j++) {
+  optndiv = document.createElement("DIV");
+  optndiv.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < sel.length; j++) {
     /*for each option in the original select element,
     create a new DIV that will act as an option item:*/
-    c = document.createElement("DIV");
-    c.innerHTML = selElmnt.options[j].innerHTML;
-    c.addEventListener("click", function(e) {
+    optn_item = document.createElement("DIV");
+    optn_item.innerHTML = sel.options[j].innerHTML;
+    optn_item.addEventListener("click", function(d) {
         /*when an item is clicked, update the original select box,
         and the selected item:*/
-        var i, s, h;
-        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-        h = this.parentNode.previousSibling;
-        for (i = 0; i < s.length; i++) {
-          if (s.options[i].innerHTML == this.innerHTML) {
-            s.selectedIndex = i;
-            h.innerHTML = this.innerHTML;
+        var i, select, pre;
+        select = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        pre = this.parentNode.previousSibling;
+        for (i = 0; i < select.length; i++) {
+          if (select.options[i].innerHTML == this.innerHTML) {
+            select.selectedIndex = i;
+            pre.innerHTML = this.innerHTML;
             break;
           }
         }
-        h.click();
+        pre.click();
     });
-    b.appendChild(c);
+    
+    optndiv.appendChild(optn_item);
   }
-  x[i].appendChild(b);
-  a.addEventListener("click", function(e) {
+  x[i].appendChild(optndiv);
+  newdiv.addEventListener("click", function(d) {
       /*when the select box is clicked, close any other select boxes,
       and open/close the current select box:*/
-      e.stopPropagation();
+      d.stopPropagation();
       closeAllSelect(this);
       this.nextSibling.classList.toggle("select-hide");
-      this.classList.toggle("select-arrow-active");
     });
 }
-function closeAllSelect(elmnt) {
+
+function closeAllSelect(room_options) {
   /*a function that will close all select boxes in the document,
   except the current select box:*/
-  var x, y, i, arrNo = [];
-  x = document.getElementsByClassName("select-items");
-  y = document.getElementsByClassName("select-selected");
-  for (i = 0; i < y.length; i++) {
-    if (elmnt == y[i]) {
-      arrNo.push(i)
-    } else {
-      y[i].classList.remove("select-arrow-active");
+  var sel_itm, sel_Sel, i, arr_room = [];
+  sel_itm = document.getElementsByClassName("select-items");
+  sel_sel = document.getElementsByClassName("select-selected");
+  for (i = 0; i < sel_sel.length; i++) {
+    if (room_options == sel_sel[i]) {
+      arr_room.push(i)
     }
   }
-  for (i = 0; i < x.length; i++) {
-    if (arrNo.indexOf(i)) {
-      x[i].classList.add("select-hide");
+  for (i = 0; i < sel_itm.length; i++) {
+    if (arr_room.indexOf(i)) {
+      sel_itm[i].classList.add("select-hide");
     }
   }
 }
-/*if the user clicks anywhere outside the select box,
-then close all select boxes:*/
-document.addEventListener("click", closeAllSelect);
-
