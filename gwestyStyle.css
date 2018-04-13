@@ -5,6 +5,7 @@
 	font-family: 'Open Sans', sans-serif;
 	position: absolute;	
 	overflow: visible;
+    margin:0px;
 }
 
 .button
@@ -29,7 +30,7 @@
 {
 	margin-bottom: 5px;
 }
-
+/*
 #footer
 {
 	position: fixed;
@@ -53,6 +54,168 @@
 	color: white;
 	font-size: 2vw;
 }
+*/
 .a{
     text-decoration: none;
 }
+
+/*header*/
+.header{
+    float:right;
+    position: relative;
+    display: block;
+    top:1vh;
+    margin-right:2vw;
+    color:gray;
+    font-size: 1em;
+}
+
+.headerLabel{
+    float: left;
+    position: relative;
+    text-align: center;
+    width:calc(1em * 5);
+    display: block;
+}
+
+#currency:hover{
+    background:rgba(205,205,205,0.25)
+}
+
+#Sign-in:hover{
+    background:rgba(205,205,205,0.25)
+}
+
+.divider{
+    width:auto;
+    top:-0.1em;
+}
+
+.fixedPopDownList{
+    position: absolute;
+    background: white;
+    width:calc(1em * 3);
+    box-shadow: 0 .25vmin 0.5vmin 0 rgba(0, 0, 0, 0.2), 0 .375vmin 1.25vmin 0 rgba(0, 0, 0, 0.19);
+    display:none;
+    z-index: 0;
+}
+
+#currencyDrop{
+    margin-left:calc((100% - (1em * 3))/8);
+    top:1.5em;
+    text-align: center;
+}
+
+#signDrop{
+    width:100%;
+    margin-left:0px;
+    top:1.5em;
+    text-align: left;
+    padding-bottom:0.5em;
+}
+
+#signDrop input{
+    border-color: gainsboro;
+    border-style:solid;
+    border-width:0.5px;
+    width:calc(100% - 2.25em);
+    margin-left:1em;
+    
+}
+
+.sign .button{
+    width:50%;
+    margin-left:25%;
+    margin-top:0.5em;
+}
+
+
+.fixedPopDownItem{
+    position: relative;
+    float: left;
+    width:100%;
+    font-size: 0.75em;
+}
+
+.signTitle{
+    margin-top:0.5em;
+    margin-left:1em;
+    width:calc(100% - 1em);
+}
+
+.signMidTitle{
+    margin-top:0.25em;
+    text-align: center;
+}
+
+
+.fixedPopDownItem:hover{
+    background:rgba(205,205,205,0.25)
+}
+
+
+.signTitle:hover{
+    background:none;
+}
+
+.signMidTitle:hover{
+    background:none;
+}
+/*header*/
+
+
+/*Footer*/
+
+.footer{
+    margin-top:5.55vh;
+    width:100%;
+    height:16.66vh;
+    background:gray;
+    float:left; 
+}
+
+.footerQuarter{
+    width:25%;
+    height:calc(16.66vh - 1vh);
+    padding-top:1vh;
+    float:left; 
+}
+
+.footerQuarterTitle{
+    height:calc((16.66vh - 3vh)/2 + ((25vh + 25vw)/30));
+    color:white;
+    float:left; 
+    font-size: calc((25vh + 25vw)/30);
+    padding-top:calc((16.66vh - 3vh)/2 - ((25vh + 25vw)/30));
+    margin-left:20%;
+    font-weight: 900;
+    display: block;
+    width:30%;
+}
+
+.footerQuarterText{
+    height:calc((16.66vh - 3vh)/2 + (2.5*((25vh + 25vw)/45)));
+    color:white;
+    float:left; 
+    font-size: calc((25vh + 25vw)/45);
+    padding-top:calc((16.66vh - 3vh)/2 - (2.5*((25vh + 25vw)/45)));
+    margin-left:20%;
+    display: block;
+    width:30%;
+}
+
+.footerHalf{
+    width:48%;
+    height:calc(16.66vh - 3vh - ((25vh + 25vw)/50));
+    padding-top:calc(1vh + ((25vh + 25vw)/50));
+    padding-right:2%;
+    float:left; 
+    text-align:right;
+    font-size: calc((25vh + 25vw)/10);
+    color:white;
+    font-weight: 900;
+    display: block;
+    
+}
+
+/*footer*/

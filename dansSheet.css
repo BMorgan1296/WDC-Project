@@ -15,7 +15,7 @@ body{
 
 #half2{
 }
-
+/*
 .header{
     float:right;
     position: relative;
@@ -117,7 +117,7 @@ body{
 .signMidTitle:hover{
     background:none;
 }
-
+*/
 .title{
     float:left;
     width: 25vw;
@@ -222,7 +222,7 @@ body{
     color:gray;
     
 }
-
+/*
 .footer{
     margin-top:5.55vh;
     width:100%;
@@ -273,7 +273,7 @@ body{
     font-weight: 900;
     display: block;
     
-}
+}*/
 
 .popupCon{
     position:fixed;
