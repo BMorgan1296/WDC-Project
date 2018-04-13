@@ -16,8 +16,11 @@
 
 .input
 { 
+	width: calc((30vw + 30vh)/4);
+	height: calc((30vw + 30vh)/30);
 	margin-bottom:5px;
 	font-family: 'Oswald', sans-serif;
+	font-size: calc((10vw + 10vh)/15);
 	margin: 0 auto; 
 	display: block; 
 }
