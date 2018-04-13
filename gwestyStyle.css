@@ -5,7 +5,9 @@
 	font-family: 'Open Sans', sans-serif;
 	position: absolute;	
 	overflow: visible;
+    overflow-x: hidden;
     margin:0px;
+    width: 100vw;
 }
 
 .button
