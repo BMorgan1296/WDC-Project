@@ -1,24 +1,39 @@
+ /*jshint unused:false*/
+
+var counter = 1;
+
+var id;
+
 function addRoom()
 {
     var newRoom = document.createElement('div');
 
     newRoom.className = 'room';
 
-    newRoom.innerHTML = '<button class="removeRoom" onclick="removeRoom()">X</button>\
-		 <div class="roomTitle">Room Name</div>\
-		 <div class="roomPrice">$</div>\
-		 <button class="info" onclick="editRoom()">i</button>';
+    newRoom.innerHTML = `    		
+				<button class="removeRoom" onclick="removeRoom(this)">X</button>
+				<div class="roomTitle">Room Name</div>
+				<div class="roomCurr">Australia Dollars - AUD</div>
+				<div class="roomPrice">0</div>
+				<button class="info" onclick="editRoom(this)">i</button>
+				`;
 
     document.getElementsByClassName('rooms')[0].appendChild(newRoom);
+
+	newRoom.id = counter;
+	counter = counter + 1;
 }
 
-function removeRoom() 
+function removeRoom(input) 
 {
-	var room = document.getElementsByClassName('room')[0];
+	var idNum = input.parentNode.getAttribute('id');
+	var room = document.getElementById(idNum);
 	room.parentNode.removeChild(room);
+
+	counter = counter - 1;
 }
 
-function editRoom()
+function editRoom(currRoom)
 {
 	var edit = document.createElement('div');
 	document.body.appendChild(edit);
@@ -29,26 +44,26 @@ function editRoom()
 			<div id="editBackground"></div>
 			<div class="editBox">			
 
-				<div class="editBoxTitle">View Room Details</div>
+				<div class="editBoxTitle">View/Edit Booking Details</div>
 
 				<label id="editRoomTitleLabel" class="editBoxInput">Room Title</label>
 				<label id="editRoomTitle" class="editBoxInput"></label>
 				<br>
 
-				<label id="editRoomDescriptionLabel" class="editBoxInput">Description</label>
+				<label id="editRoomDescriptionLabel" class="editBoxInput">Booking<br>Details</label>
 				<label id="editRoomDescription" class="editBoxInput"></label>
-				<br>				<br>				<br>				<br>
+				<br>				<br>				<br>
 
 				<label id="editRoomPriceLabel" class="editBoxInput">Price/day</label>
-				<label id="editRoomPrice" class="editBoxInput">0 AUD</label>	
+				<label id="editRoomPrice" class="editBoxInput"></label>	
 				<br>
 
 				<label id="editRoomTitleLabel" class="editBoxInput">Room Type</label>
-				<label id="editRoomTitle" class="editBoxInput">Standard</label>	
+				<label id="editRoomType" class="editBoxInput">Standard</label>	
 				<br>
 
 				<label id="editRoomPriceLabel" class="editBoxInput">Guest No.</label>
-				<label id="editRoomPrice" class="editBoxInput">0</label>	
+				<label id="editRoomGuest" class="editBoxInput">1</label>	
 				<br>
 
 				<button id="Done" class="button" onclick="closeEdit()">Done</button>	
@@ -63,14 +78,19 @@ function editRoom()
 			edit.parentNode.removeChild(edit);
         });
 
-		document.getElementById("editRoomTitle").value = "woo"; 
-		document.getElementById("editRoomDescription").value = "woo1"; 		
-		document.getElementById("editRoomCurrency").value = "Australia Dollars - AUD"
-		document.getElementById("editRoomPrice").value = "10"; 
+		id = currRoom.parentNode.id; //settings room ID for future use
+
+		document.getElementById("editRoomTitle").innerHTML = currRoom.parentNode.getElementsByClassName('roomTitle')[0].innerHTML; //room title page to popup
+		//document.getElementById("editRoomDescription").value = ; //get this from database, it won't show atm 
+		document.getElementById("editRoomPrice").innerHTML = currRoom.parentNode.getElementsByClassName('roomPrice')[0].innerHTML;
+		document.getElementById("editRoomPrice").innerHTML = currRoom.parentNode.getElementsByClassName('roomPrice')[0].innerHTML; //price comes from database with the currency alongside
+		//document.getElementById("editRoomPrice").innerHTML //room guests will come from database
+		
 }
 
 function closeEdit()
 {
+	//removing elements
 	var edit = document.getElementById('edit');
 	edit.parentNode.removeChild(edit);
 }
