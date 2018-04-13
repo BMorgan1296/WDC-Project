@@ -16,7 +16,7 @@
 {
 	margin-left: 10vw;
 	width: 80vw;
-    height:calc(100vh - 5.55vh - 16.66vh - ((10vh + 10vw)/6));
+    height:calc(100vh - 5.55vh - 16.5vh - ((10vh + 10vw)/6));
 }
 
 .nav
@@ -55,6 +55,7 @@
 	float: left;
 	width: 40vw;
 	overflow: auto;
+	font-size: calc((10vh + 10vw)/12.5);
 }
 
 .room
