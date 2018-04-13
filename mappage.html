@@ -1,31 +1,72 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="daterangepicker.css" />
-   <!--  <link rel="stylesheet" href="../../../WebstormProjects/untitled2/css/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-<link rel="stylesheet" type="text/css" href="mappage.css">
-<link rel="stylesheet" type="text/css" href="gwestyStyle.css">
-<link rel="stylesheet" type="text/css" href="dansSheet.css">
-
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
-<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<meta charset="utf-8"/>
-<title>mappage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" type="text/css" href="daterangepicker.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="mappage.css">
+  <link rel="stylesheet" type="text/css" href="gwestyStyle.css">
+  <link rel="stylesheet" type="text/css" href="dansSheet.css">
+  <script type="application/javascript" src="scripts/jquery-1.12.4.js"></script>
+  <script type="application/javascript" src="scripts/shared.js"></script>
+  <script type="application/javascript" src="scripts/landing.js"></script>
+    
 
 </head>
 <body>
-<div class="fullpage">
-
-
+  <div id="container">
+        <div class="popupCon" id="newSignup">
+            <div class="popup">
+                <form>
+                    <h3 class="popupItem center">Sign-up</h3>
+                    <div class="popupItem">Full name:</div>
+                    <input id = "nameS" type="text" class="">
+                    <br>
+                    <div class="popupItem">Email:</div>
+                    <input id = "emailS" type="email" class="">
+                    <br>
+                    <div class="popupItem">Password:</div>
+                    <input id = "passwordS" type="password" class="">
+                    <br>
+                    <div class="popupItem">Confirm password:</div>
+                    <input id = "password2S" type="password" class="">
+                    <br>
+                    <button class="button">Sign-up</button>
+                    <div class="popupItem center">or</div>
+                    <div class="popupItem">Sign-up with </div>
+                </form>
+            </div>
+        </div>
+<div class="fullpage" id="half1">
+  <div class="header">
+            <div id="currency" class="headerLabel"><span id="currencyText"> AUD </span>
+            </div>
+            <div class="headerLabel divider">|</div>
+            <div id="Sign-in" class="sign headerLabel">Sign-in
+            </div>
+            <div id = "currencyDrop" class="fixedPopDownList">
+            </div>
+            <div id = "signDrop" class="sign fixedPopDownList">
+                <form>
+                    <div class="sign fixedPopDownItem signTitle">Email:</div>
+                    <input id = "email" type="text" class="sign">
+                    <div class="sign fixedPopDownItem signTitle">Password:</div>
+                    <input id = "username" type="password" class="sign">
+                    <button class="sign button">Sign-in</button>
+                </form>
+                <div class="sign fixedPopDownItem signMidTitle">or</div>
+                <div class="sign fixedPopDownItem signMidTitle" id="Signup">Sign-up</div>
+                
+            </div>
+        </div>
 
 <div id="filter_nav" class="extra_filters">
   <span class="closebtn" onclick="closeNav()">&#215;</span>
   <button class="dropdown-btn">Amenities
-    <i class = "fa fa-caret-down"></i>
+    <i class = "extrafilterdown"></i>
   </button>
   <div class="dropdown-container">
   <label class="container_check">Pool
@@ -54,16 +95,8 @@
   </label>
 
   </div>
-
-  <!-- <button class="dropdown-btn">Location
-  <i class="fa fa-caret-down"></i>
-  </button>
-  <div class="dropdown-container">
-    <p> Distance from the city</p>
-  
-  </div> -->
   <button class="dropdown-btn">Ratings 
-    <i class="fa fa-caret-down"></i>
+    <i class="extrafilterdown"></i>
   </button>
   <div class="dropdown-container">
    <div class="btn-group">
@@ -94,14 +127,8 @@
   </div>
 </div>
 
-
- <!-- <form>
-  <input type="date" class="cal-container">
- <input type="date" class="cal-container_two">
-</form> -->
-
 <!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
-<div class="custom-select" style="width:200px;">
+<div class="custom-select">
   <select>
     <option value="0">Rooms</option>
     <option value="1">Single</option>
@@ -110,11 +137,6 @@
     <option value="4">Multiple</option>
    </select>
   </div>
-
-<!--   <form>
-  <input type="date" class="cal-container">
- <input type="date" class="cal-container_two">
-</form> -->
 
   <div class="search_bar">
     <form>
