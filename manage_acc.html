@@ -19,64 +19,58 @@
 		<h1 class="title">Manage Account</h1>
 		<div class="nav">
 			<form>
-			<input class="button navButton" value="View/Manage Bookings" onclick="window.location.href='usersetting.html'"/>
+				<input class="button navButton" value="View/Manage Bookings" onclick="window.location.href='usersetting.html'"/>
 		    </form>
- 	     <form>
-			<input class="button navButton" value="Your Information" onclick="window.location.href='your_info.html'"/>
-		</form>
+	 	     <form>
+				<input class="button navButton" value="Your Information" onclick="window.location.href='your_info.html'"/>
+			</form>
            <form>
-			<input class="button navButton" value="Payment Details" onclick="window.location.href='payment.html'"/>
-		</form>           
-		  <form>
-			<input class="button navButton" value="Manage Account" onclick="window.location.href='manage_acc.html'"/>
-		</form> 
-		 <form>
-			<input class="button navButton" value="Log Out" onclick="window.location.href='landing.html'"/>
-		</form> 
-			</div>
+				<input class="button navButton" value="Payment Details" onclick="window.location.href='payment.html'"/>
+			</form>           
+			<form>
+				<input class="button navButton" value="Manage Account" onclick="window.location.href='manage_acc.html'"/>
+			</form> 
+			 <form>
+				<input class="button navButton" value="Log Out" onclick="window.location.href='landing.html'"/>
+			</form> 
+		</div>
 
 	
 	<div class="titles">
-			<div class="t2">
-				<div class="roomTitle">Change Password</div>
+			<div class="t2Account">
+				<div class="inputTitle">Change Password</div>
 			</div>
-			<div class="t1">
-				<div class="roomTitle">Old Password</div>
+			<div class="t1Account">
+				<div class="inputTitle">Old Password</div>				
+				<input type="Password" class="textboxAccount" />
 			</div>
-			<div class="t1">
-				<div class="roomTitle">New Password</div>
+			<div class="t1Account">
+				<div class="inputTitle">New Password</div>				
+				<input type="Password" class="textboxAccount" />
 			</div>
-			<div class="t1">
-				<div class="roomTitle">Retype Password</div>
+			<div class="t1Account">
+				<div class="inputTitle">Retype Password</div>				
+				<input type="Password" class="textboxAccount" />
+				<form>
+					<input class="button" id="donePW" type="button" value="Done" onclick="window.location.href='manage_acc.html'" />
+				</form>
+			</div>			
+        	<br><br>
+			<div class="t2Account">
+				<div class="inputTitle">Change Email</div>
 			</div>
-			
-        
-			<div class="t2">
-				<div class="roomTitle">Change Email</div>
+			<div class="t1Account">
+				<div class="inputTitle">Type New Email</div>
+				<input type="text" class="textboxAccount" />	
+				<form>
+					<input class="button" id="doneEmail" type="button" value="Done" onclick="window.location.href='manage_acc.html'" />
+				</form>			
 			</div>
-			<div class="t1">
-				<div class="roomTitle">Type New Email</div>
-			</div>
-		</div>
-<!-- Input boxes -->
-		<div class="textboxes">
-			<input type="Password" class="textbox" />
-			<input type="Password" class="textbox" />
-			<input type="Password" class="textbox" />
-			<div class="textboxes_email">
-			<input type="text" class="textbox" />	
-		<div>	
-		<div>		
 	</div>
         <div id="footer">
 		<p id="gwestyFooter">gwesty.</p>
-	</div>
+		</div>
 
-<form>
-<button id="done_password" class="button">Done</button>	 
-</form>	
- <form>
-<button id="done_email" class="button">Done</button>	 
-</form>	
+	</div>
 </body>
 </html>

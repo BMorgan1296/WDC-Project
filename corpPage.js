@@ -1,3 +1,5 @@
+ /*jshint unused:false*/
+
 var counter = 1;
 
 var id;
@@ -24,8 +26,7 @@ function addRoom()
 
 function removeRoom(input) 
 {
-	idNum = input.parentNode.getAttribute('id');
-	//console.log(idNum);
+	var idNum = input.parentNode.getAttribute('id');
 	var room = document.getElementById(idNum);
 	room.parentNode.removeChild(room);
 
@@ -196,11 +197,11 @@ function editRoom(currRoom, type)
             var edit = document.getElementById('edit');
 			edit.parentNode.removeChild(edit);
         });
+        
+		id = currRoom.parentNode.id; //settings room ID for future use
 
 		if(type === 0) //setting popup values to the page values
 		{
-			id = currRoom.parentNode.id;
-
 			document.getElementById("editRoomTitle").value = currRoom.parentNode.getElementsByClassName('roomTitle')[0].innerHTML; //room title page to popup
 			//document.getElementById("editRoomDescription").value = ; //get this from database, it won't show atm 
 			document.getElementById("editRoomCurrency").value = currRoom.parentNode.getElementsByClassName('roomCurr')[0].innerHTML; //currency page to popup
@@ -222,6 +223,7 @@ function checkInput(input)//checking price input for only numbers
 function closeEdit()
 {
 	var currRoom = document.getElementById(id); //putting values back into the webpage from the popup
+	
 	currRoom.getElementsByClassName('roomTitle')[0].innerHTML = document.getElementById("editRoomTitle").value;
 	//document.getElementById(id).getElementsByClassName('')[0].innerHTML = document.getElementById("editRoomTitle").value; //description to server
 	currRoom.getElementsByClassName('roomCurr')[0].innerHTML = document.getElementById("editRoomCurrency").value;
