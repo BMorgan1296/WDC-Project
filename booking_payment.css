@@ -38,15 +38,14 @@
 	float: right;
 	font-weight: bolder;
 	font-size: calc((10vw + 10vh)/10);
-	margin-top: -5vh;
-	
-	
+	margin-top: -12vh;	
+	margin-left: 5vw;
 }
 .t1
 {
 	height: 4vh;
 	margin-bottom: 2vh;	
-	overflow: auto;
+	overflow: hidden;
 	min-height: 35px;
 
 }
@@ -129,13 +128,13 @@
     
 }
 .roomtype{
-	margin-left: 12vw;
+	margin-left: 18vw;
 	padding:1vh;
-	margin-top: 9vh;
+	margin-top: 1vh;
 }
 .guests{
-	margin-left:12vw;
-	margin-top: -4vh;
+	margin-left:18vw;
+	margin-top: -12vh;
 	padding-bottom: 10vh;
 }
 .sel{
@@ -149,9 +148,9 @@
 }
 
 .reason{
-	margin-left: 14vw;
+	margin-left: 17vw;
 	padding:1vh;
-	margin-top: 2vh;
+	margin-top: 1vh;
 	text-align: center;	
 }
 .checkin-out-cont{
