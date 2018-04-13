@@ -232,6 +232,4 @@ function closeEdit()
 	//removing elements
 	var edit = document.getElementById('edit');
 	edit.parentNode.removeChild(edit);
-
-
 }

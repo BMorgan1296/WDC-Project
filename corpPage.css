@@ -299,13 +299,21 @@
 
 .infoLabel
 {
-	display: inline-block;
+	display: inline;
 	margin-top: 0.5vh;
 }
 
 #country
-{
+{	
+	font-size: calc((10vh + 10vw)/15);
+	display: inline;
 	overflow: hidden;
+}
+
+#countryForm
+{
+	display: inline;
+	overflow: visible;
 }
 
 .textbox
@@ -321,7 +329,7 @@
 	min-height: 30px;
 	display: inline;
 	width: calc((10vh + 10vw));
-	font-size: calc((10vh + 10vw)/10);
+	font-size: calc((10vh + 10vw)/15);
 }
 
 .t2  /*for title change password*/
@@ -336,9 +344,9 @@
 
 .t1
 {
-	height: 4vh;
+	height: 5vh;
 	margin-bottom: 1vh;	
-	overflow: auto;
+	overflow: visible;
 	min-height: 35px;
 }
 
