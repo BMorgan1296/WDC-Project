@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="../stylesheets/gwestyStyle.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheets/landing.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
+	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+	<script type="application/javascript" src="../javascripts/jquery-1.12.4.js"></script>
+	<script type="application/javascript" src="../javascripts/shared.js"></script>
+	<script type="application/javascript" src="../javascripts/landing.js"></script>
+    <title>gwesty</title>
+</head>
+<body>
+    <div id="container">
+        <div class="popupCon" id="newSignup">
+            <div class="popup">
+                <form>
+                    <h3 class="popupItem center">Sign-up</h3>
+                    <div class="popupItem">Full name:</div>
+                    <input id = "nameS" type="text" class="">
+                    <br>
+                    <div class="popupItem">Email:</div>
+                    <input id = "emailS" type="email" class="">
+                    <br>
+                    <div class="popupItem">Password:</div>
+                    <input id = "passwordS" type="password" class="">
+                    <br>
+                    <div class="popupItem">Confirm password:</div>
+                    <input id = "password2S" type="password" class="">
+                    <br>
+                    <button class="button">Sign-up</button>
+                    <div class="popupItem center">or</div>
+                    <div class="popupItem">Sign-up with </div>
+                </form>
+            </div>
+        </div>
+        <div class="fullPage" id="half1">
+
+        <div class="header">
+            <div id="currency" class="headerLabel"><span id="currencyText"> AUD </span>
+            </div>
+            <div class="headerLabel divider">|</div>
+            <div id="Sign-in" class="sign headerLabel">Sign-in
+            </div>
+            <div id = "currencyDrop" class="fixedPopDownList">
+            </div>
+            <div id = "signDrop" class="sign fixedPopDownList">
+                <form>
+                    <div class="sign fixedPopDownItem signTitle">Email:</div>
+                    <input id = "email" type="text" class="sign">
+                    <div class="sign fixedPopDownItem signTitle">Password:</div>
+                    <input id = "username" type="password" class="sign">
+                    <button class="sign button">Sign-in</button>
+                </form>
+                <div class="sign fixedPopDownItem signMidTitle">or</div>
+                <div class="sign fixedPopDownItem signMidTitle" id="Signup">Sign-up</div>
+                
+            </div>
+        </div>
+        <div class="title">gwesty</div>
+        <div class="searchContainer">
+            <div id="search1">I want to<br><span id="searchText"></span></div>
+            <div id="search2"><input type="search" id="searchBar" placeholder="E.G Ipoh"><a id = "searchButton" href="mappage.html">Search</a></div>
+        </div>
+
+        </div>
+        <div class="fullPage" id="half2">
+            <div class="secHalfBox">
+                <img 
+                    id = "priceIcon"
+                    class = "secHalfIcon"
+                    src="../images/experience.svg" 
+                    alt="Best Price"/>
+                <div class="secHalfText">
+                <span class="secHalfTitle">Best Price<br></span>
+                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</span>
+                </div>
+            </div>
+            <div class="secHalfBox">
+                <img 
+                    id = "experienceIcon"
+                    class = "secHalfIcon"
+                    src="../images/experience.svg" 
+                    alt="Best Price"/>
+                <div class="secHalfText">
+                <span class="secHalfTitle">Best Experience<br></span>
+                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</span>
+                </div>
+            </div>
+            <div class="secHalfBox">
+                <img 
+                    id = "hotelIcon"
+                    class = "secHalfIcon"
+                    src="../images/hotel.svg" 
+                    alt="Best Price"/>
+                <div class="secHalfText">
+                <span class="secHalfTitle">Best Hotels<br></span>
+                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</span>
+                </div>
+            </div>
+            <div class="secHalfBox">
+                <img 
+                    id = "searchIcon"
+                    class = "secHalfIcon"
+                    src="../images/search.svg" 
+                    alt="Best Price"/>
+                <div class="secHalfText">
+                <span class="secHalfTitle">Best Service<br></span>
+                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</span>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="footerQuarter">
+                    <div class="footerQuarterTitle">Guests</div>
+                    <div class="footerQuarterText">
+                        <a href="settings_details.html">Manage Account</a><br> 
+                        <a href="settings_bookings.html">Bookings</a><br>
+                        <a href="index.html">Search Hotels</a></div>
+                </div>
+                <div class="footerQuarter">
+                    <div class="footerQuarterTitle">Hotels</div>
+                    <div class="footerQuarterText"><a href="corporateLogin.html">Hotel Sign-in</a><br><a href="corporatePageEdit.html">Manage Rooms</a><br></div>    
+                </div> 
+                <div class="footerHalf">gwesty</div>   
+            </div>
+        </div>
+    </div>
+</body>
+</html>
