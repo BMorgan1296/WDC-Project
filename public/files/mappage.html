@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta charset="utf-8"/>
-  <link rel="stylesheet" type="text/css" href="../stylesheets/daterangepicker.css" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
-  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="../stylesheets/mappage.css">
-  <link rel="stylesheet" type="text/css" href="../stylesheets/gwestyStyle.css">
-  <!-- <link rel="stylesheet" type="text/css" href="../stylesheets/dansSheet.css"> -->
-  <script type="application/javascript" src="../javascripts/jquery-1.12.4.js"></script>
-  <script type="application/javascript" src="../javascripts/shared.js"></script>
-  <script type="application/javascript" src="../javascripts/landing.js"></script>
-    
+     <link rel="stylesheet" type="text/css" href="../stylesheets/daterangepicker.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+<link rel="stylesheet" type="text/css" href="../stylesheets/mappage.css">
+<link rel="stylesheet" type="text/css" href="../stylesheets/gwestyStyle.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+<script type="application/javascript" src="../javascripts/jquery-1.12.4.js"></script>
+<script type="application/javascript" src="../javascripts/shared.js"></script>
+
+
+
+
+<title>mappage</title>
 </head>
 <body>
-  <div id="container">
+   <div id="container">
         <div class="popupCon" id="newSignup">
             <div class="popup">
                 <form>
@@ -40,7 +42,7 @@
                 </form>
             </div>
         </div>
-<div class="fullpage" id="half1">
+<div class="fullpage">
   <div class="header">
             <div id="currency" class="headerLabel"><span id="currencyText"> AUD </span>
             </div>
@@ -95,6 +97,7 @@
   </label>
 
   </div>
+
   <button class="dropdown-btn">Ratings 
     <i class="extrafilterdown"></i>
   </button>
@@ -120,7 +123,7 @@
 <div class="dropdown">
   <button class="dropbtn">Price</button>
   <div class="dropdown-content">
-    <div class="""slidecontainer">
+    <div class="slidecontainer">
       <input type="range" min="0" max="1000" value="0" class="slider"   id="Range">
       <p>Price:$<span id="price"></span></p>
     </div>
@@ -128,7 +131,7 @@
 </div>
 
 <!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
-<div class="custom-select">
+<div class="custom-select" style="width:200px;">
   <select>
     <option value="0">Rooms</option>
     <option value="1">Single</option>
@@ -147,30 +150,27 @@
 </div>
 
 
-<div class="footer_mappage">
+ <div class="footer_mappage">
                 <div class="footerQuarter">
                     <div class="footerQuarterTitle">Guests</div>
                     <div class="footerQuarterText">
                         <a href="settings_details.html">Manage Account</a><br> 
                         <a href="settings_bookings.html">Bookings</a><br>
-                        <a href="../index.html">Search Hotels</a></div>
+                        <a href="../index.html">Search Hotels</a></div>       
                 </div>
                 <div class="footerQuarter">
                     <div class="footerQuarterTitle">Hotels</div>
-                    <div class="footerQuarterText"><a href="corporateLogin.html">Hotel Sign-in</a><br><a href="corporatePageEdit.html">Manage Rooms</a><br></div>    
+                    <div class="footerQuarterText"><a href="corporateLogin.html">Hotel Sign-in</a><br><a href="corporatePageEdit.html">Manage Rooms</a><br></div> 
                 </div> 
-                <div class="footerHalf">gwesty</div>   
-            </div>
+                <div class="footerHalf">gwesty</div>  
+              </div>
+</div>
 
-<script src="mappage.js"></script>
-
-
- <!-- Optional JavaScript -->
-   <!--  jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="../javascripts/mappage.js"></script>
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-   <script type="text/javascript" src="../javascripts/moment.min.js"></script>
+    <script type="text/javascript" src="../javascripts/moment.min.js"></script>
    <script type="text/javascript" src="../javascripts/daterangepicker.js"></script>
    <script type="text/javascript" src="../javascripts/datepicker.js"></script>
      
