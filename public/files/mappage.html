@@ -3,7 +3,7 @@
 <head>
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta charset="utf-8"/>
-     <link rel="stylesheet" type="text/css" href="../stylesheets/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/daterangepicker.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <link rel="stylesheet" type="text/css" href="../stylesheets/mappage.css">
@@ -14,12 +14,10 @@
 <script type="application/javascript" src="../javascripts/shared.js"></script>
 
 
-
-
 <title>mappage</title>
 </head>
 <body>
-   <div id="container">
+  <!--  <div id="container"> -->
         <div class="popupCon" id="newSignup">
             <div class="popup">
                 <form>
@@ -119,8 +117,8 @@
       <input type="text" class="daterange" placeholder="Check-in  /  Check-Out ">
 </div>
 
-<!-- for Price dropdown --> 
-<div class="dropdown">
+<!--for Price dropdown-->
+ <div class="dropdown">
   <button class="dropbtn">Price</button>
   <div class="dropdown-content">
     <div class="slidecontainer">
@@ -140,14 +138,17 @@
     <option value="4">Multiple</option>
    </select>
   </div>
-
+ 
   <div class="search_bar">
     <form>
-      <input type="text" placeholder="Search.." name="search">
+      <input id="search" type="text" placeholder="Search.." name="search">
       <button type="submit">Submit</button>
     </form>
-  </div>
+  </div>  
+  
+
 </div>
+ <div id="map"></div>
 
 
  <div class="footer_mappage">
@@ -156,7 +157,7 @@
                     <div class="footerQuarterText">
                         <a href="settings_details.html">Manage Account</a><br> 
                         <a href="settings_bookings.html">Bookings</a><br>
-                        <a href="../index.html">Search Hotels</a></div>       
+                        <a href="landing.html">Search Hotels</a></div>       
                 </div>
                 <div class="footerQuarter">
                     <div class="footerQuarterTitle">Hotels</div>
@@ -164,11 +165,15 @@
                 </div> 
                 <div class="footerHalf">gwesty</div>  
               </div>
-</div>
+  
+<script src="../javascripts/map.js"></script>
 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfwg2GuRFsfNN3BUM0gOcxNrFYfvDlwTI&libraries=places&callback=initMap"
+        async defer></script>
 <script src="../javascripts/mappage.js"></script>
+
    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../javascripts/moment.min.js"></script>
    <script type="text/javascript" src="../javascripts/daterangepicker.js"></script>
