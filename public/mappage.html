@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head>
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta charset="utf-8"/>
+  <head>
+    <title>Place Autocomplete Hotel Search</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="stylesheets/daterangepicker.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -15,10 +16,12 @@
 
 
 <title>mappage</title>
-</head>
-<body>
-  <!--  <div id="container"> -->
-        <div class="popupCon" id="newSignup">
+  
+  </head>
+
+  <body>
+
+         <div class="popupCon" id="newSignup">
             <div class="popup">
                 <form>
                     <h3 class="popupItem center">Sign-up</h3>
@@ -141,7 +144,7 @@
  
   <div class="search_bar">
     <form>
-      <input id="search" type="text" placeholder="Search.." name="search">
+      <input id="search2" type="text" placeholder="Search.." name="search">
       <button type="submit">Submit</button>
     </form>
   </div>  
@@ -149,6 +152,29 @@
 
 </div>
  <div id="map"></div>
+
+    <div class="info">
+      <div id="info-content">
+        <table>
+          <tr class="tablerow">
+            <td id="icon"></td>
+            <td id="name_hotel" class="name"></td>
+          </tr>
+          <tr class="tablerow">
+            <td class="infotitles">Address:</td>
+            <td id="hotel_address"></td>
+          </tr>
+          <tr id="phonerow" class="tablerow">
+            <td class="infotitles">Telephone:</td>
+            <td id="hotel_phone"></td>
+          </tr>
+          <tr id="rating_row" class="tablerow">
+            <td class="infotitles">Rating:</td>
+            <td id="hotel_rating"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
 
 
  <div class="footer_mappage">
@@ -165,19 +191,19 @@
                 </div> 
                 <div class="footerHalf">gwesty</div>  
               </div>
-  
-<script src="javascripts/map.js"></script>
+</div>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfwg2GuRFsfNN3BUM0gOcxNrFYfvDlwTI&libraries=places&callback=initMap"
+
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfwg2GuRFsfNN3BUM0gOcxNrFYfvDlwTI&libraries=places&callback=initMap"
         async defer></script>
-<script src="javascripts/mappage.js"></script>
-
+    <script src="javascripts/mappage.js"></script>
+     <script src="javascripts/map.js"></script>
    
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="javascripts/moment.min.js"></script>
+   <script type="text/javascript" src="javascripts/moment.min.js"></script>
    <script type="text/javascript" src="javascripts/daterangepicker.js"></script>
    <script type="text/javascript" src="javascripts/datepicker.js"></script>
-     
-</body>
+  </body>
+</html>
 </html> 

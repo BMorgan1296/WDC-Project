@@ -1,44 +1,112 @@
- var markers = [];
-    function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          
+  var map, places, infoWindow;
+      var markers = [];
+     function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
           zoom: 25
         });
-        
-        var input = document.getElementById('search');
-        var autocomplete = new google.maps.places.Autocomplete(input);
-        var infowindow = new google.maps.InfoWindow(); 
-          places = new google.maps.places.PlacesService(map);      
-        autocomplete.addListener('place_changed', searchedPlace); 
+        infoWindow = new google.maps.InfoWindow({
+          content: document.getElementById('info-content')
+        });
+       var input = document.getElementById('search2');
+       var autocomplete = new google.maps.places.Autocomplete(input);
+       places = new google.maps.places.PlacesService(map);
+       autocomplete.addListener('place_changed', searchedPlace);
       
-      //place changed/////
-      function searchedPlace(){
-          var place = autocomplete.getPlace();
-    
-          if (place.geometry.viewport) {
+      function searchedPlace() {
+        var place = autocomplete.getPlace();
+         if (place.geometry.viewport) {
             map.fitBounds(place.geometry.viewport);
-            hotels();
-          } else {
-            map.setCenter(place.geometry.location);
+          hotels();
+        } else {
+          map.setCenter(place.geometry.location);
             map.setZoom(17);  
-          }     
-     
-   } 
+          } 
+      }
 }
-   function hotels() {
-        var searchplaces = {
+      function hotels() {
+        var search = {
           bounds: map.getBounds(),
           types: ['lodging']
         };
-        places.nearbySearch(searchplaces, function(results, status) {
+
+        places.nearbySearch(search, function(results, status) {
           if (status === google.maps.places.PlacesServiceStatus.OK) {
-            // Create a marker for each hotel found, and
             for (var i = 0; i < results.length; i++) {
-              markers[i] = new google.maps.Marker({
-                position: results[i].geometry.location,
-                icon: markerIcon
-              });
+            markers[i] = new google.maps.Marker({
+            position: results[i].geometry.location,
+               });
+              markers[i].placeResult = results[i];
+              google.maps.event.addListener(markers[i], 'click', infowindow);
+               setTimeout(placemarker(i), i * 50);
             }
           }
         });
+      }
+
+      function clearMarkers() {
+        for (var i = 0; i < markers.length; i++) {
+          if (markers[i]) {
+            markers[i].setMap(null);
+          }
+        }
+        markers = [];
+      }
+      function placemarker(i) {
+        return function() {
+          markers[i].setMap(map);
+        };
+      }
+
+      function searchresults(result, i) {
+        var results = document.getElementById('results');
+       var tr = document.createElement('tr');
+        tr.onclick = function() {
+          google.maps.event.trigger(markers[i], 'click');
+        };
+        }
+
+      function clearResults() {
+        var results = document.getElementById('results');
+        while (results.childNodes[0]) {
+          results.removeChild(results.childNodes[0]);
+        }
+      }
+
+      function infowindow() {
+        var marker = this;
+        places.getDetails({placeId: marker.placeResult.place_id},
+            function(place, status) {
+              if (status !== google.maps.places.PlacesServiceStatus.OK) {
+                return;
+              }
+              infoWindow.open(map, marker);
+              hotelInfoContent(place);
+            });
+      }
+      
+      function hotelInfoContent(place) {
+             document.getElementById("name_hotel").innerHTML = 
+             place.name + '</a></b>';
+        document.getElementById('hotel_address').textContent = place.vicinity;
+
+        if (place.formatted_phone_number) {
+          document.getElementById('phonerow').style.display = '';
+          document.getElementById('hotel_phone').textContent =
+              place.formatted_phone_number;
+        } else {
+          document.getElementById('phonerow').style.display = 'none';
+        }
+
+          if (place.rating) {
+          var ratingHtml = '';
+          for (var i = 0; i < 5; i++) {
+            if (place.rating < (i + 0.5)) {
+              ratingHtml += '&#10025;';
+            } else {
+              ratingHtml += '&#10029;';
+            }
+          document.getElementById('rating_row').style.display = '';
+          document.getElementById('hotel_rating').innerHTML = ratingHtml;
+          }
+        }
       }

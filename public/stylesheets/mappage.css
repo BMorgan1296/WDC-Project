@@ -417,13 +417,34 @@ background-color:rgb(255,127,80,0.6);
     cursor: pointer;
 }
 #map {
-        height: 58%;
-        width:100%;
-        margin-top:2vh;
-      }
+  height: 59%;
+  width:100%;
+  margin-top:0vh;
+}
+    
 html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+table {
+  font-size: 1vw;
+}
+#rating {
+  font-size: 5vh;
+}
+.row {
+  height: 2vh;
+}
+.infotitles{
+  font-weight: bold;
+  text-align: right;
+}
+.name{
+  font-weight: bold;
+  font-size: 1vw;
+}
+.info{
+  display: none;
+}
 
