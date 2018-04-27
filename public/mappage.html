@@ -137,10 +137,8 @@
   </div>
  
   <div class="search_bar">
-    <form>
-      <input id="search2" type="text" placeholder="Search.." name="search">
-      <button id="searchSubmit" type="submit">Submit</button>
-    </form>
+      <input id="search2" type="text" placeholder="Search.." name="search" onKeyDown="if(event.keyCode==13) codeAddress();">
+      <button id="searchSubmit" type="submit" onclick="codeAddress()">Submit</button>
   </div>  
   
 
