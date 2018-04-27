@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
 	<link rel="stylesheet" type="text/css" href="stylesheets/gwestyStyle.css">
-	<link rel="stylesheet" type="text/css" href="stylesheets/userinfo.css"> 
-    <link rel="stylesheet" type="text/css" href="stylesheets/usersetting.css"> 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
-    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-    <script type="application/javascript" src="javascripts/jquery-1.12.4.js"></script>
-    <script type="application/javascript" src="javascripts/shared.js"></script>
-  
-	<title> Settings - Login settings </title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/booking.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
+	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+	<script type="application/javascript" src="javascripts/jquery-1.12.4.js"></script>
+	<script type="application/javascript" src="javascripts/shared.js"></script>
+	<script type="application/javascript" src="javascripts/landing.js"></script>
+    <title>gwesty</title>
 </head>
-<body id="pContainer">
-    <div class="popupCon" id="newSignup">
+<body>
+    <div id="pcontainer">
+        <div class="popupCon" id="newSignup">
             <div class="popup">
                 <form>
                     <h3 class="popupItem center">Sign-up</h3>
@@ -35,7 +35,8 @@
                 </form>
             </div>
         </div>
-    <div class="header">
+        
+        <div class="header">
             <div id="currency" class="headerLabel"><span id="currencyText"> AUD </span>
             </div>
             <div class="headerLabel divider">|</div>
@@ -56,62 +57,56 @@
                 
             </div>
         </div>
-	<div id="corpPageMain">
-		<h1 class="title">Manage Account</h1>
-		<div class="nav">
-			<form>
-				<input class="button navButton" value="View/Manage Bookings" onclick="window.location.href='settings_bookings.html'" type="button"/>
-			</form>
- 			<form>
-				<input class="button navButton" value="Your Information" onclick="window.location.href='settings_details.html'" type="button" />
-			</form>
-  			<form>
-				<input class="button navButton" value="Payment Details" onclick="window.location.href='settings_payment.html'" type="button"/>
-			</form>           
-			<form>
-				<input class="button navButton" value="Manage Account" onclick="window.location.href='settings_login.html'" type="button"/>
-			</form> 
-		 	<form>
-                <input class="button return" type="button" value="Return" onclick="javascript:history.go(-1)" />
-			</form> 
-		</div>
-
-	
-	<div class="titles" id="accountOptions">
-			<div class="t2Account">
-				<div class="inputTitle">Change Password</div>
-			</div>
-			<div class="t1Account">
-				<div class="inputTitle">Old Password</div>				
-				<input type="Password" class="textboxAccount" />
-			</div>
-			<div class="t1Account">
-				<div class="inputTitle">New Password</div>				
-				<input type="Password" class="textboxAccount" />
-			</div>
-			<div class="t1Account">
-				<div class="inputTitle">Retype Password</div>				
-				<input type="Password" class="textboxAccount" />
-			</div>		
-            <form>
-                <button class="done button">Done</button>    
-            </form>
-            <br>
-			<div class="t2Account">
-				<div class="inputTitle">Change Email</div>
-			</div>
-			<div class="t1Account">
-				<div class="inputTitle">Type New Email</div>
-				<input type="text" class="textboxAccount" />	
-				 <form>
-                <button class="done button">Done</button>    
-                </form>		
-			</div>
-	</div>
         
-
-	</div>
-    <div class="footer">
+        <div class="headerRow">
+            <div class="headerTitle headerActive">Booking Details
+                <div class="headerLine headerActive"></div>
+            </div>
+            <div class="headerTitle">Personal Details
+                <div class="headerLine"></div>
+            </div>
+            <div class="headerTitle">Confirmation
+                <div class="headerLine"></div>
+            </div>
+        </div>
+        <div class="main"> 
+            <div class="mainCol">
+                <div class="colRow rowTitle">#HotelPlaceholder</div>
+                <div class="colRow">
+                    <img src="hotel image" id="hotelImg" alt="placeholder" >
+                </div>
+            </div>
+            <div class="mainCol">
+                <div class="colRow">Room type
+                    <select class="rowInput" id="roomType">
+                        <option value="placeholder1">placeholder1</option>
+                        <option value="placeholder2">placeholder2</option>
+                        <option value="placeholder3">placeholder3</option>
+                    </select>
+                </div>
+                <div class="colRow"># of guests
+                    <select class="rowInput" id=guestNum>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+                <div class="colRow">Check in date
+                    <input type="date" class="rowInput" id="checkIn"> 
+                </div>
+                <div class="colRow">Check out date
+                    <input type="date" class="rowInput" id="checkOut"> 
+                </div>
+                <div class="colRow priceRow">Total Price
+                    <div class="rowInput">$99.95</div> 
+                </div>
+            </div>
+        </div>
+        <div class="mainFooter">
+            <div class="nextButton button">Next</div>
+        </div>
+        <div class="footer">
                 <div class="footerQuarter">
                     <div class="footerQuarterTitle">Guests</div>
                     <div class="footerQuarterText">
@@ -125,5 +120,6 @@
                 </div> 
                 <div class="footerHalf">gwesty</div>   
             </div>
+    </div>
 </body>
 </html>

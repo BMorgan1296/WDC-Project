@@ -4,6 +4,8 @@
 	font-size: calc((10vh + 10vw)/7);
 	text-align: center;
 	margin-top: 5vh;
+    width:100%;
+    float:left;
 }
 
 #parentContainer
@@ -16,7 +18,8 @@
 {
 	margin-left: 10vw;
 	width: 80vw;
-    height:calc(100vh - 5.55vh - 16.5vh - ((10vh + 10vw)/6));
+    float: left;
+    margin-bottom:4vh;
 }
 
 .nav
@@ -25,7 +28,6 @@
 	float:left;
 	padding-top: calc((25vw + 25vh)/12);
 	width: auto;
-	height: calc((45vw + 45vh)/3);
 	display: inline-block;
     justify-content: center;
 }

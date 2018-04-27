@@ -1,0 +1,119 @@
+body{
+    padding:0px;
+    margin: 0px;
+    font-family: 'Open Sans', sans-serif;
+    height:100%;
+}
+
+.container{
+}
+
+#pcontainer{
+    padding-bottom: 16.66vh;
+    min-height:calc(100vh - 16.66vh);
+    float: left;
+    position:relative;
+}
+.headerRow{
+    margin-top:10vh;
+    margin-left:20%;
+    width:60%;
+    height:15vh;
+    float:left;
+}
+
+.headerTitle{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bolder;
+    color:grey;
+    border-color:grey;
+    text-align: center;
+    width:33.33%;
+    font-size: calc((12.5vh + 12.5vw)/12);
+    float:left;
+}
+
+
+.headerLine{
+    margin-left:10%;
+    margin-top:1vh;
+    float:left;
+    width:80%;
+    border-bottom-width:0.5vh;
+    border-bottom-style:solid;
+}
+
+.headerActive{
+    color:black;
+    border-color:dodgerblue!important;
+}
+
+.main{
+    font-family: 'Open Sans', sans-serif;
+    margin-top:1vh;
+    margin-left:20%;
+    width:60%;
+    background: blue;
+    float:left;
+    padding-top:1.5vh;
+    padding-bottom:1.5vh;
+    font-size: calc((12.5vh + 12.5vw)/15);
+}
+
+.mainFooter{
+    font-family: 'Open Sans', sans-serif;
+    margin-top:1vh;
+    margin-left:20%;
+    width:60%;
+    background: blue;
+    text-align: center;
+    font-size: calc((12.5vh + 12.5vw)/12);
+    float:left;
+    margin-bottom:4vh;
+}
+
+.nextButton{
+    padding:calc((12.5vh + 12.5vw)/120);
+    float:left;
+    width:calc(5 * (12.5vh + 12.5vw)/12);
+    margin-left:calc((100% - (5 * (12.5vh + 12.5vw)/12))/2);
+    text-align: center;
+}
+
+.mainCol{
+    width:50%;
+    background: limegreen;
+    float:left;
+}
+
+.colRow{
+    width:90%;
+    margin-left:5%;
+    margin-right:5%;
+    float:left;
+    background:indianred;
+    margin-top:0.5vh;
+}
+
+.rowTitle{
+    color:black;
+    font-size: calc((12.5vh + 12.5vw)/12); 
+}
+
+.rowInput{
+    float:right;
+    font-size: calc((12.5vh + 12.5vw)/15);
+}
+
+.priceRow{
+    margin-top:calc((0.5vh + (12.5vh + 12.5vw)/12) * 4);
+}
+
+#hotelImg{
+    margin-top:1vh;
+    width:100%;
+    height:30vh;
+    background:grey;
+    float:left;
+    display: block;
+}

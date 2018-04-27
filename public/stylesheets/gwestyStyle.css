@@ -1,8 +1,12 @@
+body{
+    height:100%;
+    margin:0px;
+	font-family: 'Open Sans', sans-serif;
+}
 #parentContainer
 {
 	box-sizing: border-box;
 	font-size: 100%;
-	font-family: 'Open Sans', sans-serif;
 	position: absolute;	
 	overflow: visible;
     overflow-x: hidden;
@@ -16,6 +20,7 @@
     font-weight: bold;
     color:black;
 	cursor:pointer;
+    float:left;
 	border: 1px solid gainsboro;
     -webkit-touch-callout: none; 
     -webkit-user-select: none; 
@@ -71,6 +76,7 @@
 
 /*header*/
 .header{
+    font-family: 'Open Sans', sans-serif;
     float:right;
     position: relative;
     display: block;
@@ -176,12 +182,21 @@
 
 /*Footer*/
 
+#pcontainer{
+    padding-bottom: 16.66vh;
+    min-height:calc(100vh - 16.66vh);
+    float: left;
+    position:relative;
+}
+
 .footer{
-    margin-top:5.55vh;
+    font-family: 'Open Sans', sans-serif;
     width:100%;
     height:16.66vh;
     background:gray;
     float:left; 
+    position:absolute;
+    bottom:0;
 }
 
 .footerQuarter{

@@ -38,10 +38,11 @@
 {
 	border: 1px solid grey;
 	height: 1.1em;
-	margin-bottom:calc((10vh + 10vw)/75);
 	overflow: auto;
 	width: 30vw;
 	font-size: calc((10vh + 10vw)/12.5);
+    float: left;
+    margin-top: calc((10vh + 10vw)/14.5);
 }
 
 .t2  /*for title change password*/
@@ -104,6 +105,9 @@ select {
     border-radius: 4px;
     background-color: #f1f1f1;
     width:30vw;
+    float:left;
+    margin-top: calc((10vh + 10vw)/14.5);
+    margin-bottom: calc((10vh + 10vw)/14.5);
 }
 .done{
 		font-size: calc((10vh + 10vw)/12.5);

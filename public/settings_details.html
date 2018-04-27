@@ -15,7 +15,7 @@
 
 	<title>Settings - Your details</title>
 </head>
-<body id="parentContainer">
+<body id="pContainer">
     <div class="popupCon" id="newSignup">
             <div class="popup">
                 <form>
@@ -75,7 +75,7 @@
 				<input class="button navButton" value="Manage Account" onclick="window.location.href='settings_login.html'" type="button"/>
 			</form> 
 		 	<form>
-                <input class="button return" type="button" value="Return" onclick="window.location.href='landing.html'" />
+                <input class="button return" type="button" value="Return" onclick="javascript:history.go(-1)" />
 			</form> 
 		</div>
 			
@@ -381,7 +381,6 @@
                     <option value="ZW">Zimbabwe</option>
                   </select>
                 </form>	
-                <br>
                 <form>
                 <button class="done button">Done</button>	 
                 </form>
