@@ -2,9 +2,10 @@
 /* exported searchSubmit */
 /* exported searchresults */
 
-  var map, places, infoWindow, google;
+  var map, places, infoWindow, google, geocoder;
       var markers = [];
      function MapFunction() {
+        geocoder = new google.maps.Geocoder();
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 51.5073509, lng: -0.12775829999998223},
           zoom: 2,
@@ -113,3 +114,15 @@
           }
         }
       }
+
+
+  function codeAddress() {
+    var address = document.getElementById('search2').value;
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        map.fitBounds(results[0].geometry.viewport);
+      } else {
+      }
+    });
+  }
