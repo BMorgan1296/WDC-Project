@@ -1,8 +1,10 @@
-  var map, places, infoWindow;
+  var map, places, infoWindow, google;
       var markers = [];
-     function initMap() {
+     function MapFunction() {
         map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 25
+          center: {lat: 51.5073509, lng: -0.12775829999998223},
+          zoom: 2,
+          clickableIcons: false
         });
         infoWindow = new google.maps.InfoWindow({
           content: document.getElementById('info-content')
@@ -19,7 +21,7 @@
           hotels();
         } else {
           map.setCenter(place.geometry.location);
-            map.setZoom(17);  
+            map.setZoom(20);  
           } 
       }
 }
@@ -43,14 +45,14 @@
         });
       }
 
-      function clearMarkers() {
+      
         for (var i = 0; i < markers.length; i++) {
           if (markers[i]) {
             markers[i].setMap(null);
           }
         }
         markers = [];
-      }
+      
       function placemarker(i) {
         return function() {
           markers[i].setMap(map);
@@ -58,20 +60,17 @@
       }
 
       function searchresults(result, i) {
-        var results = document.getElementById('results');
-       var tr = document.createElement('tr');
-        tr.onclick = function() {
+        var popup = document.createElement('popup');
+        popup.onclick = function() {
           google.maps.event.trigger(markers[i], 'click');
         };
         }
 
-      function clearResults() {
         var results = document.getElementById('results');
         while (results.childNodes[0]) {
           results.removeChild(results.childNodes[0]);
         }
-      }
-
+     
       function infowindow() {
         var marker = this;
         places.getDetails({placeId: marker.placeResult.place_id},
@@ -86,27 +85,25 @@
       
       function hotelInfoContent(place) {
              document.getElementById("name_hotel").innerHTML = 
-             place.name + '</a></b>';
+             place.name;
         document.getElementById('hotel_address').textContent = place.vicinity;
 
         if (place.formatted_phone_number) {
           document.getElementById('phonerow').style.display = '';
           document.getElementById('hotel_phone').textContent =
               place.formatted_phone_number;
-        } else {
-          document.getElementById('phonerow').style.display = 'none';
-        }
+        } 
 
           if (place.rating) {
-          var ratingHtml = '';
+          var stars = '';
           for (var i = 0; i < 5; i++) {
             if (place.rating < (i + 0.5)) {
-              ratingHtml += '&#10025;';
+              stars += '&#10025;';
             } else {
-              ratingHtml += '&#10029;';
+              stars += '&#10029;';
             }
           document.getElementById('rating_row').style.display = '';
-          document.getElementById('hotel_rating').innerHTML = ratingHtml;
+          document.getElementById('hotel_rating').innerHTML = stars;
           }
         }
       }
