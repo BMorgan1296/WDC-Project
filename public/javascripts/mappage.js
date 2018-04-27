@@ -13,7 +13,7 @@ output.innerHTML = slider.value;
 
 slider.oninput = function() {
   output.innerHTML = this.value;
-}
+};
 //dropdown on the side navigation
 var dropdown = document.getElementsByClassName("dropdown-btn");
 var i;
@@ -84,10 +84,10 @@ function closeAllSelect(room_options) {
   except the current select box:*/
   var sel_itm, sel_Sel, i, arr_room = [];
   sel_itm = document.getElementsByClassName("select-items");
-  sel_sel = document.getElementsByClassName("select-selected");
-  for (i = 0; i < sel_sel.length; i++) {
-    if (room_options == sel_sel[i]) {
-      arr_room.push(i)
+  sel_Sel = document.getElementsByClassName("select-selected");
+  for (i = 0; i < sel_Sel.length; i++) {
+    if (room_options == sel_Sel[i]) {
+      arr_room.push(i);
     }
   }
   for (i = 0; i < sel_itm.length; i++) {

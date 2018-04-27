@@ -1,4 +1,8 @@
- /*jshint unused:false*/
+/*jshint unused:false*/
+/*exported addRoom*/
+/*exported removeRoom*/
+/*exported editRoom*/
+/*exported closeEdit*/
 
 var counter = 1;
 
