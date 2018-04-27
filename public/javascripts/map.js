@@ -19,7 +19,6 @@
        autocomplete.addListener('place_changed', searchedPlace);
       
       function searchedPlace() {
-        console.log(autocomplete);
         var place = autocomplete.getPlace();
          if (place.geometry.viewport) {
             map.fitBounds(place.geometry.viewport);
@@ -29,11 +28,6 @@
             map.setZoom(20);  
           } 
       }
-
-      $("#searchSubmit").on("click", function searchSubmit() 
-      {
-        searchedPlace();
-      });
 
       }
 
