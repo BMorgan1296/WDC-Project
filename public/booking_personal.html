@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
 	<link rel="stylesheet" type="text/css" href="stylesheets/gwestyStyle.css">
-	<link rel="stylesheet" type="text/css" href="stylesheets/userinfo.css"> 
-	<link rel="stylesheet" type="text/css" href="stylesheets/usersetting.css"> 
-	<script type="application/javascript" src="javascripts/jquery-1.12.4.js"></script>
-	<script type="application/javascript" src="javascripts/shared.js"></script>
-
-
-
+	<link rel="stylesheet" type="text/css" href="stylesheets/booking.css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-
-	<title>Settings - Your details</title>
+	<script type="application/javascript" src="javascripts/jquery-1.12.4.js"></script>
+	<script type="application/javascript" src="javascripts/shared.js"></script>
+	<script type="application/javascript" src="javascripts/landing.js"></script>
+    <title>Booking - Personal information</title>
 </head>
-<body id="pContainer">
-    <div class="popupCon" id="newSignup">
+<body>
+    <div id="pcontainer">
+        <div class="popupCon" id="newSignup">
             <div class="popup">
                 <form>
                     <h3 class="popupItem center">Sign-up</h3>
@@ -38,7 +35,8 @@
                 </form>
             </div>
         </div>
-    <div class="header">
+        
+        <div class="header">
             <div id="currency" class="headerLabel"><span id="currencyText"> AUD </span>
             </div>
             <div class="headerLabel divider">|</div>
@@ -59,72 +57,47 @@
                 
             </div>
         </div>
-	<div id="corpPageMain">
-		<h1 class="title">Your Information</h1>
-		<div class="nav">
-			<form>
-				<input class="button navButton" value="View/Manage Bookings" onclick="window.location.href='settings_bookings.html'" type="button"/>
-			</form>
- 			<form>
-				<input class="button navButton" value="Your Information" onclick="window.location.href='settings_details.html'" type="button" />
-			</form>
-  			<form>
-				<input class="button navButton" value="Payment Details" onclick="window.location.href='settings_payment.html'" type="button"/>
-			</form>           
-			<form>
-				<input class="button navButton" value="Manage Account" onclick="window.location.href='settings_login.html'" type="button"/>
-			</form> 
-		 	<form>
-                <input class="button return" type="button" value="Return" onclick="javascript:history.go(-1)" />
-			</form> 
-		</div>
-			
-		<div class="titles">
-			<div class="t1">
-				<div class="roomTitle">Gender</div>
-			</div>
-			<div class="t1">
-				<div class="roomTitle">First Name</div>
-			</div>
-			<div class="t1">
-				<div class="roomTitle">Surname</div>
-			</div>
-			<div class="t1">
-				<div class="roomTitle">Address</div>
-			</div>
-			<div class="t1">
-				<div class="roomTitle">Postcode</div>
-			</div>
-			<div class="t1">
-				<div class="roomTitle">City</div>
-			</div>
-			<div class="t1">
-				<div class="roomTitle">Country</div>
-			</div>
-		</div>
-        <div class="userOptions">
-	<!-- radio buttons -->
-           <form class="radiobuttons">
-            <label>
-              <input type="radio" name="gender">Male
-            </label>
-            <label class="radiobutton">
-              <input type="radio" name="gender">Female
-            </label>
-            <label class="radiobutton">
-              <input type="radio" name="gender">Other
-            </label>
-          </form>
-        <!-- Input boxes -->
-            <div class="textboxes">
-                <input type="text" class="textbox" />
-                <input type="text" class="textbox" />
-                <input type="text" class="textbox" />
-                <input type="text" class="textbox" />
-                <input type="text" class="textbox" />
-        <!--dropdown for countries-->
-                <form>
-                  <select id="country" name="country">
+        
+        <div class="headerRow">
+            <div class="headerTitle">Booking Details
+                <div class="headerLine"></div>
+            </div>
+            <div class="headerTitle headerActive">Personal Details
+                <div class="headerLine  headerActive"></div>
+            </div>
+            <div class="headerTitle">Confirmation
+                <div class="headerLine"></div>
+            </div>
+        </div>
+        <div class="main"> 
+            <div class="midCol">
+                <div class="colRow">Gender
+                    <select class="rowInput" id="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="colRow">First name
+                    <input class="rowInput" type="text" id="firstname" placeholder="First name">
+                </div>
+                <div class="colRow">Surname
+                    <input class="rowInput" type="text" id="surname" placeholder="Surname">
+                </div>
+                <div class="colRow">Contact number
+                    <input class="rowInput" type="text" id="number" placeholder="Contact number">
+                </div>
+                <div class="colRow">Address
+                    <input class="rowInput" type="text" id="address" placeholder="Address">
+                </div>
+                <div class="colRow">Postcode
+                    <input class="rowInput" type="text" id="postcode" placeholder="Postcode">
+                </div>
+                <div class="colRow">City
+                    <input class="rowInput" type="text" id="city" placeholder="City">
+                </div>
+                <div class="colRow">Country
+                    <select id="country" class="rowInput">
                     <option value="AF">---Country---</option>
                     <option value="AF">Afghanistan</option>
                     <option value="AX">Åland Islands</option>
@@ -376,16 +349,14 @@
                     <option value="ZM">Zambia</option>
                     <option value="ZW">Zimbabwe</option>
                   </select>
-                </form>	
-                <form>
-                <button class="done button">Done</button>	 
-                </form>
+                
+                </div>
             </div>
         </div>
-    </div>
-
-
-	<div class="footer">
+        <div class="mainFooter">
+            <div class="nextButton button" onclick="window.location.href='booking_confirm.html'">Next</div>
+        </div>
+        <div class="footer">
                 <div class="footerQuarter">
                     <div class="footerQuarterTitle">Guests</div>
                     <div class="footerQuarterText">
@@ -399,11 +370,6 @@
                 </div> 
                 <div class="footerHalf">gwesty</div>   
             </div>
-
+    </div>
 </body>
 </html>
-
-
-
-
-	
