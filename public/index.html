@@ -2,13 +2,13 @@
 <html>
 <head>
     <meta charset="utf-8" />
-	<link rel="stylesheet" type="text/css" href="stylesheets/gwestyStyle.css">
-	<link rel="stylesheet" type="text/css" href="stylesheets/landing.css">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
-	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-	<script type="application/javascript" src="javascripts/jquery-1.12.4.js"></script>
-	<script type="application/javascript" src="javascripts/shared.js"></script>
-	<script type="application/javascript" src="javascripts/landing.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/gwestyStyle.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/landing.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <script type="application/javascript" src="javascripts/jquery-1.12.4.js"></script>
+    <script type="application/javascript" src="javascripts/shared.js"></script>
+    <script type="application/javascript" src="javascripts/landing.js"></script>
     <title>gwesty</title>
 </head>
 <body>
@@ -61,7 +61,12 @@
         <div class="title">gwesty</div>
         <div class="searchContainer">
             <div id="search1">I want to<br><span id="searchText"></span></div>
-            <div id="search2"><input type="search" id="searchBar" placeholder="E.G Ipoh"><a id = "searchButton" href="mappage.html">Search</a></div>
+            <div id="search2">
+                <input type="search" id="searchBar" placeholder="E.G Ipoh">
+                <form>
+                    <input id = "searchButton" type="button" onclick="search()" value="Search">
+                </form>
+            </div>
         </div>
 
         </div>
@@ -108,23 +113,23 @@
                 <div class="secHalfText">
                 <span class="secHalfTitle">Best Service<br></span>
                 <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</span>
-                </div>
+                </div>  
             </div>
         </div>
         <div class="footer">
-            <div class="footerQuarter">
-                <div class="footerQuarterTitle">Guests</div>
-                <div class="footerQuarterText">
-                    <a href="settings_details.html">Manage Account</a><br> 
-                    <a href="settings_bookings.html">Bookings</a><br>
-                    <a href="index.html">Search Hotels</a></div>
+                <div class="footerQuarter">
+                    <div class="footerQuarterTitle">Guests</div>
+                    <div class="footerQuarterText">
+                        <a href="settings_details.html">Manage Account</a><br> 
+                        <a href="settings_bookings.html">Bookings</a><br>
+                        <a href="index.html">Search Hotels</a></div>
+                </div>
+                <div class="footerQuarter">
+                    <div class="footerQuarterTitle">Hotels</div>
+                    <div class="footerQuarterText"><a href="corporateLogin.html">Hotel Sign-in</a><br><a href="corporatePageEdit.html">Manage Rooms</a><br></div>    
+                </div> 
+                <div class="footerHalf">gwesty</div>   
             </div>
-            <div class="footerQuarter">
-                <div class="footerQuarterTitle">Hotels</div>
-                <div class="footerQuarterText"><a href="corporateLogin.html">Hotel Sign-in</a><br><a href="corporatePageEdit.html">Manage Rooms</a><br></div>    
-            </div> 
-            <div class="footerHalf">gwesty</div>   
-        </div>
     </div>
 </body>
 </html>

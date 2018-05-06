@@ -67,3 +67,39 @@ $(document).ready(function(){
     }
     */
 });
+
+//SERVER REQUESTS
+    function search()
+    {
+        var search = document.getElementById('searchBar').value; 
+        var w; //words parameters for URL
+
+        if(search.length == 0 || search == " ") //changes to normal mappage if search is pressed
+            document.location.href = "mappage.html";
+        else
+        {
+            var temp = search.split(" ");
+            var searchWords = new Array();
+            for (var i = 0; i < temp.length; i++) 
+            {
+                if(temp[i] !== '')
+                    searchWords.push(temp[i]); //makes new searchWords arrays with just actual words not blanks
+            }
+
+            w = "?"+"w1="+searchWords[0]; //puts ? params on the end
+            
+            var emptyCounter = 0; //counters how many empties there are so that you dont have w1=a&w5=b if you have lots of spaces
+            for (var i = 1; i < searchWords.length; i++) 
+            {
+                if(searchWords[i] !== '')
+                    w = w +"&"+"w"+(i+1-emptyCounter)+"="+searchWords[i];
+                else
+                    emptyCounter++;
+            }
+
+            document.location.href = "mappage.html"+w; //changes page to mapppage with the params
+        }
+
+
+                
+    }
