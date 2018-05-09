@@ -5,7 +5,7 @@ $(document).ready(function(){
     
     //on-clicks
     $("#currency").on("click",function(){
-        $("#currencyDrop").slideDown();
+        $("#currencyDrop").slideDown();      
     });
     
     $("#Sign-in").on("click",function(){
@@ -38,14 +38,36 @@ $(document).ready(function(){
         }
     });
     
-    function updateCurrency(current){
+    function updateCurrency(current){   
         $("#currencyDrop").empty();
         for(var i = 0;i<currencies.length;i++){
             if(current!=currencies[i]){
                 $("#currencyDrop").append("<div class='fixedPopDownItem' value='"+currencies[i]+"'>"+currencies[i]+"</div>");
             }
+            else                
+                changeCurr(currencies[i]);
         }
     }
 
 
 });
+
+
+
+function changeCurr(chosenCurr)
+{
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function()
+    {
+        if(this.readyState == 4 && this.status == 200)
+        {
+            
+        }
+    };
+    var temp = {curr:chosenCurr};
+    var curr = JSON.stringify(temp);
+    console.log(curr);
+    xhttp.open("POST", "/currency.json", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(curr);
+}
