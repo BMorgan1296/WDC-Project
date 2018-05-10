@@ -1,5 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var CLIENT_ID = '314455925120-3eqrg8kqg9u39qup8ctkoo7ur7hfv44v.apps.googleusercontent.com';
+var {OAuth2Client} = require('google-auth-library');
+var client = new OAuth2Client(CLIENT_ID);
+var gticket;
 
 //User Object
 var user = [];
@@ -76,12 +80,7 @@ router.post('/login.json', function(req, res)
 		{
 			user[i].currId = req.session.id; //setting currID
 			res.redirect('mappage.html');
-		}
-		else
-		{	
-			res.redirect('index.html');
-		}
-		
+	
 		}else if (signInUser.idtoken !== undefined){
 			console.log("Google Token Received");
 			async function verify(){
@@ -98,11 +97,13 @@ router.post('/login.json', function(req, res)
 		   res.redirect('mappage.html');
    		}
    	}
+
    	}
    } else {
    	res.redirect('index.html');
 		
 	}
+}
 });
 
 router.post('/signup.json', function(req, res)
@@ -382,3 +383,7 @@ router.post('/UpdateBusinessInfo.json', function(req, res) //updates it when don
 });
 
 module.exports = router;
+
+
+
+

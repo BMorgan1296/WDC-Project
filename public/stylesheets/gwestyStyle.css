@@ -1,14 +1,14 @@
 body{
     height:100%;
     margin:0px;
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 #parentContainer
 {
-	box-sizing: border-box;
-	font-size: 100%;
-	position: absolute;	
-	overflow: visible;
+    box-sizing: border-box;
+    font-size: 100%;
+    position: absolute; 
+    overflow: visible;
     overflow-x: hidden;
     margin:0px;
     width: 100vw;
@@ -16,12 +16,12 @@ body{
 
 .button
 {
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     color:black;
-	cursor:pointer;
+    cursor:pointer;
     float:left;
-	border: 1px solid gainsboro;
+    border: 1px solid gainsboro;
     -webkit-touch-callout: none; 
     -webkit-user-select: none; 
      -khtml-user-select: none;
@@ -32,42 +32,42 @@ body{
 
 .input
 { 
-	width: calc((30vw + 30vh)/4);
-	height: calc((30vw + 30vh)/30);
-	margin-bottom:5px;
-	font-family: 'Oswald', sans-serif;
-	font-size: calc((10vw + 10vh)/15);
-	margin: 0 auto; 
-	display: block; 
+    width: calc((30vw + 30vh)/4);
+    height: calc((30vw + 30vh)/30);
+    margin-bottom:5px;
+    font-family: 'Oswald', sans-serif;
+    font-size: calc((10vw + 10vh)/15);
+    margin: 0 auto; 
+    display: block; 
 }
 
 .u
 {
-	margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 /*
 #footer
 {
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	margin-top: 75px;
-	width:100vw;
-	height: 10vh;
-	background-color: grey;
-	border-bottom: 2vh solid black;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    margin-top: 75px;
+    width:100vw;
+    height: 10vh;
+    background-color: grey;
+    border-bottom: 2vh solid black;
 }
 
 #gwestyFooter
 {
-	font-family: 'Open Sans', sans-serif;
-	font-weight: 300;
-	position: fixed;
-	right: 0;
-	bottom: 0;
-	padding-right: 1vw;
-	color: white;
-	font-size: 2vw;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    padding-right: 1vw;
+    color: white;
+    font-size: 2vw;
 }
 */
 .a{
@@ -272,6 +272,26 @@ body{
     margin-left:15%;
 }
 
+.g-signin2{
+    margin-top: .2em;
+    display: inline-block;
+    width:30%;
+    margin-left:10%;
+}
+.signout{
+    
+    display: inline-block;
+    width:30%;
+    margin-left:10%;
+    display:none;
+    background-color: #1B80E6;
+    border:none;
+    text-align: center;
+    text-decoration: none;
+    height:6vh;
+    color: white;
+    font-size: 2vh;
+}
 .popup input{
     border-color: gainsboro;
     border-style:solid;
