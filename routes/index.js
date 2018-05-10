@@ -52,7 +52,7 @@ function validate(givenID, obj)
 }
 
 //Hi Marker!
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   res.render('index', { title: 'Express' });
 });
 
@@ -75,7 +75,37 @@ router.post('/login.json', function(req, res)
 	
 });
 
-router.post('/currency.json', function(req, res)
+router.post('/updateEmail.json', function(req, res) //should be called when user enters new email and presses done
+{
+	var index = validate(req.session.id, user); //finds valid user
+	if(index !== -1)
+	{
+		var newEmail = JSON.parse(req.body.email);
+		user[index].email = newEmail;
+	}
+	else
+	{
+		res.redirect('index.html');
+	}
+	
+});
+
+router.post('/updatePassword.json', function(req, res) //may not be needed depending on openID
+{
+	var index = validate(req.session.id, user); //finds valid user
+	if(index !== -1)
+	{
+		var newPW = JSON.parse(req.body.password);
+		user[index].passwords = newPW;
+	}
+	else
+	{
+		res.redirect('index.html');
+	}
+	
+});//********************************************************************************************
+
+router.post('/currency.json', function(req, res) //handles the changing of local currency
 {
 	var givenCurr = req.body.curr;
 	var index = validate(req.session.id, user); //validates user to check for session
@@ -104,7 +134,7 @@ router.post('/currency.json', function(req, res)
 	//return search results with a different price?	
 });
 
-router.post('/populateBookings.json', function(req, res)
+router.post('/populateBookings.json', function(req, res) //should be called when user enters view manage bookings
 {
 	var index = validate(req.session.id, user); //finds valid user
 	if(index !== -1)
@@ -119,7 +149,7 @@ router.post('/populateBookings.json', function(req, res)
 	
 });
 
-router.post('/viewBooking.json', function(req, res)
+router.post('/viewBooking.json', function(req, res) //should come from pressing [i] on user view manage bookings
 {
 	var index = validate(req.session.id, user); //finds valid user
 	if(index !== -1)
@@ -135,7 +165,7 @@ router.post('/viewBooking.json', function(req, res)
 	
 });
 
-router.post('/removeBookings.json', function(req, res)
+router.post('/removeBookings.json', function(req, res) //pressing [x] on view manage bookings
 {
 	var bookingId = JSON.parse(req.body.removeId); //parses the removeId field from the given request
 	var index = validate(req.session.id, user);	
@@ -151,7 +181,7 @@ router.post('/removeBookings.json', function(req, res)
 	}
 });
 
-router.post('/UserInfo.json', function(req, res)
+router.post('/UserInfo.json', function(req, res) //gives user info
 {
 	var index = validate(req.session.id, user);	
 	if(index !== -1)
@@ -165,12 +195,12 @@ router.post('/UserInfo.json', function(req, res)
 	}
 });
 
-router.post('/UpdateUserInfo.json', function(req, res)
+router.post('/UpdateUserInfo.json', function(req, res) //updates it when done button pressed
 {
 	var index = validate(req.session.id, user);	
 	if(index !== -1)
 	{
-		var info = req.body.info;
+		var info = JSON.parse(req.body.info);
 		user[index].personalInfo = info; //are the exact same object so copying over should be fine
 		res.send();
 	}
@@ -180,7 +210,7 @@ router.post('/UpdateUserInfo.json', function(req, res)
 	}
 });
 
-router.post('/PaymentInfo.json', function(req, res)
+router.post('/PaymentInfo.json', function(req, res) //gives payment info
 {
 	var index = validate(req.session.id, user);	
 	if(index !== -1)
@@ -194,12 +224,12 @@ router.post('/PaymentInfo.json', function(req, res)
 	}
 });
 
-router.post('/UpdatePaymentInfo.json', function(req, res)
+router.post('/UpdatePaymentInfo.json', function(req, res) //updates payment info when done is clicked
 {
 	var index = validate(req.session.id, user);	
 	if(index !== -1)
 	{
-		var info = req.body.info;
+		var info = JSON.parse(req.body.info);
 		user[index].paymentInfo = info; //are the exact same object so copying over should be fine
 		res.send();
 	}
