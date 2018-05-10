@@ -72,7 +72,7 @@ router.post('/login.json', function(req, res)
 			user[i].currId = req.session.id; //setting currID
 			res.redirect('mappage.html');
 		
-		}else if (signInUser.idtoken !== undefined){
+		}else if (tempUser.idtoken !== undefined){
 			console.log("Google Token Received");
 			async function verify(){
 				const ticket = await client.verifyIdToken({
