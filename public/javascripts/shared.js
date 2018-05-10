@@ -38,21 +38,20 @@ $(document).ready(function(){
         }
     });
     
-    function updateCurrency(current){   
+    function updateCurrency(current)
+    {   
+        console.log("Result: "+result);
+        
         $("#currencyDrop").empty();
         for(var i = 0;i<currencies.length;i++){
             if(current!=currencies[i]){
                 $("#currencyDrop").append("<div class='fixedPopDownItem' value='"+currencies[i]+"'>"+currencies[i]+"</div>");
             }
-            else                
-                changeCurr(currencies[i]);
         }
     }
 
 
 });
-
-
 
 function changeCurr(chosenCurr)
 {
@@ -61,12 +60,11 @@ function changeCurr(chosenCurr)
     {
         if(this.readyState == 4 && this.status == 200)
         {
-            
+            return this.response;
         }
     };
     var temp = {curr:chosenCurr};
     var curr = JSON.stringify(temp);
-    console.log(curr);
     xhttp.open("POST", "/currency.json", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(curr);

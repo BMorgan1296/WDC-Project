@@ -7,7 +7,7 @@ user[0] =
 {
 	email:"a1716836@student.adelaide.edu.au",
 	password:"potato",
-	localCurr:"AUD",
+	localCurr:"NULL",
 	currId:"NULL",
 	bookings:[]
 };
@@ -21,16 +21,14 @@ business[0] =
 	bookings:[],
 	rating:0
 };
-var tempSession = [];
+var tempSession = []; //can have 100 variable connections, otherwise could potentially get too many
 
 function validate(givenID, obj)
 {
 	for (var i = 0; i < obj.length; i++)
 	{
 		if(givenID == obj[i].currId) //searches for ID match
-		{
 			return i;
-		}
 	}
 
 	return -1; //failure to find ID match, i.e. not logged in
@@ -42,30 +40,32 @@ router.get('/', function(req, res, next) {
 });
 
 //router.post('signup.json'), function
-//router.post('login.json'), function
+//router.post('login.json'), function //also should send the local currency
 
-router.post('/currency.json', function(req)
+router.post('/currency.json', function(req, res)
 {
-	//user[0].currId = req.session.id;
-	var index = validate(req.session.id, user);
-	if(index !== -1)
-	{
-		var tempCurr = req.body.curr;
-		user[index].localCurr = tempCurr.curr; //sets user's local currency
-	}
-	else //not logged in
+	var givenCurr = req.body.curr;
+	var index = validate(req.session.id, user); //validates user to check for session
+
+	if(index !== -1) //if user found
+		user[index].localCurr = givenCurr;
+
+	else //not logged in, checks to see if valid tempSession, and if not, creates a new one
 	{
 		index = validate(req.session.id, tempSession);
-		console.log(index);
-		if(index !== -1)
+		if(index !== -1) //found temp session
 		{
-			tempSession[index].currId = req.session.curr; //NOT WORKING
-			tempSession[index].curr = req.body.curr;
+			if(givenCurr !== tempSession[index].localCurr)
+			{
+				tempSession[index].localCurr = givenCurr; //sets tempsession to the given curr
+				res.send(JSON.stringify(tempSession[index].localCurr)); //sends it back				
+			}
 		}
 		else
 		{
-			var temp = {curr:req.body.curr, currId:req.session.id}; //makes new object
-			tempSession.push(temp); //setting currID on the tempSession
+			var newSession = {currId:req.session.id, localCurr:"NULL"};
+			tempSession.push(newSession);
+			res.send();
 		}
 	}	
 	//return search results with a different price?	
