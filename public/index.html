@@ -46,13 +46,14 @@
             <div id = "currencyDrop" class="fixedPopDownList">
             </div>
             <div id = "signDrop" class="sign fixedPopDownList">
-                <form>
-                    <div class="sign fixedPopDownItem signTitle">Email:</div>
-                    <input id = "email" type="text" class="sign">
-                    <div class="sign fixedPopDownItem signTitle">Password:</div>
-                    <input id = "username" type="password" class="sign">
-                    <button class="sign button">Sign-in</button>
-                </form>
+                <form action="/login.json" method="post">
+                    <label class="sign fixedPopDownItem signTitle" for="email">Email:</label>
+                    <input id = "email" type="text" name="email" id="email"><br />
+                    <label class="sign fixedPopDownItem signTitle" for="password">Password:</label>
+                    <input type="password" name="password" id="password"><br />
+                    <input class="sign button" type="submit" value="Submit">
+                </form> 
+
                 <div class="sign fixedPopDownItem signMidTitle">or</div>
                 <div class="sign fixedPopDownItem signMidTitle" id="Signup">Sign-up</div>
                 

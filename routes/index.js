@@ -9,7 +9,18 @@ user[0] =
 	password:"potato",
 	localCurr:"NULL",
 	currId:"NULL",
-	bookings:[]
+	bookings:[],
+	gender:"m",
+	first:"Brad",
+	surname:"Morgan",
+	postcode:"5097",
+	city:"Adelaide",
+	Country:"Australia",
+	card:"MasterCard",
+	cardNo:"12345",
+	expiryM:"07"
+	expiryY:"2020"
+
 };
 //Business Object
 var business = [];
@@ -19,6 +30,7 @@ business[0] =
 	password:"lol",	
 	currId:"NULL",
 	bookings:[],
+	address:"No",
 	rating:0
 };
 var tempSession = []; //can have 100 variable connections, otherwise could potentially get too many
@@ -40,7 +52,23 @@ router.get('/', function(req, res, next) {
 });
 
 //router.post('signup.json'), function
-//router.post('login.json'), function //also should send the local currency
+router.post('/login.json', function(req, res)
+{
+	var tempUser = req.body;
+	for (var i = 0; i < user.length; i++) 
+	{
+		if(tempUser.email == user[i].email && tempUser.password == user[i].password)
+		{
+			user[i].currId = req.session.id; //setting currID
+			res.redirect('mappage.html');
+		}
+		else
+		{	
+			res.redirect('index.html');
+		}
+	}
+	
+});
 
 router.post('/currency.json', function(req, res)
 {
@@ -58,7 +86,7 @@ router.post('/currency.json', function(req, res)
 			if(givenCurr !== tempSession[index].localCurr)
 			{
 				tempSession[index].localCurr = givenCurr; //sets tempsession to the given curr
-				res.send(JSON.stringify(tempSession[index].localCurr)); //sends it back				
+				res.send(JSON.stringify(tempSession[index].localCurr)); //sends it back		
 			}
 		}
 		else
