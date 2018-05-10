@@ -36,7 +36,17 @@ business[0] =
 	currId:"NULL",
 	bookings:[],
 	address:"No",
-	rating:0
+	rating:0,
+	details:
+	{
+		name:"Crap",
+		contact:"0422470946",
+		address:"No address 4 u",
+		suburb:"jokes",
+		postcode:"5096",
+		city:"Atlantis",
+		country:"Moon"
+	}
 };
 var tempSession = [];
 
@@ -75,18 +85,60 @@ router.post('/login.json', function(req, res)
 	
 });
 
-router.post('/signup.json'), function(req, res){
-	var signInUser = req.body;
-	for (var i = 0; i < user.length; i++){
-		if(signInUser.email !== user[i].email && signInUser.password !== user[i].password){
-			users[signInUser.username] = {password:signInUser.password};
-			users[signInUser.username] = {personalInfo:first:signInUser.name};
-			console.log("Added User");
-            res.redirect('index.html');
+router.post('/signup.json', function(req, res)
+{
+	var givenCredentials = req.body;
+	var accountFound = false;
+
+	for (var i = 0; i < user.length; i++) 
+	{
+		if(givenCredentials.email === user[i].email)
+		{
+			accountFound = true;
 		}
 	}
-}
-router.post('/updateEmail.json', function(req, res) //should be called when user enters new email and presses done
+
+	if(accountFound === false)
+	{
+		var fullName = givenCredentials.fullName.split(" ");
+		var firstName;
+		for (i = 0; i < fullName.length-1; i++)
+		{
+			firstName = firstName + fullName[i];
+		}
+		var newUser =
+		{
+			email:givenCredentials.email,
+			password:givenCredentials.password,
+			localCurr:"AUD",
+			currId:req.sesion.id, //sets new user's session id to the current one
+			bookings:[],
+			personalInfo: 
+			{
+				gender:"",
+				first:firstName, //gotten firstname previously in for loop
+				surname:fullName[fullName.length-1], //gets surname as it is last token of the string
+				postcode:"",
+				city:"",
+				Country:""
+			},
+			paymentInfo:
+			{
+				card:"",
+				cardNo:"",
+				expiryM:"",
+				expiryY:""
+			}	
+		};
+
+		user.push(newUser);
+	}
+
+	console.log("Added User");
+    res.redirect('index.html');
+});
+
+router.post('/updateEmailUser.json', function(req, res) //should be called when user enters new email and presses done
 {
 	var index = validate(req.session.id, user); //finds valid user
 	if(index !== -1)
@@ -101,13 +153,43 @@ router.post('/updateEmail.json', function(req, res) //should be called when user
 	
 });
 
-router.post('/updatePassword.json', function(req, res) //may not be needed depending on openID
+router.post('/updatePasswordUser.json', function(req, res) //may not be needed depending on openID
 {
 	var index = validate(req.session.id, user); //finds valid user
 	if(index !== -1)
 	{
 		var newPW = JSON.parse(req.body.password);
 		user[index].passwords = newPW;
+	}
+	else
+	{
+		res.redirect('index.html');
+	}
+	
+});
+
+router.post('/updateEmailBusiness.json', function(req, res) //should be called when business enters new email and presses done
+{
+	var index = validate(req.session.id, business); //finds valid business
+	if(index !== -1)
+	{
+		var newEmail = JSON.parse(req.body.email);
+		business[index].email = newEmail;
+	}
+	else
+	{
+		res.redirect('index.html');
+	}
+	
+});
+
+router.post('/updatePasswordBusiness.json', function(req, res) //may not be needed depending on openID
+{
+	var index = validate(req.session.id, business); //finds valid business
+	if(index !== -1)
+	{
+		var newPW = JSON.parse(req.body.password);
+		business[index].passwords = newPW;
 	}
 	else
 	{
@@ -242,6 +324,35 @@ router.post('/UpdatePaymentInfo.json', function(req, res) //updates payment info
 	{
 		var info = JSON.parse(req.body.info);
 		user[index].paymentInfo = info; //are the exact same object so copying over should be fine
+		res.send();
+	}
+	else
+	{
+		res.redirect('index.html');
+	}
+});
+
+router.post('/BusinessInfo.json', function(req, res) //gives business info
+{
+	var index = validate(req.session.id, business);	
+	if(index !== -1)
+	{
+		var toString = business[index].details;
+		res.send(toString);
+	}
+	else
+	{
+		res.redirect('index.html');
+	}
+});
+
+router.post('/UpdateBusinessInfo.json', function(req, res) //updates it when done button pressed
+{
+	var index = validate(req.session.id, business);	
+	if(index !== -1)
+	{
+		var info = JSON.parse(req.body.info);
+		business[index].details = info; //are the exact same object so copying over should be fine
 		res.send();
 	}
 	else
