@@ -37,7 +37,7 @@ function removeRoom(input)
 	counter = counter - 1;
 }
 
-function editRoom(currRoom)
+function viewRoom(currRoom)
 {
 	var edit = document.createElement('div');
 	document.body.appendChild(edit);
@@ -48,7 +48,7 @@ function editRoom(currRoom)
 			<div id="editBackground"></div>
 			<div class="editBox">			
 
-				<div class="editBoxTitle">View/Edit Booking Details</div>
+				<div class="editBoxTitle">View Booking Details</div>
 
 				<label id="editRoomTitleLabel" class="editBoxInput">Room Title</label>
 				<label id="editRoomTitle" class="editBoxInput"></label>

@@ -10,17 +10,22 @@ user[0] =
 	localCurr:"NULL",
 	currId:"NULL",
 	bookings:[],
-	gender:"m",
-	first:"Brad",
-	surname:"Morgan",
-	postcode:"5097",
-	city:"Adelaide",
-	Country:"Australia",
-	card:"MasterCard",
-	cardNo:"12345",
-	expiryM:"07"
-	expiryY:"2020"
-
+	personalInfo: 
+	{
+		gender:"m",
+		first:"Brad",
+		surname:"Morgan",
+		postcode:"5097",
+		city:"Adelaide",
+		Country:"Australia"
+	},
+	paymentInfo:
+	{
+		card:"MasterCard",
+		cardNo:"12345",
+		expiryM:"07",
+		expiryY:"2020"
+	}	
 };
 //Business Object
 var business = [];
@@ -33,7 +38,7 @@ business[0] =
 	address:"No",
 	rating:0
 };
-var tempSession = []; //can have 100 variable connections, otherwise could potentially get too many
+var tempSession = [];
 
 function validate(givenID, obj)
 {
@@ -97,6 +102,111 @@ router.post('/currency.json', function(req, res)
 		}
 	}	
 	//return search results with a different price?	
+});
+
+router.post('/populateBookings.json', function(req, res)
+{
+	var index = validate(req.session.id, user); //finds valid user
+	if(index !== -1)
+	{
+		var toString = JSON.stringify(user[index].bookings);
+		res.send(toString);
+	}
+	else
+	{
+		res.redirect('index.html');
+	}
+	
+});
+
+router.post('/viewBooking.json', function(req, res)
+{
+	var index = validate(req.session.id, user); //finds valid user
+	if(index !== -1)
+	{
+		var bookingIndex = req.body.bookingIndex;
+		var toString = JSON.stringify(user[index].bookings[bookingIndex]);
+		res.sendD(toString);
+	}
+	else
+	{
+		res.redirect('index.html');
+	}
+	
+});
+
+router.post('/removeBookings.json', function(req, res)
+{
+	var bookingId = JSON.parse(req.body.removeId); //parses the removeId field from the given request
+	var index = validate(req.session.id, user);	
+
+	if(index !== -1)
+	{
+		delete user[index].bookings[bookingId]; //deletes the booking from the list
+		res.send(); //should repopulate bookings as well
+	}
+	else
+	{
+		res.redirect('index.html');
+	}
+});
+
+router.post('/UserInfo.json', function(req, res)
+{
+	var index = validate(req.session.id, user);	
+	if(index !== -1)
+	{
+		var toString = user[index].personalInfo;
+		res.send(toString);
+	}
+	else
+	{
+		res.redirect('index.html');
+	}
+});
+
+router.post('/UpdateUserInfo.json', function(req, res)
+{
+	var index = validate(req.session.id, user);	
+	if(index !== -1)
+	{
+		var info = req.body.info;
+		user[index].personalInfo = info; //are the exact same object so copying over should be fine
+		res.send();
+	}
+	else
+	{
+		res.redirect('index.html');
+	}
+});
+
+router.post('/PaymentInfo.json', function(req, res)
+{
+	var index = validate(req.session.id, user);	
+	if(index !== -1)
+	{
+		var toString = user[index].paymentInfo;
+		res.send(toString);
+	}
+	else
+	{
+		res.redirect('index.html');
+	}
+});
+
+router.post('/UpdatePaymentInfo.json', function(req, res)
+{
+	var index = validate(req.session.id, user);	
+	if(index !== -1)
+	{
+		var info = req.body.info;
+		user[index].paymentInfo = info; //are the exact same object so copying over should be fine
+		res.send();
+	}
+	else
+	{
+		res.redirect('index.html');
+	}
 });
 
 module.exports = router;
