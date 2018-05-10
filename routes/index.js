@@ -62,7 +62,7 @@ router.post('/login.json', function(req, res)
 	var tempUser = req.body;
 	for (var i = 0; i < user.length; i++) 
 	{
-		if(tempUser.email == user[i].email && tempUser.password == user[i].password)
+		if(tempUser.email === user[i].email && tempUser.password === user[i].password)
 		{
 			user[i].currId = req.session.id; //setting currID
 			res.redirect('mappage.html');
@@ -75,6 +75,17 @@ router.post('/login.json', function(req, res)
 	
 });
 
+router.post('/signup.json'), function(req, res){
+	var signInUser = req.body;
+	for (var i = 0; i < user.length; i++){
+		if(signInUser.email !== user[i].email && signInUser.password !== user[i].password){
+			users[signInUser.username] = {password:signInUser.password};
+			users[signInUser.username] = {personalInfo:first:signInUser.name};
+			console.log("Added User");
+            res.redirect('index.html');
+		}
+	}
+}
 router.post('/updateEmail.json', function(req, res) //should be called when user enters new email and presses done
 {
 	var index = validate(req.session.id, user); //finds valid user
