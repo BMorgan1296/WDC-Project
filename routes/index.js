@@ -66,10 +66,10 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Express' });
 });
 
-//router.post('signup.json'), function
 router.post('/login.json', function(req, res)
 {
 	var tempUser = req.body;
+
 	for (var i = 0; i < user.length; i++) 
 	{
 		if(tempUser.email === user[i].email && tempUser.password === user[i].password)
@@ -81,8 +81,28 @@ router.post('/login.json', function(req, res)
 		{	
 			res.redirect('index.html');
 		}
+		
+		}else if (signInUser.idtoken !== undefined){
+			console.log("Google Token Received");
+			async function verify(){
+				const ticket = await client.verifyIdToken({
+                idToken: req.body.idtoken,
+                audience: CLIENT_ID
+        });
+   	     const payload = ticket.getPayload();
+   	     var email = payload['email'];
+   	     var first = payload['given_name'];
+   	     for(var i = 0; i < user.length; i++){
+   		  if(user[i].email === email && user[i].name === given_name){
+           user[i].currId = req.session.id; //setting currID
+		   res.redirect('mappage.html');
+   		}
+   	}
+   	}
+   } else {
+   	res.redirect('index.html');
+		
 	}
-	
 });
 
 router.post('/signup.json', function(req, res)
