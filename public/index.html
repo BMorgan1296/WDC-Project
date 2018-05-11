@@ -2,6 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="314455925120-3eqrg8kqg9u39qup8ctkoo7ur7hfv44v.apps.googleusercontent.com">
     <link rel="stylesheet" type="text/css" href="stylesheets/gwestyStyle.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/landing.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
@@ -9,9 +11,11 @@
     <script type="application/javascript" src="javascripts/jquery-1.12.4.js"></script>
     <script type="application/javascript" src="javascripts/shared.js"></script>
     <script type="application/javascript" src="javascripts/landing.js"></script>
+    <script type="application/javascript" src="javascripts/openid.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>gwesty</title>
 </head>
-<body>
+<body onload="getUserInfo({})">
     <div id="pcontainer">
         <div class="popupCon" id="newSignup">
             <div class="popup">
@@ -32,6 +36,9 @@
                     <button class="button">Sign-up</button>
                     <div class="popupItem center">or</div>
                     <div class="popupItem">Sign-up with </div>
+                    
+                    <div id="gbutton" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> <!-- google button -->
+                    <button id="signbutton" class="signout" onclick="signOut()"> signout</button>  
                 </form>
             </div>
         </div>
@@ -46,14 +53,13 @@
             <div id = "currencyDrop" class="fixedPopDownList">
             </div>
             <div id = "signDrop" class="sign fixedPopDownList">
-                <form action="/login.json" method="post">
-                    <label class="sign fixedPopDownItem signTitle" for="email">Email:</label>
-                    <input id = "email" type="text" name="email" id="email"><br />
-                    <label class="sign fixedPopDownItem signTitle" for="password">Password:</label>
-                    <input type="password" name="password" id="password"><br />
-                    <input class="sign button" type="submit" value="Submit">
-                </form> 
-
+                <form>
+                    <div class="sign fixedPopDownItem signTitle">Email:</div>
+                    <input id = "email" type="text" class="sign">
+                    <div class="sign fixedPopDownItem signTitle">Password:</div>
+                    <input id = "password" type="password" class="sign">
+                    <button  onclick = "logIn()" class="sign button">Sign-in</button>
+                </form>
                 <div class="sign fixedPopDownItem signMidTitle">or</div>
                 <div class="sign fixedPopDownItem signMidTitle" id="Signup">Sign-up</div>
                 
@@ -68,8 +74,10 @@
                     <input id = "searchButton" type="button" onclick="search()" value="Search">
                 </form>
             </div>
+            
         </div>
-
+       
+       
         </div>
         <div class="fullPage" id="half2">
             <div class="secHalfBox">

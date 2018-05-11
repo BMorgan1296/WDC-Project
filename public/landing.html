@@ -36,8 +36,9 @@
                     <button class="button">Sign-up</button>
                     <div class="popupItem center">or</div>
                     <div class="popupItem">Sign-up with </div>
-                    <!-- <div class= "popupOpenId">
-                    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> </div>  --><!-- google button  -->
+                    
+                    <div id="gbutton" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> <!-- google button -->
+                    <button id="signbutton" class="signout" onclick="signOut()"> signout</button>  
                 </form>
             </div>
         </div>
@@ -57,7 +58,7 @@
                     <input id = "email" type="text" class="sign">
                     <div class="sign fixedPopDownItem signTitle">Password:</div>
                     <input id = "password" type="password" class="sign">
-                    <button  onclick = "login()" class="sign button">Sign-in</button>
+                    <button  onclick = "logIn()" class="sign button">Sign-in</button>
                 </form>
                 <div class="sign fixedPopDownItem signMidTitle">or</div>
                 <div class="sign fixedPopDownItem signMidTitle" id="Signup">Sign-up</div>
@@ -76,7 +77,7 @@
             
         </div>
         <div id="content"></div> <!-- testing login  -->
-        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+       <!--  <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> -->
        
         </div>
         <div class="fullPage" id="half2">

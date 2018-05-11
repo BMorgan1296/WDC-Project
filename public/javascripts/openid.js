@@ -1,7 +1,8 @@
+
  function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log("ID: " + profile.getId()); 
         console.log('Full Name: ' + profile.getName());
         console.log('Given Name: ' + profile.getGivenName());
         console.log('Family Name: ' + profile.getFamilyName());
@@ -10,7 +11,7 @@
         document.getElementById("gbutton").style.display = "none";
         document.getElementById("signbutton").style.display = "inline-block";
         // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
+        // var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
 
         getUserInfo({idtoken: id_token});
@@ -26,11 +27,12 @@
 }
 
               
-        function login() {
+        function logIn() {
+
             getUserInfo({username:document.getElementById('email').value, password:document.getElementById('password').value});
         }
 
-        // Load and show hotels on map
+       
         function getUserInfo(params) {
             // Create new AJAX request
             var xhttp = new XMLHttpRequest();
@@ -40,7 +42,7 @@
             
                 if (this.readyState == 4 && this.status == 200) {
                 
-                    // convert from string to JSON, populate hotels array
+                    // convert from string to JSON, 
                     login = JSON.parse(xhttp.responseText);
                     
                     
@@ -51,7 +53,9 @@
             xhttp.open("POST", "/login.json", true);
             
             xhttp.setRequestHeader("Content-type","application/json");
-            
+         
             // Send request
             xhttp.send(JSON.stringify(params));
+               
+
         }

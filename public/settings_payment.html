@@ -2,19 +2,23 @@
 <html>
 <head>
 	<meta charset="utf-8" />
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="314455925120-3eqrg8kqg9u39qup8ctkoo7ur7hfv44v.apps.googleusercontent.com">
 	<link rel="stylesheet" type="text/css" href="stylesheets/gwestyStyle.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/userinfo.css"> 
     <link rel="stylesheet" type="text/css" href="stylesheets/usersetting.css"> 
 	<script type="application/javascript" src="javascripts/jquery-1.12.4.js"></script>
 	<script type="application/javascript" src="javascripts/shared.js"></script>
-    
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
+    <script type="application/javascript" src="javascripts/openid.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
 	<title> Settings - Payment details </title>
 </head>
-<body id="pContainer">
-    <div class="popupCon" id="newSignup">
+<body onload="getUserInfo({})">
+    <div id="pcontainer">
+        <div class="popupCon" id="newSignup">
             <div class="popup">
                 <form>
                     <h3 class="popupItem center">Sign-up</h3>
@@ -33,10 +37,15 @@
                     <button class="button">Sign-up</button>
                     <div class="popupItem center">or</div>
                     <div class="popupItem">Sign-up with </div>
+                    
+                    <div id="gbutton" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> <!-- google button -->
+                    <button id="signbutton" class="signout" onclick="signOut()"> signout</button>  
                 </form>
             </div>
         </div>
-    <div class="header">
+        <div class="fullPage" id="half1">
+
+        <div class="header">
             <div id="currency" class="headerLabel"><span id="currencyText"> AUD </span>
             </div>
             <div class="headerLabel divider">|</div>
@@ -49,8 +58,8 @@
                     <div class="sign fixedPopDownItem signTitle">Email:</div>
                     <input id = "email" type="text" class="sign">
                     <div class="sign fixedPopDownItem signTitle">Password:</div>
-                    <input id = "username" type="password" class="sign">
-                    <button class="sign button">Sign-in</button>
+                    <input id = "password" type="password" class="sign">
+                    <button  onclick = "logIn()" class="sign button">Sign-in</button>
                 </form>
                 <div class="sign fixedPopDownItem signMidTitle">or</div>
                 <div class="sign fixedPopDownItem signMidTitle" id="Signup">Sign-up</div>
