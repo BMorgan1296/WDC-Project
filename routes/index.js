@@ -38,9 +38,10 @@ business[0] =
 	email:"lolol@business.com.au",
 	password:"lol",	
 	currId:"NULL",
-	bookings:[],
+	rooms:[],
 	address:"No",
 	rating:0,
+	numRatings:0,
 	details:
 	{
 		name:"Crap",
@@ -50,7 +51,8 @@ business[0] =
 		postcode:"5096",
 		city:"Atlantis",
 		country:"Moon"
-	}
+	},
+	amenities:[false, false, false, false, false, false] //pool, spa, wifi, fitness, parking, restaurant
 };
 var tempSession = [];
 
@@ -72,38 +74,35 @@ router.get('/', function(req, res) {
 
 router.post('/login.json', function(req, res)
 {
-	var tempUser = req.body;
+	var signInUser = req.body;
 
-	for (var i = 0; i < user.length; i++) 
-	{
-		if(tempUser.email === user[i].email && tempUser.password === user[i].password)
-		{
-			user[i].currId = req.session.id; //setting currID
-			res.redirect('mappage.html');
-	
-		}else if (signInUser.idtoken !== undefined){
+	for (var i = 0; i < user.length; i++){		
+		if (signInUser.idtoken !== undefined){
 			console.log("Google Token Received");
-			async function verify(){
-				const ticket = await client.verifyIdToken({
-                idToken: req.body.idtoken,
-                audience: CLIENT_ID
-        });
-   	     const payload = ticket.getPayload();
-   	     var email = payload['email'];
-   	     var first = payload['given_name'];
-   	     for(var i = 0; i < user.length; i++){
-   		  if(user[i].email === email && user[i].name === given_name){
-           user[i].currId = req.session.id; //setting currID
-		   res.redirect('mappage.html');
-   		}
-   	}
 
-   	}
-   } else {
-   	res.redirect('index.html');
-		
+			async function verify()
+			{
+				const ticket = await client.verifyIdToken({
+	                idToken: signInUser.idtoken,
+	                audience: CLIENT_ID
+        		});
+
+		   	    const payload = ticket.getPayload();
+		   	    var email = payload['email'];
+		   	    var first = payload['given_name'];
+
+		   	    for(var i = 0; i < user.length; i++){
+		   			if(user[i].email === email && user[i].name === signInUser.given_name){ //sets sessionID for the given user
+						user[i].currId = req.session.id; //setting currID
+						res.redirect('mappage.html');
+		   			}
+		   		}
+   			}
+   		} 
+   		else {
+   		res.redirect('index.html');		
+		}
 	}
-}
 });
 
 router.post('/signup.json', function(req, res)
@@ -245,7 +244,6 @@ router.post('/currency.json', function(req, res) //handles the changing of local
 			res.send();
 		}
 	}	
-	//return search results with a different price?	
 });
 
 router.post('/populateBookings.json', function(req, res) //should be called when user enters view manage bookings
@@ -380,6 +378,67 @@ router.post('/UpdateBusinessInfo.json', function(req, res) //updates it when don
 	{
 		res.redirect('index.html');
 	}
+});
+
+router.get('/search.json', function(req, res)
+{
+	var searchQueries = req.body.queries; //search words
+	var searchFilters = req.body.filters; //search filters
+	var results = [];
+
+	var ratings = false;
+	var amenities = true; //is true as if one anemity doesnt match then it becomes false
+	var roomType = false;
+	var priceBelow = false;
+
+	var nameMatch = false;
+	var titleMatch = false;
+	var suburbMatch = false;
+	var cityMatch = false;
+
+	for (var i = 0; i < business.length; i++) //searches all businesses
+	{
+		for (var j = 0; j < business[i].rooms.length; j++)  //searches all rooms for each business
+		{
+			var currBusiness = business[i];
+			var currRoom = business[i].rooms[j];
+
+			if(currBusiness.numRatings >= searchFilters.ratings) //ratings inside limit
+				ratings = true;
+
+			for (var a = 0; a < currBusiness.anemities.length; a++)//will make anemities false if it doesn't match with given anemities
+			{ 
+				if(currBusiness.anemities[a] !== searchFilters.anemities[a])
+					amenities = false;
+			}
+			if(currRoom.type === searchFilters.roomType) //if the type is the same, then roomType is correct
+				roomType = true;
+			if(currRoom.priceBelow >= searchFilters.priceLimit) //if the price limit is below or equal then it is below the price limit
+				priceBelow = true;
+
+			for(var q = 0; q < searchQueries.length; q++)
+			{
+				if(currRoom.title.includes(searchQueries[q]) === true) //room matching title
+					titleMatch = true;
+				if(currBusiness.name.includes(searchQueries[q]) === true) //if just one of the business descriptions is true after passing the previous tests, then we will add the room
+					nameMatch = true;				
+				else if(currBusiness.suburb.includes(searchQueries[q]) === true)
+					suburbMatch = true;
+				else if(currBusiness.city.includes(searchQueries[q]) === true)
+					cityMatch = true;
+			}
+
+			if(ratings === true && amenities === true && roomType === true && priceBelow === true)
+			{
+				if(titleMatch === true) //will add room if the title matches
+					results.push(currRoom);
+				else if(nameMatch === true || suburbMatch === true || cityMatch === true) //or will add the room if the name, suburb or city matches
+					results.push(currRoom);
+			}			
+		}
+	}
+
+	res.send(JSON.stringify(results)); //sends the compiled results
 });
 
 module.exports = router;
