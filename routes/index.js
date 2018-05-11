@@ -293,7 +293,7 @@ router.post('/removeBookings.json', function(req, res) //pressing [x] on view ma
 	}
 });
 
-router.post('/UserInfo.json', function(req, res) //gives user info
+router.get('/UserInfo.json', function(req, res) //gives user info
 {
 	var index = validate(req.session.id, user);	
 	if(index !== -1)

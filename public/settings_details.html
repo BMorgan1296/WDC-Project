@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="stylesheets/usersetting.css"> 
 	<script type="application/javascript" src="javascripts/jquery-1.12.4.js"></script>
 	<script type="application/javascript" src="javascripts/shared.js"></script>
+    <script type=application/javascript src="javascripts/settings_details.js">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <script type="application/javascript" src="javascripts/openid.js"></script>
@@ -114,22 +115,22 @@
 	<!-- radio buttons -->
            <form class="radiobuttons">
             <label>
-              <input type="radio" name="gender">Male
+              <input type="radio" name="gender" id="genderm" value="m">Male
             </label>
             <label class="radiobutton">
-              <input type="radio" name="gender">Female
+              <input type="radio" name="gender" id="genderf" value="f">Female
             </label>
             <label class="radiobutton">
-              <input type="radio" name="gender">Other
+              <input type="radio" name="gender" id="gendero" value="o">Other
             </label>
           </form>
         <!-- Input boxes -->
             <div class="textboxes">
-                <input type="text" class="textbox" />
-                <input type="text" class="textbox" />
-                <input type="text" class="textbox" />
-                <input type="text" class="textbox" />
-                <input type="text" class="textbox" />
+                <input type="text" class="textbox" id="fName"/>
+                <input type="text" class="textbox" id="sName"/>
+                <input type="text" class="textbox" id="address"/>
+                <input type="text" class="textbox" id="postcode"/>
+                <input type="text" class="textbox" id="city"/>
         <!--dropdown for countries-->
                 <form>
                   <select id="country" name="country">
@@ -386,7 +387,7 @@
                   </select>
                 </form>	
                 <form>
-                <button class="done button">Done</button>	 
+                <button class="done button" id="update">Done</button>	 
                 </form>
             </div>
         </div>
@@ -407,6 +408,8 @@
                 </div> 
                 <div class="footerHalf">gwesty</div>   
             </div>
+        </div>
+    </div>
 
 </body>
 </html>
