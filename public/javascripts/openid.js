@@ -11,7 +11,7 @@
         document.getElementById("gbutton").style.display = "none";
         document.getElementById("signbutton").style.display = "inline-block";
         // The ID token you need to pass to your backend:
-        // var id_token = googleUser.getAuthResponse().id_token;
+        var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
 
         getUserInfo({idtoken: id_token});

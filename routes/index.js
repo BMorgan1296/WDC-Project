@@ -56,6 +56,8 @@ business[0] =
 	amenities:[false, false, false, false, false, false] //pool, spa, wifi, fitness, parking, restaurant
 };
 var tempSession = [];
+var sessions = {};
+
 
 function validate(givenID, obj)
 {
@@ -69,43 +71,59 @@ function validate(givenID, obj)
 }
 
 //Hi Marker!
-router.get('/', function(req, res) {
+router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
 router.post('/login.json', function(req, res)
 {
-	var signInUser = req.body;
+	var login = null;
+	console.log(JSON.stringify(req.body));
 
-	for (var i = 0; i < user.length; i++){		
-		if (signInUser.idtoken !== undefined){
+	var tempUser = req.body;
+
+	for (var i = 0; i < user.length; i++) 
+	{
+		if(tempUser.email === user[i].email && tempUser.password === user[i].password)
+		{
+            console.log("Username + Password received");
+			user[i].currId = req.session.id; //setting currID
+			
+			sessions[req.session.id] = tempUser.email;
+                login = tempUser.email
+			
+			// login = req.session.id; 
+			// res.redirect('mappage.html');
+	        req.json({email:login});  
+		}else if (tempUser.idtoken !== undefined){
 			console.log("Google Token Received");
 
-			async function verify()
-			{
+			async function verify(){
 				const ticket = await client.verifyIdToken({
-	                idToken: signInUser.idtoken,
-	                audience: CLIENT_ID
-        		});
+                idToken: req.body.idtoken,
+                audience: CLIENT_ID
+        });
+   	     const payload = ticket.getPayload();
+   	     var gmail = payload['email'];
+   	     var first = payload['given_name'];
 
-		   	    const payload = ticket.getPayload();
-		   	    var email = payload['email'];
-		   	    var first = payload['given_name'];
-
-		   	    for(var i = 0; i < user.length; i++){
-		   			if(user[i].email === email && user[i].name === signInUser.given_name){ //sets sessionID for the given user
-						user[i].currId = req.session.id; //setting currID
-						res.redirect('mappage.html');
-		   			}
-		   		}
-   			}
-   		} 
-   		else {
-   		res.redirect('index.html');		
-		}
-	}
+   	     
+   	     for(var i = 0; i < user.length; i++){
+   		  if(user[i].email === gmail && user[i].name === given_name){
+   		  	sessions[req.session.id] = user[i].email;  
+            user[i].currId = req.session.id; //setting currID
+            login = user[i].email;
+   		}
+   	}
+         req.json({email:login});
+   	}
+ //   } else {
+ //   	res.redirect('index.html');
+		
+	// }
+}
+}
 });
-
 router.post('/signup.json', function(req, res)
 {
 	var givenCredentials = req.body;
@@ -440,6 +458,25 @@ router.get('/search.json', function(req, res)
 	}
 
 	res.send(JSON.stringify(results)); //sends the compiled results
+});
+
+/// reviews //// 
+
+var fs = require('fs');
+var reviews = [];
+
+fs.readFile('data/reviews.json', 'utf8', function(err, data) { 
+    reviews = JSON.parse(data);
+});
+
+router.get('/reviews.json', function(req, res) {
+    res.send(JSON.stringify(reviews));
+});
+
+router.post('/addReview.json', function(req, res) {
+    console.log(req.body);
+    reviews.push({name: req.body.name, date: req.body.date, text: req.body.text});
+    res.send();
 });
 
 module.exports = router;
