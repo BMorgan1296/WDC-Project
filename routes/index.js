@@ -17,11 +17,12 @@ user[0] =
 	personalInfo: 
 	{
 		gender:"m",
-		first:"Brad",
-		surname:"Morgan",
+		fName:"Brad",
+		sName:"Morgan",
+		address:"I live here",
 		postcode:"5098",
 		city:"Adelaide",
-		Country:"Australia"
+		country:"Australia"
 	},
 	paymentInfo:
 	{
