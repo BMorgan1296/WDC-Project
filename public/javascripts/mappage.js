@@ -96,3 +96,8 @@ function closeAllSelect(room_options) {
     }
   }
 }
+
+function sendQuery()
+{
+  //send the queries to the server
+}
