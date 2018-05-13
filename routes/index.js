@@ -459,6 +459,22 @@ router.get('/search.json', function(req, res)
 	res.send(JSON.stringify(results)); //sends the compiled results
 });
 
+/// bookings ///
+
+router.post('/userBookings.json', function(req, res)
+{
+	var index = validate(req.session.id, business);	
+	if(index !== -1)
+	{
+		var toString = business[index].bookings; //sends bookings
+		res.send(toString);
+	}
+	else
+	{
+		res.redirect('index.html');
+	}
+});
+
 /// reviews //// 
 
 var fs = require('fs');
