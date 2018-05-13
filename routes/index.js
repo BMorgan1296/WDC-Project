@@ -86,15 +86,11 @@ router.post('/login.json', function(req, res)
 	{
 		if(tempUser.email === user[i].email && tempUser.password === user[i].password)
 		{
-            console.log("Username + Password received");
-			user[i].currId = req.session.id; //setting currID
-			
-			sessions[req.session.id] = tempUser.email;
-                login = tempUser.email
-			
-			// login = req.session.id; 
-			// res.redirect('mappage.html');
-	        req.json({email:login});  
+
+			user[i].currId = req.session.id; //setting currID. 
+			tempSession[req.session.id] = req.body.email;
+                login = req.body.email
+		        res.json({email:login});  
 		}else if (tempUser.idtoken !== undefined){
 			console.log("Google Token Received");
 
@@ -104,26 +100,29 @@ router.post('/login.json', function(req, res)
                 audience: CLIENT_ID
         });
    	     const payload = ticket.getPayload();
-   	     var gmail = payload['email'];
-   	     var first = payload['given_name'];
+   	     var email = payload['email'];
+   	     var name = payload['given_name'];
+   	     const userid = payload['sub'];
 
    	     
    	     for(var i = 0; i < user.length; i++){
-   		  if(user[i].email === gmail && user[i].name === given_name){
-   		  	sessions[req.session.id] = user[i].email;  
-            user[i].currId = req.session.id; //setting currID
+   		  if(user[i].email === email && user[i].personalInfo.fName === name){
+   		  	tempSession[req.session.id] = user[i].email; 
             login = user[i].email;
    		}
    	}
-         req.json({email:login});
-   	}
- //   } else {
- //   	res.redirect('index.html');
-		
-	// }
+       res.json({email:login});
+   	}verify().catch(console.error);
+  } else if(tempSession[req.session.id] !== undefined){
+  	    console.log("valid session");
+    	login = tempSession[req.session.id];
+    	res.json({email:login})
+  }
+
 }
-}
+
 });
+
 router.post('/signup.json', function(req, res)
 {
 	var givenCredentials = req.body;

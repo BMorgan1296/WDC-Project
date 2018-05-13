@@ -10,7 +10,7 @@
         console.log("Email: " + profile.getEmail());
         document.getElementById("gbutton").style.display = "none";
         document.getElementById("signbutton").style.display = "inline-block";
-        // The ID token you need to pass to your backend:
+        // The ID token that need to pass to backend:
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
 
@@ -29,7 +29,7 @@
               
         function logIn() {
 
-            getUserInfo({username:document.getElementById('email').value, password:document.getElementById('password').value});
+            getUserInfo({email:document.getElementById('email').value, password:document.getElementById('password').value});
         }
 
        
@@ -44,7 +44,6 @@
                 
                     // convert from string to JSON, 
                     login = JSON.parse(xhttp.responseText);
-                    
                     
                 }
             };
