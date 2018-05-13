@@ -242,25 +242,14 @@ router.post('/currency.json', function(req, res) //handles the changing of local
 	var index = validate(req.session.id, user); //validates user to check for session
 
 	if(index !== -1) //if user found
-		user[index].localCurr = givenCurr;
-
-	else //not logged in, checks to see if valid tempSession, and if not, creates a new one
 	{
-		index = validate(req.session.id, tempSession);
-		if(index !== -1) //found temp session
-		{
-			if(givenCurr !== tempSession[index].localCurr)
-			{
-				tempSession[index].localCurr = givenCurr; //sets tempsession to the given curr
-				res.send(JSON.stringify(tempSession[index].localCurr)); //sends it back		
-			}
-		}
-		else
-		{
-			var newSession = {currId:req.session.id, localCurr:"NULL"};
-			tempSession.push(newSession);
-			res.send();
-		}
+		user[index].localCurr = givenCurr;
+		res.send();
+	}
+
+	else //not logged in
+	{
+		res.send(); 
 	}	
 });
 
