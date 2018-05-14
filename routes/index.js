@@ -145,6 +145,29 @@ router.post('/login.json', function(req, res)
 
 }); 
 
+router.post('/businessLogin.json', function(req, res) {
+    
+    var businessLogin = null;
+	console.log(JSON.stringify(req.body));
+    var businessUser = req.body;
+
+   if(businessUser.email !== undefined && businessUser.password !== undefined){
+       console.log("Username + Password received");
+	for (var i = 0; i < business.length; i++) 
+	{
+		if(businessUser.email === business[i].email && businessUser.password === business[i].password)
+		{
+            console.log("user found");
+			business[i].currId = req.session.id; //setting currID. 
+			tempSession[req.session.id] = req.body.email;
+            businessLogin = businessUSer.email
+            }
+        }
+		        res.json({email:businessLogin}); 
+   }
+   verify().catch(console.error);
+});
+
 
 router.post('/logout',function(req, res){
 	var index = validate(req.session.id, user); //finds valid user
@@ -212,7 +235,7 @@ router.post('/signup.json', function(req, res)
 	}
 
 	console.log("Added User");
-    res.redirect('//index.html');
+    res.redirect('/index.html');
 });
 
 router.post('/updateEmailUser.json', function(req, res) //should be called when user enters new email and presses done
@@ -225,7 +248,7 @@ router.post('/updateEmailUser.json', function(req, res) //should be called when 
 	}
 	else
 	{
-		res.redirect('//index.html');
+		res.redirect('/index.html');
 	}
 	
 });
@@ -240,7 +263,7 @@ router.post('/updatePasswordUser.json', function(req, res) //may not be needed d
 	}
 	else
 	{
-		res.redirect('//index.html');
+		res.redirect('/index.html');
 	}
 	
 });
@@ -255,9 +278,8 @@ router.post('/updateEmailBusiness.json', function(req, res) //should be called w
 	}
 	else
 	{
-		res.redirect('//index.html');
-	}
-	
+		res.redirect('/index.html');
+	}	
 });
 
 router.post('/updatePasswordBusiness.json', function(req, res) //may not be needed depending on openID
@@ -270,7 +292,7 @@ router.post('/updatePasswordBusiness.json', function(req, res) //may not be need
 	}
 	else
 	{
-		res.redirect('//index.html');
+		res.redirect('/index.html');
 	}
 	
 });//********************************************************************************************
@@ -302,9 +324,8 @@ router.get('/populateBookings.json', function(req, res) //should be called when 
 	}
 	else
 	{
-		res.redirect('//index.html');
-	}
-	
+		res.redirect('/index.html');
+	}	
 });
 
 router.post('/removeBookings.json', function(req, res) //pressing [x] on view manage bookings
@@ -319,7 +340,7 @@ router.post('/removeBookings.json', function(req, res) //pressing [x] on view ma
 	}
 	else
 	{
-		res.redirect('//index.html');
+		res.redirect('/index.html');
 	}
 });
 
@@ -333,7 +354,7 @@ router.get('/UserInfo.json', function(req, res) //gives user info
 	}
 	else
 	{
-		res.redirect('//index.html');
+		res.redirect('/index.html');
 	}
 });
 
@@ -348,7 +369,7 @@ router.post('/UpdateUserInfo.json', function(req, res) //updates it when done bu
 	}
 	else
 	{
-		res.redirect('//index.html');
+		res.redirect('/index.html');
 	}
 });
 
@@ -362,7 +383,7 @@ router.get('/PaymentInfo.json', function(req, res) //gives payment info
 	}
 	else
 	{
-		res.redirect('//index.html');
+		res.redirect('/index.html');
 	}
 });
 
@@ -377,7 +398,7 @@ router.post('/UpdatePaymentInfo.json', function(req, res) //updates payment info
 	}
 	else
 	{
-		res.redirect('//index.html');
+		res.redirect('/index.html');
 	}
 });
 
@@ -391,7 +412,7 @@ router.post('/BusinessInfo.json', function(req, res) //gives business info
 	}
 	else
 	{
-		res.redirect('//index.html');
+		res.redirect('/index.html');
 	}
 });
 
@@ -403,6 +424,20 @@ router.post('/UpdateBusinessInfo.json', function(req, res) //updates it when don
 		var info = JSON.parse(req.body.info);
 		business[index].details = info; //are the exact same object so copying over should be fine
 		res.send();
+	}
+	else
+	{
+		res.redirect('/index.html');
+	}
+});
+
+router.post('/addRoom.json', function(req, res) //updates it when done button pressed
+{
+	var index = validate(req.session.id, business);	
+	var newRoom = req.body.room;
+	if(index !== -1)
+	{
+		business[index].rooms.push(newRoom);
 	}
 	else
 	{
@@ -505,6 +540,13 @@ router.post('/addReview.json', function(req, res) {
     reviews.push({name: req.body.name, date: req.body.date, text: req.body.text});
     res.send();
 });
+
+//Redirects//
+
+/*router.get('settings_bookings.html', function(req, res)
+{
+	
+});*/
 
 module.exports = router;
 
