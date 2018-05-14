@@ -176,6 +176,7 @@ router.post('/logout',function(req, res){
 	if(index !== -1)
 	{
 		user[index].currId = "";
+        req.session.destroy();
 	}
 
 	res.send();
