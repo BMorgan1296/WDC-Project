@@ -41,7 +41,7 @@ $(document).ready(function(){
         $("#newSignup").fadeIn();
     });
     
-     $("#Log-out").on("click",function(){
+     $("#signbutton").on("click",function(){
         $.ajax({
                 url: '/logout',
                 type: 'POST',

@@ -169,12 +169,14 @@ router.post('/businessLogin.json', function(req, res) {
 });
 
 
-router.post('/logout',function(req){
+router.post('/logout',function(req, res){
 	var index = validate(req.session.id, user); //finds valid user
 	if(index !== -1)
 	{
 		user[index].currId = "";
 	}
+
+	res.send();
 });
 
 router.post('/logoutBusiness',function(req){
