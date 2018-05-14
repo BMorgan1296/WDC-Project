@@ -283,22 +283,6 @@ router.post('/populateBookings.json', function(req, res) //should be called when
 	
 });
 
-router.post('/viewBooking.json', function(req, res) //should come from pressing [i] on user view manage bookings
-{
-	var index = validate(req.session.id, user); //finds valid user
-	if(index !== -1)
-	{
-		var bookingIndex = req.body.bookingIndex;
-		var toString = JSON.stringify(user[index].bookings[bookingIndex]);
-		res.sendD(toString);
-	}
-	else
-	{
-		res.redirect('index.html');
-	}
-	
-});
-
 router.post('/removeBookings.json', function(req, res) //pressing [x] on view manage bookings
 {
 	var bookingId = JSON.parse(req.body.removeId); //parses the removeId field from the given request
