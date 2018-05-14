@@ -220,6 +220,7 @@ body{
     min-height:calc(100vh - 16.66vh);
     float: left;
     position:relative;
+    width:100%;
 }
 
 .footer{

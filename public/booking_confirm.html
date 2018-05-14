@@ -48,19 +48,27 @@
             <div class="headerLabel divider">|</div>
             <div id="Sign-in" class="sign headerLabel">Sign-in
             </div>
+            <div id="Logged-in" class="logged headerLabel">
+            </div>
             <div id = "currencyDrop" class="fixedPopDownList">
             </div>
             <div id = "signDrop" class="sign fixedPopDownList">
-                <form>
                     <div class="sign fixedPopDownItem signTitle">Email:</div>
                     <input id = "email" type="text" class="sign">
                     <div class="sign fixedPopDownItem signTitle">Password:</div>
-                    <input id = "username" type="password" class="sign">
-                    <button onclick = "logIn()" class="sign button">Sign-in</button>
-                </form>
+                    <input id = "password" type="password" class="sign">
+                    <button  onclick = "logIn()" class="sign button">Sign-in</button>
                 <div class="sign fixedPopDownItem signMidTitle">or</div>
                 <div class="sign fixedPopDownItem signMidTitle" id="Signup">Sign-up</div>
                 
+            </div>
+            <div id = "loggedDrop" class="logged fixedPopDownList">
+                <div class="logged fixedPopDownItem signTitle">Welcome back,<span id="loggedName" class="logged"> Daniel</span></div>
+                <ul class="logged fixedPopDownItem signTitle">
+                    <li><a class="logged" href="mappage.html">Find a hotel</a></li>
+                    <li><a href="settings_details"class="logged">Settings</a></li>
+                </ul>
+                <div class="logged fixedPopDownItem signMidTitle" id="Log-out">Logout</div>
             </div>
         </div>
         
