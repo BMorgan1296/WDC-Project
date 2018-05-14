@@ -10,6 +10,7 @@
 	<script type="application/javascript" src="javascripts/jquery-1.12.4.js"></script>
 	<script type="application/javascript" src="javascripts/shared.js"></script>
     <script type="application/javascript" src="javascripts/openid.js"></script>
+    <script type="application/javascript" src="javascripts/settings_payment.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
@@ -97,35 +98,21 @@
 				<div class="roomTitle">CVV</div>
 			</div>
 			<div class="t1">
-				<div class="roomTitle">Card Holder</div>
-			</div>
-			<div class="t1">
 				<div class="roomTitle">Expiry Date</div>
 			</div>
 		</div>	
 <!-- Input boxes -->
         <div class="userOptions">
             <div class="textboxes" id="paymentOptions">
-                <input type="text" class="textbox" />
-                <input type="text" class="textbox" />
-                <input type="text" class="textbox" />
-                <form class="radiobuttons" id = "paymentRadios">
-                    <label>
-                      <input type="radio" name="card">Visa
-                    </label>
-                    <label class="radiobutton">
-                      <input type="radio" name="card">MasterCard
-                    </label>
-                    <label class="radiobutton">
-                      <input type="radio" name="card">American Express
-                    </label>
-                </form>
-                <input class="cc" type="text" name="Month" placeholder="Month MM ">
-                <input class="cc" type="text" name="fname" placeholder="Year YY">
+                <input type="text" class="textbox" id="cardType"/>
+                <input type="text" class="textbox" id="cardNo"/>
+                <input type="text" class="textbox" id="cardVV"/>
+                <input class="cc" type="text" name="Month" placeholder="Month MM " id="expiryM">
+                <input class="cc" type="text" name="fname" placeholder="Year YY" id="expiryY">
 
                  <form>
                     <br>
-                    <button class="done button">Done</button>    
+                    <button class="done button" id="Update">Update</button>    
                 </form>
             </div>
         </div>

@@ -329,7 +329,7 @@ router.post('/UpdateUserInfo.json', function(req, res) //updates it when done bu
 	}
 });
 
-router.post('/PaymentInfo.json', function(req, res) //gives payment info
+router.get('/PaymentInfo.json', function(req, res) //gives payment info
 {
 	var index = validate(req.session.id, user);	
 	if(index !== -1)
