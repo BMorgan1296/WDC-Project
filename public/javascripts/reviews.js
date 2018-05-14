@@ -15,7 +15,7 @@ function showReview() {
             //to select the second element of array as the first is for testing 
               
             for(var i=1; i<allReviews.length; i++){
-                display=display+"Review By "+content[i].name+"<br>"+content[i].date+" <br> "+content[i].text+"<br>";
+                output=output+"By "+ content[i].name+" <br> "+content[i].date+" <br> "+content[i].text+"<hr>"+"<br>";
    
             }
              document.getElementById("reviews").innerHTML = output;    
