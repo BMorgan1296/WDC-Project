@@ -9,6 +9,7 @@
     padding-bottom:2vh;
     font-size: calc((12.5vh + 12.5vw)/15);
     box-shadow: 0 .25vmin 0.5vmin 0 rgba(0, 0, 0, 0.2), 0 .375vmin 1.25vmin 0 rgba(0, 0, 0, 0.19);
+    overflow: auto;
 }
 .nameInput{
     font-family: 'Open Sans', sans-serif;
