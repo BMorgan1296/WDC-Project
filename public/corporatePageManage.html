@@ -6,6 +6,8 @@
 	<script type="text/javascript" src="javascripts/corpPage.js" defer></script>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <script type="text/javascript" src="javascripts/jquery-1.12.4.js"></script>
+    <script type="application/javascript" src="javascripts/corporate_login.js"></script>
 
 	<title>GWESTY Corporate Page</title>
 </head>
@@ -30,17 +32,17 @@
 			</div>
 			<div class="t1">
 				<div class="roomTitle">Old Password</div>				
-				<input type="Password" class="textbox" />
+				<input type="Password" class="textbox" id="oldPass"/>
 			</div>
 			<div class="t1">
 				<div class="roomTitle">New Password</div>				
-				<input type="Password" class="textbox" />
+				<input type="Password" class="textbox" id="newPass1"/>
 			</div>
 			<div class="t1">
 				<div class="roomTitle">Retype Password</div>				
-				<input type="Password" class="textbox" />
+				<input type="Password" class="textbox" id="newPass2"/>
 				<form>
-					<input class="button" id="donePW" type="button" value="Done" onclick="window.location.href='corporatePageManage.html'" />
+					<input class="button updat" id="updatePassword" type="button" value="Update"/>
 				</form>
 			</div>			
         
@@ -49,9 +51,9 @@
 			</div>
 			<div class="t1">
 				<div class="roomTitle">Type New Email</div>
-				<input type="text" class="textbox" />	
+				<input type="text" class="textbox" id="newEmail"/>	
 				<form>
-					<input class="button" id="doneEmail" type="button" value="Done" onclick="window.location.href='corporatePageManage.html'" />
+					<input class="button updat" id="updateEmail" type="button" value="Update" />
 				</form>			
 			</div>
 		</div>
