@@ -17,9 +17,10 @@ user[0] =
 	[
 		booking:
 		{
-			title:"this is the title",
+		    title:"this is the title",
 			numPeople:1,
 			price:"$400"
+
 		}
 		booking2:
 		{
@@ -94,32 +95,39 @@ router.post('/login.json', function(req, res)
 {
 	var login = null;
 	console.log(JSON.stringify(req.body));
+    var tempUser = req.body;
 
-	var tempUser = req.body;
-
+    // If login details present, attempt login 
+ if(req.body.email !== undefined && req.body.password !== undefined){
+       console.log("Username + Password received");
 	for (var i = 0; i < user.length; i++) 
 	{
 		if(tempUser.email === user[i].email && tempUser.password === user[i].password)
 		{
-
+             console.log("user found");
 			user[i].currId = req.session.id; //setting currID. 
 			tempSession[req.session.id] = req.body.email;
                 login = req.body.email
-		        res.json({email:login});  
+            }
+        }
+		        res.json({email:login}); 
+		        // no login check to see if login with google. 
 		}else if (tempUser.idtoken !== undefined){
 			console.log("Google Token Received");
 
 			async function verify(){
+				// verify google ID token
 				const ticket = await client.verifyIdToken({
                 idToken: req.body.idtoken,
                 audience: CLIENT_ID
         });
+				// get user data from token
    	     const payload = ticket.getPayload();
    	     var email = payload['email'];
    	     var name = payload['given_name'];
-   	     const userid = payload['sub'];
-
    	     
+
+   	     // if email and fname match session saved, email sent 
    	     for(var i = 0; i < user.length; i++){
    		  if(user[i].email === email && user[i].personalInfo.fName === name){
    		  	tempSession[req.session.id] = user[i].email; 
@@ -127,16 +135,17 @@ router.post('/login.json', function(req, res)
    		}
    	}
        res.json({email:login});
-   	}verify().catch(console.error);
+   	}
+   	verify().catch(console.error);
+   	// if no login details, but valid session
   } else if(tempSession[req.session.id] !== undefined){
   	    console.log("valid session");
     	login = tempSession[req.session.id];
     	res.json({email:login})
   }
 
-}
+}); 
 
-});
 
 router.post('/logout')
 {
