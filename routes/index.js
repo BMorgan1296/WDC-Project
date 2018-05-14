@@ -18,13 +18,14 @@ user[0] =
 		{
 		    "title":"this is the title",
 			"numPeople":1,
-			"price":"$400"
-
+			"price":"$400",
+            "details":"none"
 		},
 		{
 			"title":"title two",
 			"numPeople":3,
-			"price":"$1200"
+			"price":"$1200",
+            "details":"none"
 		}
 	],
 	personalInfo: 

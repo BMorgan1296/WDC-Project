@@ -9,32 +9,37 @@ $(document).ready(function(){
         type: "GET",
         url: '/populateBookings.json',
         success: function(response){
-            console.log(response[0]);
+            console.log(JSON.parse(response));
             console.log("yoyo");
+            rooms = JSON.parse(response);
             //info = response;
             //fillInfo();
+            console.log(rooms.length);
+
+            for(var i = 0; i<rooms.length;i++){
+                console.log(rooms[i]);
+                addRoom(rooms[i].title,rooms[i].price);
+            }
         }
     });
     
 })
 
+var rooms;
+
 var counter = 1;
 
 var id;
 
-function addRoom()
+function addRoom(name, price)
 {
     var newRoom = document.createElement('div');
 
     newRoom.className = 'room';
 
-    newRoom.innerHTML = `    		
-				<button class="removeRoom" onclick="removeRoom(this)">X</button>
-				<div class="roomTitle">Room Name</div>
-				<div class="roomCurr">Australia Dollars - AUD</div>
-				<div class="roomPrice">0</div>
-				<button class="info" onclick="editRoom(this)">i</button>
-				`;
+    newRoom.innerHTML =  		
+				"<button class='removeRoom'onclick='removeRoom(this)'>X</button><div class='roomTitle'>"+name+"</div><div class='roomType'>Standard</div><div class='roomPrice'>"+price+" AUD</div><button class='info' onclick='viewRoom(this)'>i</button>";
+    
 
     document.getElementsByClassName('rooms')[0].appendChild(newRoom);
 
