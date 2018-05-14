@@ -1,3 +1,6 @@
+/* exported showReview */
+/* exported addReview */
+
 var allReviews;
 function showReview() {
     // Create new AJAX request    

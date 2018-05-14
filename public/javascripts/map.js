@@ -1,6 +1,7 @@
 /* exported MapFunction */
 /* exported searchSubmit */
 /* exported searchresults */
+/* exported codeAddress */
 
   var map, places, infoWindow, google, geocoder;
       var markers = [];

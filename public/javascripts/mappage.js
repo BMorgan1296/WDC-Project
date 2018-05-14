@@ -1,3 +1,7 @@
+/* exported openNav */
+/* exported closeNav */
+/* exported sendQuery */
+
 //navigation bar//
 function openNav() {
     document.getElementById("filter_nav").style.width = "250px";
@@ -51,7 +55,7 @@ for (i = 0; i < x.length; i++) {
     create a new DIV that will act as an option item:*/
     optn_item = document.createElement("DIV");
     optn_item.innerHTML = sel.options[j].innerHTML;
-    optn_item.addEventListener("click", function(d) {
+    optn_item.addEventListener("click", function() {
         /*when an item is clicked, update the original select box,
         and the selected item:*/
         var i, select, pre;

@@ -1,5 +1,4 @@
  /*jshint unused:false*/
-
 var counter = 1;
 
 var id;

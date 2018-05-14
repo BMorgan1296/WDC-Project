@@ -1,3 +1,9 @@
+/* exported onSignIn*/
+/* exported signOut*/
+/* exported logIn*/
+/* exported getUserInfo*/
+/* exported gapi*/
+/* exported alert*/
 
  function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
@@ -15,7 +21,7 @@
         console.log("ID Token: " + id_token);
 
         getUserInfo({idtoken: id_token});
-      };
+      }
        
          function signOut(){
           var auth2 = gapi.auth2.getAuthInstance();
@@ -43,7 +49,7 @@
                 if (this.readyState == 4 && this.status == 200) {
                 
                     // convert from string to JSON, 
-                    login = JSON.parse(xhttp.responseText);
+                    var login = JSON.parse(xhttp.responseText);
                     
                 }
             };

@@ -1,3 +1,5 @@
+/* exported search */
+
 $(document).ready(function(){
     //Words shown next to search-bar
     var searchWords = ["see","experience","find","explore","go"];
@@ -71,21 +73,20 @@ $(document).ready(function(){
 //SERVER REQUESTS
 function search()
 {
-    var search = document.getElementById('searchBar').value; 
     var s = "?"+"s="; //search parameter for URL
 
-    if(search.length == 0 || search == " ") //changes to normal mappage if search is pressed
+    if(search.length === 0 || search == " ") //changes to normal mappage if search is pressed
         document.location.href = "mappage.html";
     else
     {
         var temp = search.split(" ");
-        var searchWords = new Array();
+        var searchWords = [];
         for (var i = 0; i < temp.length; i++) 
         {
             if(temp[i] !== '')
                 searchWords.push(temp[i]); //makes new searchWords arrays with just actual words not blanks
         }
-        for (var i = 0; i < searchWords.length; i++)
+        for (i = 0; i < searchWords.length; i++)
         {
             s = s+searchWords[i]; //puts ? param on the end of URL
             if(i < searchWords.length-1)

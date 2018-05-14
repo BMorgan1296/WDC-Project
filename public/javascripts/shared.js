@@ -7,7 +7,7 @@ $(document).ready(function(){
                 type: 'POST',
                 success: function (data) {
                     console.log(data);
-                    if(data!=""){
+                    if(data!==""){
                         updateName();
                     }
                 }
@@ -46,7 +46,7 @@ $(document).ready(function(){
                 url: '/logout',
                 type: 'POST',
                 success: function (data) {
-                    consol.log("logged Out");
+                    console.log("logged Out");
                 }
             });
     });

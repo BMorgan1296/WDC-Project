@@ -4,7 +4,7 @@ $(document).ready(function(){
             var password = {
                 oldPass: $("#oldPass").val(),
                 newPass:$("#newPass1").val()
-            }
+            };
 
             $.ajax({
                 url: '/updatePasswordUser.json',
@@ -21,7 +21,7 @@ $(document).ready(function(){
     $("#updateEmail").on("click",function(){
             var email = {
                 email: $("#newEmail").val()
-            }
+            };
 
             $.ajax({
                 url: '/updateEmailUser.json',
