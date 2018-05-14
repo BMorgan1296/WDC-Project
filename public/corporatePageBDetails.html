@@ -3,9 +3,9 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="stylesheets/gwestyStyle.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/corpPage.css">
-	<script type="text/javascript" src="javascripts/corpPage.js" defer></script>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <script type="text/javascript" src="javascripts/corporate_details.js"></script>
 
 	<title>GWESTY Corporate Page</title>
 </head>
@@ -27,27 +27,27 @@
 			<div class="titles">
 				<div class="t1">
 					<div class="infoLabel">Business Name</div>
-					<input type="text" class="textbox" />
+					<input type="text" class="textbox" id="name" />
 				</div>
 				<div class="t1">
 					<div class="infoLabel">Contact Number</div>
-					<input type="text" class="textbox" />
+					<input type="text" class="textbox" id="contact"/>
 				</div>
 				<div class="t1">
 					<div class="infoLabel">Address</div>
-					<input type="text" class="textbox" />
+					<input type="text" class="textbox" id="address"/>
 				</div>
 				<div class="t1">
 					<div class="infoLabel">Suburb</div>
-					<input type="text" class="textbox" />
+					<input type="text" class="textbox" id="suburb"/>
 				</div>
 				<div class="t1">
 					<div class="infoLabel">Postcode</div>
-					<input type="text" class="textbox" />
+					<input type="text" class="textbox" id="postcode"/>
 				</div>
 				<div class="t1">
 					<div class="infoLabel">City</div>
-					<input type="text" class="textbox" />
+					<input type="text" class="textbox" id="city"/>
 				</div>
 				<div class="t1">
 					<div class="infoLabel">Country</div><!--dropdown for countries-->
@@ -308,9 +308,7 @@
 				</div>
 				<br>
 
-				<form>
-					<input class="button" id="Done" type="button" value="Done" onclick="window.location.href='corporatePageBDetails.html'" />
-				</form>
+					<input class="button" id="update" type="button" value="Update" />
 			</div>		
 		</div>
 
