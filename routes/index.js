@@ -141,6 +141,8 @@ router.post('/login.json', function(req, res)
   	    console.log("valid session");
     	login = tempSession[req.session.id];
     	res.json({email:login})
+  }else{
+      res.send("");
   }
 
 }); 
