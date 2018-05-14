@@ -12,6 +12,7 @@
     <script type="application/javascript" src="javascripts/jquery-1.12.4.js"></script>
     <script type="application/javascript" src="javascripts/shared.js"></script>
     <script type="application/javascript" src="javascripts/openid.js"></script>
+    <script type="application/javascript" src="javascripts/settings_login.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
   
 	<title> Settings - Login settings </title>
@@ -94,18 +95,18 @@
 			</div>
 			<div class="t1Account">
 				<div class="inputTitle">Old Password</div>				
-				<input type="Password" class="textboxAccount" />
+				<input type="Password" class="textboxAccount" id="oldPass"/>
 			</div>
 			<div class="t1Account">
 				<div class="inputTitle">New Password</div>				
-				<input type="Password" class="textboxAccount" />
+				<input type="Password" class="textboxAccount" id="newPass1" />
 			</div>
 			<div class="t1Account">
 				<div class="inputTitle">Retype Password</div>				
-				<input type="Password" class="textboxAccount" />
+				<input type="Password" class="textboxAccount" id="newPass2" />
 			</div>		
             <form>
-                <button class="done button">Done</button>    
+                <button class="done button" id="passUpdate">Update Password</button>    
             </form>
             <br>
 			<div class="t2Account">
@@ -113,9 +114,9 @@
 			</div>
 			<div class="t1Account">
 				<div class="inputTitle">Type New Email</div>
-				<input type="text" class="textboxAccount" />	
+				<input type="text" class="textboxAccount" id="newEmail"/>	
 				 <form>
-                <button class="done button">Done</button>    
+                <button class="done button" id="emailUpdate">Update Email</button>    
                 </form>		
 			</div>
 	</div>
