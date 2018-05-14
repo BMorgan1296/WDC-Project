@@ -4,6 +4,20 @@
 /*exported editRoom*/
 /*exported closeEdit*/
 
+$(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        url: '/populateBookings.json',
+        success: function(response){
+            console.log(response[0]);
+            console.log("yoyo");
+            //info = response;
+            //fillInfo();
+        }
+    });
+    
+})
+
 var counter = 1;
 
 var id;

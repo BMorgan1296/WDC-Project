@@ -16,15 +16,15 @@ user[0] =
 	bookings:
 	[
 		{
-		    title:"this is the title",
-			numPeople:1,
-			price:"$400"
+		    "title":"this is the title",
+			"numPeople":1,
+			"price":"$400"
 
 		},
 		{
-			title:"title two",
-			numPeople:3,
-			price:"$1200"
+			"title":"title two",
+			"numPeople":3,
+			"price":"$1200"
 		}
 	],
 	personalInfo: 
@@ -291,7 +291,7 @@ router.post('/currency.json', function(req, res) //handles the changing of local
 	}	
 });
 
-router.post('/populateBookings.json', function(req, res) //should be called when user enters view manage bookings
+router.get('/populateBookings.json', function(req, res) //should be called when user enters view manage bookings
 {
 	var index = validate(req.session.id, user); //finds valid user
 	if(index !== -1)
