@@ -138,6 +138,24 @@ router.post('/login.json', function(req, res)
 
 });
 
+router.post('/logout')
+{
+	var index = validate(req.session.id, user); //finds valid user
+	if(index !== -1)
+	{
+		user[index].currId = "NULL";
+	}
+}
+
+router.post('/logoutBusiness')
+{
+	var index = validate(req.session.id, business); //finds valid user
+	if(index !== -1)
+	{
+		business[index].currId = "NULL";
+	}
+}
+
 router.post('/signup.json', function(req, res)
 {
 	var givenCredentials = req.body;
