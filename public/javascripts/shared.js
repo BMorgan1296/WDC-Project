@@ -73,15 +73,15 @@ $(document).ready(function(){
     
     function updateCurrency(current)
     {          
-        changeCurr(current); //need to wait for result to be defined then it can be set lower down. $("#currencyDrop").empty();
-        
+        //changeCurr(current); //need to wait for result to be defined then it can be set lower down. $("#currencyDrop").empty();
+        $("#currencyDrop").empty();
         for(var i = 0;i<currencies.length;i++){
             if(current!=currencies[i]){
                $("#currencyDrop").append("<div class='fixedPopDownItem' value='"+currencies[i]+"'>"+currencies[i]+"</div>");
             }
         }               
     }
-    function changeCurr(chosenCurr)
+    /*function changeCurr(chosenCurr)
     {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function()
@@ -97,7 +97,7 @@ $(document).ready(function(){
         xhttp.open("POST", "/currency.json", true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(curr);
-    }
+    }*/
     function updateName(){
         $.ajax({
                 url: '/UserInfo.json',
