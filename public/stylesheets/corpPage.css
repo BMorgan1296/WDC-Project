@@ -361,3 +361,7 @@
 	margin-right: 10vw;
 	background-color: rgb(204,235,252);
 }
+
+#update{
+    float:right;
+}
