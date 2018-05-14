@@ -13,7 +13,21 @@ user[0] =
 	password:"potato",
 	localCurr:"NULL",
 	currId:"NULL",
-	bookings:[],
+	bookings:
+	[
+		booking:
+		{
+			title:"this is the title",
+			numPeople:1,
+			price:"$400"
+		}
+		booking2:
+		{
+			title:"title two",
+			numPeople:3,
+			price:"$1200"
+		}
+	],
 	personalInfo: 
 	{
 		gender:"m",
@@ -26,8 +40,9 @@ user[0] =
 	},
 	paymentInfo:
 	{
-		card:"MasterCard",
+		cardType:"MasterCard",
 		cardNo:"12345",
+		cardVV:"354",
 		expiryM:"07",
 		expiryY:"2020"
 	}	
