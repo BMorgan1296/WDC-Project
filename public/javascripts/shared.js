@@ -7,7 +7,7 @@ $(document).ready(function(){
                 type: 'POST',
                 success: function (data) {
                     console.log(data);
-                    if(data!==""){
+                    if(data!=""){
                         updateName();
                     }
                 }
