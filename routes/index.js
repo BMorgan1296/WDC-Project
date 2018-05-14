@@ -15,14 +15,12 @@ user[0] =
 	currId:"NULL",
 	bookings:
 	[
-		booking:
 		{
 		    title:"this is the title",
 			numPeople:1,
 			price:"$400"
 
-		}
-		booking2:
+		},
 		{
 			title:"title two",
 			numPeople:3,
@@ -98,7 +96,7 @@ router.post('/login.json', function(req, res)
     var tempUser = req.body;
 
     // If login details present, attempt login 
- if(req.body.email !== undefined && req.body.password !== undefined){
+    if(req.body.email !== undefined && req.body.password !== undefined){
        console.log("Username + Password received");
 	for (var i = 0; i < user.length; i++) 
 	{
@@ -147,23 +145,21 @@ router.post('/login.json', function(req, res)
 }); 
 
 
-router.post('/logout')
-{
+router.post('/logout',function(req, res){
 	var index = validate(req.session.id, user); //finds valid user
 	if(index !== -1)
 	{
-		user[index].currId = "NULL";
+		user[index].currId = "";
 	}
-}
+});
 
-router.post('/logoutBusiness')
-{
+router.post('/logoutBusiness',function(req, res){
 	var index = validate(req.session.id, business); //finds valid user
 	if(index !== -1)
 	{
-		business[index].currId = "NULL";
+		business[index].currId = "";
 	}
-}
+});
 
 router.post('/signup.json', function(req, res)
 {
@@ -215,7 +211,7 @@ router.post('/signup.json', function(req, res)
 	}
 
 	console.log("Added User");
-    res.redirect('index.html');
+    res.redirect('//index.html');
 });
 
 router.post('/updateEmailUser.json', function(req, res) //should be called when user enters new email and presses done
@@ -228,7 +224,7 @@ router.post('/updateEmailUser.json', function(req, res) //should be called when 
 	}
 	else
 	{
-		res.redirect('index.html');
+		res.redirect('//index.html');
 	}
 	
 });
@@ -243,7 +239,7 @@ router.post('/updatePasswordUser.json', function(req, res) //may not be needed d
 	}
 	else
 	{
-		res.redirect('index.html');
+		res.redirect('//index.html');
 	}
 	
 });
@@ -258,7 +254,7 @@ router.post('/updateEmailBusiness.json', function(req, res) //should be called w
 	}
 	else
 	{
-		res.redirect('index.html');
+		res.redirect('//index.html');
 	}
 	
 });
@@ -273,7 +269,7 @@ router.post('/updatePasswordBusiness.json', function(req, res) //may not be need
 	}
 	else
 	{
-		res.redirect('index.html');
+		res.redirect('//index.html');
 	}
 	
 });//********************************************************************************************
@@ -305,7 +301,7 @@ router.post('/populateBookings.json', function(req, res) //should be called when
 	}
 	else
 	{
-		res.redirect('index.html');
+		res.redirect('//index.html');
 	}
 	
 });
@@ -322,7 +318,7 @@ router.post('/removeBookings.json', function(req, res) //pressing [x] on view ma
 	}
 	else
 	{
-		res.redirect('index.html');
+		res.redirect('//index.html');
 	}
 });
 
@@ -336,7 +332,7 @@ router.get('/UserInfo.json', function(req, res) //gives user info
 	}
 	else
 	{
-		res.redirect('index.html');
+		res.redirect('//index.html');
 	}
 });
 
@@ -351,7 +347,7 @@ router.post('/UpdateUserInfo.json', function(req, res) //updates it when done bu
 	}
 	else
 	{
-		res.redirect('index.html');
+		res.redirect('//index.html');
 	}
 });
 
@@ -365,7 +361,7 @@ router.get('/PaymentInfo.json', function(req, res) //gives payment info
 	}
 	else
 	{
-		res.redirect('index.html');
+		res.redirect('//index.html');
 	}
 });
 
@@ -380,7 +376,7 @@ router.post('/UpdatePaymentInfo.json', function(req, res) //updates payment info
 	}
 	else
 	{
-		res.redirect('index.html');
+		res.redirect('//index.html');
 	}
 });
 
@@ -394,7 +390,7 @@ router.post('/BusinessInfo.json', function(req, res) //gives business info
 	}
 	else
 	{
-		res.redirect('index.html');
+		res.redirect('//index.html');
 	}
 });
 
@@ -409,7 +405,7 @@ router.post('/UpdateBusinessInfo.json', function(req, res) //updates it when don
 	}
 	else
 	{
-		res.redirect('index.html');
+		res.redirect('/index.html');
 	}
 });
 
@@ -486,7 +482,7 @@ router.post('/userBookings.json', function(req, res)
 	}
 	else
 	{
-		res.redirect('index.html');
+		res.redirect('/index.html');
 	}
 });
 

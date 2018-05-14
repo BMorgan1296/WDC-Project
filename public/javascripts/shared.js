@@ -1,7 +1,21 @@
 $(document).ready(function(){
     var currencies = ["AUD","CAD","USD","EUR"];
     
+    //is logged in?
+    $.ajax({
+                url: '/login.json',
+                type: 'POST',
+                success: function (data) {
+                    console.log(data);
+                    if(data!=""){
+                        updateName();
+                    }
+                }
+            });
+    
     updateCurrency("AUD");
+    
+    //$("#Sign-in").hide();
     
     //on-clicks
     $("#currency").on("click",function(){
@@ -10,6 +24,11 @@ $(document).ready(function(){
     
     $("#Sign-in").on("click",function(){
         $("#signDrop").slideDown();
+    });
+    
+    
+    $("#Logged-in").on("click",function(){
+        $("#loggedDrop").slideDown();
     });
     
     $(document).on("click",".fixedPopDownItem",function(){
@@ -22,6 +41,16 @@ $(document).ready(function(){
         $("#newSignup").fadeIn();
     });
     
+     $("#Log-out").on("click",function(){
+        $.ajax({
+                url: '/logout',
+                type: 'POST',
+                success: function (data) {
+                    consol.log("logged Out");
+                }
+            });
+    });
+    
     //off-clicks
     $(document).click(function(event){
         var id = event.target.id;
@@ -31,6 +60,10 @@ $(document).ready(function(){
         }
         if((classes[0]!="sign")&&$("#signDrop").css('display') == 'block') {
             $("#signDrop").slideUp();
+        }
+        
+        if((classes[0]!="logged")&&$("#loggedDrop").css('display') == 'block') {
+            $("#loggedDrop").slideUp();
         }
         
         if(id=="newSignup"){
@@ -65,6 +98,18 @@ $(document).ready(function(){
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(curr);
     }
-
+    function updateName(){
+        $.ajax({
+                url: '/UserInfo.json',
+                type: 'GET',
+                success: function (data) {
+                    $("#Sign-in").hide();
+                    $("#Logged-in").show();
+                    console.log(data);
+                    $("#Logged-in").html(" "+ data.fName);
+                    $("#loggedName").html(" "+ data.fName);
+                }
+            });
+    }
 
 });

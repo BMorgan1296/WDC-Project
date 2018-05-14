@@ -102,6 +102,14 @@ body{
     background:rgba(205,205,205,0.25)
 }
 
+#Logged-in:hover{
+    background:rgba(205,205,205,0.25)
+}
+
+#Logged-in{
+    display: none;
+}
+
 .divider{
     width:auto;
     top:-0.1em;
@@ -139,6 +147,23 @@ body{
     
 }
 
+#loggedDrop{
+    width:100%;
+    margin-left:0px;
+    top:1.5em;
+    text-align: left;
+    padding-bottom:0.5em;
+}
+
+#loggedDrop input{
+    border-color: gainsboro;
+    border-style:solid;
+    border-width:0.5px;
+    width:calc(100% - 2.25em);
+    margin-left:1em;
+    
+}
+
 .sign .button{
     width:50%;
     margin-left:25%;
@@ -166,7 +191,15 @@ body{
 
 
 .fixedPopDownItem:hover{
-    background:rgba(205,205,205,0.25)
+    background:rgba(205,205,205,0.25);
+}
+
+.logged a{
+    color:gray;
+}
+
+.logged ul{
+    width:auto;
 }
 
 
@@ -329,5 +362,9 @@ a{
 }
 
 #Signup{
+    cursor:pointer;
+}
+
+#Log-out{
     cursor:pointer;
 }
