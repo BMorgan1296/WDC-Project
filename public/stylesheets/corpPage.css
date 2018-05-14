@@ -259,6 +259,15 @@
 	background-color: rgb(204,235,252);
 }
 
+.updat{
+	position: absolute;
+	text-align: center;
+	font-size: 2.5vh;
+	margin-left: 40vw;
+	margin-top: -2.5vh;
+	background-color: rgb(204,235,252);
+}
+
 #donePW
 {
 	position: absolute;
@@ -271,12 +280,6 @@
 
 #doneEmail
 {
-	position: absolute;
-	text-align: center;
-	font-size: 2.5vh;
-	margin-left: 40vw;
-	margin-top: -2.5vh;
-	background-color: rgb(204,235,252);
 }
 
 .titles

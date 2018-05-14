@@ -1,7 +1,7 @@
 $(document).ready(function(){
     var info;
     $.ajax({
-        type: "GET",
+        type: "POST",
         url: '/BusinessInfo.json',
         success: function(response){
             console.log(response);
