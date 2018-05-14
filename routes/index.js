@@ -145,6 +145,29 @@ router.post('/login.json', function(req, res)
 
 }); 
 
+router.post('/businessLogin.json', function(req, res) {
+    
+    var businessLogin = null;
+	console.log(JSON.stringify(req.body));
+    var businessUser = req.body;
+
+   if(businessUser.email !== undefined && businessUser.password !== undefined){
+       console.log("Username + Password received");
+	for (var i = 0; i < business.length; i++) 
+	{
+		if(businessUser.email === business[i].email && businessUser.password === business[i].password)
+		{
+            console.log("user found");
+			business[i].currId = req.session.id; //setting currID. 
+			tempSession[req.session.id] = req.body.email;
+            businessLogin = businessUSer.email
+            }
+        }
+		        res.json({email:businessLogin}); 
+   }
+   verify().catch(console.error);
+});
+
 
 router.post('/logout',function(req, res){
 	var index = validate(req.session.id, user); //finds valid user
