@@ -27,7 +27,7 @@ $(document).ready(function(){
 
 var rooms;
 
-var counter = 1;
+var counter = 0;
 
 var id;
 
@@ -102,6 +102,8 @@ function viewRoom(currRoom)
         });
 
 		id = currRoom.parentNode.id; //settings room ID for future use
+        document.getElementById("editRoomGuest").innerHTML = rooms[id].numPeople;
+        document.getElementById("editRoomDescription").innerHTML = rooms[id].details;
 
 		document.getElementById("editRoomTitle").innerHTML = currRoom.parentNode.getElementsByClassName('roomTitle')[0].innerHTML; //room title page to popup
 		//document.getElementById("editRoomDescription").value = ; //get this from database, it won't show atm 
