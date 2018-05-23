@@ -55,7 +55,6 @@ business[0] =
 	password:"lol",	
 	currId:"NULL",
 	rooms:[],
-	address:"No",
 	rating:0,
 	numRatings:0,
 	details:
@@ -317,6 +316,22 @@ router.post('/currency.json', function(req, res) //handles the changing of local
 	{
 		res.send(); 
 	}	
+});
+
+router.post('/newUserBooking.json', function(req, res) //pressing [x] on view manage bookings
+{
+	var newBooking = JSON.parse(req.body.newBooking);
+	var index = validate(req.session.id, user);	
+
+	if(index !== -1)
+	{
+		user[index].bookings.push(newBooking); //deletes the booking from the list
+		res.send(); //should repopulate bookings as well
+	}
+	else
+	{
+		res.send("-1");
+	}
 });
 
 router.get('/populateBookings.json', function(req, res) //should be called when user enters view manage bookings
