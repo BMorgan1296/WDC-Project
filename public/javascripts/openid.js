@@ -21,14 +21,14 @@
         console.log("ID Token: " + id_token);
 
         getUserInfo({idtoken: id_token});
-      }
+      };
        
          function signOut(){
           var auth2 = gapi.auth2.getAuthInstance();
           auth2.signOut().then(function(){
               alert("signed out");
              document.getElementById("signbutton").style.display = "none";
-               document.getElementById("gbutton").style.display = "inline-block";
+             document.getElementById("gbutton").style.display = "inline-block";
        });
 }
 
@@ -39,28 +39,27 @@
         }
 
        
-        function getUserInfo(params) {
+      function getUserInfo(params) {
             // Create new AJAX request
-            var xhttp = new XMLHttpRequest();
+             var xhttp = new XMLHttpRequest();
             
             // Define behaviour for a response
-            xhttp.onreadystatechange = function() {
-            
+             xhttp.onreadystatechange = function() {
+
                 if (this.readyState == 4 && this.status == 200) {
-                
+                     console.log(xhttp.responseText);
                     // convert from string to JSON, 
-                    var login = JSON.parse(xhttp.responseText);
-                    
+                     login = JSON.parse(xhttp.responseText);
+                
+
                 }
-            };
+            };            
             
-            // Initiate connection
+            
             xhttp.open("POST", "/login.json", true);
             
             xhttp.setRequestHeader("Content-type","application/json");
-         
+            
             // Send request
             xhttp.send(JSON.stringify(params));
-               
-
-        }
+    }

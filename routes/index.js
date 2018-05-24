@@ -33,6 +33,9 @@ user[0] =
 		gender:"m",
 		fName:"Brad",
 		sName:"Morgan",
+		gender:"f",
+		fName:"Drashti",
+		sName:"Patel",
 		address:"I live here",
 		postcode:"5098",
 		city:"Adelaide",
@@ -96,7 +99,7 @@ router.post('/login.json', function(req, res)
     var tempUser = req.body;
 
     // If login details present, attempt login 
-    if(req.body.email !== undefined && req.body.password !== undefined){
+    if(tempUser.email !== undefined && tempUser.password !== undefined){
        console.log("Username + Password received");
 	for (var i = 0; i < user.length; i++) 
 	{
@@ -104,11 +107,12 @@ router.post('/login.json', function(req, res)
 		{
              console.log("user found");
 			user[i].currId = req.session.id; //setting currID. 
-			tempSession[req.session.id] = req.body.email;
+			tempSession[req.session.id] = tempUser.email;
                 login = req.body.email
             }
         }
 		        res.json({email:login}); 
+		       
 		        // no login check to see if login with google. 
 		}else if (tempUser.idtoken !== undefined){
 			console.log("Google Token Received");
@@ -125,25 +129,26 @@ router.post('/login.json', function(req, res)
    	     var name = payload['given_name'];
    	     
 
-   	     // if email and fname match session saved, email sent 
+   	     // if email and fname match session saved, name sent sent 
    	     for(var i = 0; i < user.length; i++){
    		  if(user[i].email === email && user[i].personalInfo.fName === name){
-   		  	tempSession[req.session.id] = user[i].email; 
-            login = user[i].email;
+   		  	 console.log("User info matched");
+   		  	tempSession[req.session.id] = user[i].personalInfo.fName; 
+           
+            
+             login = user[i].personalInfo.fName;
    		}
    	}
-       res.json({email:login});
+       
+       res.json({fName:login});
    	}
    	verify().catch(console.error);
    	// if no login details, but valid session
   } else if(tempSession[req.session.id] !== undefined){
   	    console.log("valid session");
     	login = tempSession[req.session.id];
-    	res.json({email:login})
-  }else{
-      res.send("");
-  }
-
+    	res.json({email:login});
+}
 }); 
 
 router.post('/businessLogin.json', function(req, res) {
