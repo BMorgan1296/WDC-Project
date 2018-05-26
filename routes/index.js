@@ -33,9 +33,6 @@ user[0] =
 		gender:"m",
 		fName:"Brad",
 		sName:"Morgan",
-		gender:"f",
-		fName:"Drashti",
-		sName:"Patel",
 		address:"I live here",
 		postcode:"5098",
 		city:"Adelaide",
@@ -148,6 +145,9 @@ router.post('/login.json', function(req, res)
   	    console.log("valid session");
     	login = tempSession[req.session.id];
     	res.json({email:login});
+// } else{
+//        res.send({});
+// }
 }
 }); 
 
@@ -564,6 +564,21 @@ router.post('/addReview.json', function(req, res) {
     console.log(req.body);
     reviews.push({name: req.body.name, date: req.body.date, text: req.body.text});
     res.send();
+});
+
+
+
+
+var fs = require('fs');
+
+var hotels = [];
+
+fs.readFile('data/hotels.json', 'utf8', function(err, data) { 
+    hotels = JSON.parse(data);
+});
+
+router.get('/hotels.json', function(req, res) {
+    res.send(JSON.stringify(hotels));
 });
 
 module.exports = router;

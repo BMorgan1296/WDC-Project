@@ -441,6 +441,7 @@ table {
 .infotitles{
   font-weight: bold;
   text-align: right;
+  float:left;
 }
 .name{
   font-weight: bold;
@@ -450,4 +451,15 @@ table {
   display: none;
   position: absolute;
   z-index: -1;
+}
+
+.moreinfo
+{
+    font-family: 'Open Sans', sans-serif;
+    color:white;
+    cursor:pointer;
+    float:left;
+    margin-top: 0.5vh;
+    background-color: #169CF3;
+   }
 
