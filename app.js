@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session')
+var mysql = require('mysql');
+var dbConnectionPool = mysql.createPool({host: 'localhost', user: 'root', password: 'password', database: 'PhoneCompany'});
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -25,6 +27,12 @@ app.use(session
 	resave: true,
 	saveUninitialized: true
 }));
+
+app.use(function(req, res, next)
+{ 
+  req.pool = dbConnectionPool;
+  next(); 
+}); 
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
