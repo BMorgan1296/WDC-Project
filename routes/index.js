@@ -95,7 +95,7 @@ router.get('/posts.json', function(req, res, next)
 	//Connect to the database 
 	req.pool.getConnection(function(err,connection) 
 	{ 
-		if (err) { throw err;} 
+		if (err)  throw err; 
 		var sql = "INSERT INTO user(name, address) VALUES ('Ben', 'Lol St.')"; 
 		connection.query(sql, function(err, results)
 		{ 
