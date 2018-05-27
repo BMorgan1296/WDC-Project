@@ -90,21 +90,6 @@ router.get('/', function(req, res, next) {
 });
 //////////////////////////////////////////////NEED AUTO INCREMENT ID NEED AUTO INCREMENT ID!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //https://www.w3schools.com/nodejs/nodejs_mysql_create_db.asp
-router.get('/posts.json', function(req, res, next) 
-{
-	//Connect to the database 
-	req.pool.getConnection(function(err,connection) 
-	{ 
-		if (err)  throw err; 
-		var sql = "INSERT INTO user(name, address) VALUES ('Ben', 'Lol St.')"; 
-		connection.query(sql, function(err, results)
-		{ 
-			/*Some actions to handle the query results*/
-			connection.release(); // release connection
-			res.json(rows); //send response
-		}); 
-	}); 
-}); 
 
 router.post('/login.json', function(req, res)
 {
@@ -169,7 +154,6 @@ router.post('/login.json', function(req, res)
 }); 
 
 router.post('/businessLogin.json', function(req, res) {
-    
     var businessLogin = null;
 	console.log(JSON.stringify(req.body));
     var businessUser = req.body;
@@ -216,7 +200,7 @@ router.post('/signup.json', function(req, res)
 	var givenCredentials = req.body;
 	var accountFound = false;
 
-	for (var i = 0; i < user.length; i++) 
+	for (var i = 0; i < user.length; i++) //need to query here
 	{
 		if(givenCredentials.email === user[i].email)
 		{
@@ -259,6 +243,20 @@ router.post('/signup.json', function(req, res)
 
 		user.push(newUser);
 	}
+
+	req.pool.getConnection(function(err,connection) 
+	{ 
+		console.log("HERE");
+		if (err)  
+			throw err; 
+		var sql = "INSERT INTO users(email) VALUES ('"+newUser.email+"')"; 
+		console.log(sql);
+		connection.query(sql, function(err, results)
+		{ 
+			/*Some actions to handle the query results*/
+			connection.release(); // release connection
+		}); 
+	});
 
 	console.log("Added User");
     res.send("-1");
