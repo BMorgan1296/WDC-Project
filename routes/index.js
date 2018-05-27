@@ -88,6 +88,23 @@ function validate(givenID, obj)
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+//////////////////////////////////////////////NEED AUTO INCREMENT ID NEED AUTO INCREMENT ID!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//https://www.w3schools.com/nodejs/nodejs_mysql_create_db.asp
+router.get('/posts.json', function(req, res, next) 
+{
+	//Connect to the database 
+	req.pool.getConnection(function(err,connection) 
+	{ 
+		if (err) { throw err;} 
+		var sql = "INSERT INTO user(name, address) VALUES ('Ben', 'Lol St.')"; 
+		connection.query(sql, function(err, results)
+		{ 
+			/*Some actions to handle the query results*/
+			connection.release(); // release connection
+			res.json(rows); //send response
+		}); 
+	}); 
+}); 
 
 router.post('/login.json', function(req, res)
 {
