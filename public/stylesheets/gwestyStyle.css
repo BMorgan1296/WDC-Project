@@ -307,10 +307,11 @@ body{
 }
 
 .g-signin2{
-    margin-top: .2em;
+    /*margin-top: .25em;*/
+    margin-top: 2%;
     display: inline-block;
     width:30%;
-    margin-left:10%;
+    margin-left:45%;
 }
 .signout{
     

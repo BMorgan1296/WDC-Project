@@ -91,109 +91,43 @@ router.get('/', function(req, res, next) {
 router.post('/login.json', function(req, res)
 {
 	var login = null;
-    var tempUser = req.body;
     //user ID sent, check if matches.
     //if matches, login
     //if no match, refuse login
     // If login details present, attempt login 
-    if(tempUser.email !== undefined && tempUser.password !== undefined)
+    if(req.body.idtoken !== undefined) //undefined when no googleID token provided
     {
+		console.log("Google Token Received");
 
-    }
-	else if (tempUser.idtoken !== undefined)
-	{
-		/*console.log("Google Token Received");
-		async function verify(){
-			// verify google ID token
-			const ticket = await client.verifyIdToken({
-	            idToken: req.body.idtoken,
-	            audience: CLIENT_ID
+		async function verify()
+		{
+			const ticket = await client.verifyIdToken({ //verifies token
+				idToken: req.body.idtoken, //openID stuff from google
+				audience: CLIENT_ID
 			});
-			// get user data from token
-		    const payload = ticket.getPayload();
 
-		    const userid = payload['sub'];
-		    // if email and fname match session saved, name sent sent 
-			
+			const payload = ticket.getPayload();
+			const userid = payload['sub'];
+
+			console.log(userid);
+
+			//QUERY FOR USER IN DATABASE USING USERID SEND 1
+			//IF NOT FOUND, SEND -1 AND HANDLE THAT ON FRONT END
 		}
-		res.json({fName:login});
-		//catching errors from verify as it is async
-   		verify().catch(console.error);*/
-   	}
-   	// if no login details, but valid session  
-	else if(tempSession[req.session.id] !== undefined)
-	{
-	
-		
-	} 
-	else
-	{
-		res.send({}); //why??
+
+		verify().catch(console.error);
 	}
+	else //idtoken not found, send -1 as error
+	{
+		console.log(req.body.idtoken);
+		res.send("-1");
+	}
+
 });
 
 router.post('/signup.json', function(req, res) //will work by sending userID from google, and the other info from the signup part.
 {
-	var givenCredentials = req.body;
-	var accountFound = false;
-
-	for (var i = 0; i < user.length; i++) 
-	{
-		if(givenCredentials.email === user[i].email)
-		{
-			accountFound = true;
-		}
-	}
-
-	if(accountFound === false)
-	{
-		
-		var fullName = givenCredentials.fullName.split(" ");
-		console.log(fullName);
-		var firstName = "";
-		for (i = 0; i < fullName.length-1; i++)
-		{
-			firstName = firstName+fullName[i];
-		}
-		
-		var surName=fullName[fullName.length-1];
-		
-
-      	
-		var newUser =
-		{
-			email:givenCredentials.email,
-			password:givenCredentials.password,
-			localCurr:"AUD",
-			currId:"", //sets new user's session id to the current one
-			bookings:[],
-			personalInfo: 
-			{
-				gender:"",
-				fName:firstName, //gotten firstname previously in ofr loop
-				sName:surName, //gets surname as it is last token of the string
-				address:"",
-				postcode:"",
-				city:"",
-				Country:""
-			},
-			paymentInfo:
-			{
-				cardType:"",
-				cardNo:"",
-		        cardCVV:"",
-		        expiryM:"",
-		        expiryY:""			
-		    }	
-		};
-        console.log("newUser");
-		user.push(newUser);
-		
-
-	}
-
-	console.log("Added User");
-    res.send("-1");
+	
 });
 
 router.post('/businessLogin.json', function(req, res) {
@@ -469,7 +403,6 @@ router.get('/search.json', function(req, res)
 	{ 
 		if (err)  
 			throw err;
-			console.log(err);  
 		var sql;// = "SELECT * from businesses WHERE ='"++"'"; 
 		console.log(sql);
 		connection.query(sql, function(err, results)
@@ -498,7 +431,7 @@ router.post('/userBookings.json', function(req, res)
 	}
 });
 
-/// reviews //// 
+/// reviews and mappage//// 
 
 var fs = require('fs');
 var reviews = [];
@@ -519,14 +452,26 @@ router.post('/addReview.json', function(req, res) {
 
 var fs = require('fs');
 
-var hotels = [];
+router.post('/hotels.json', function(req, res) 
+{
+	var search = req.body;
+	req.pool.getConnection(function(err,connection) 
+	{ 
+		if (err)  
+			throw err;
+		var sql = "SELECT * from businesses WHERE name LIKE '"+search.query+"'"; 
+		console.log(sql);
+		connection.query(sql, function(err, results)
+		{ 
+			/*Some actions to handle the query results*/
+			connection.release(); // release connection
+			console.log(results);
+		}); 
+	});
 
-fs.readFile('data/hotels.json', 'utf8', function(err, data) { 
-    hotels = JSON.parse(data);
-});
 
-router.get('/hotels.json', function(req, res) {
-    res.send(JSON.stringify(hotels));
+    //get the query results and send back
+    res.send();
 });
 
 module.exports = router;

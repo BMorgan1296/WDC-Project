@@ -1,9 +1,13 @@
 [
-    {"name": "Hilton Adelaide", "lat": -34.929143, "lng": 138.5989062, "phone": "(08) 8217 2000", "address": "233 Victoria Square, Adelaide SA 5000"},
-    {"name": "Pullman Adelaide", "lat": -34.9232473, "lng": 138.60630879999997, "phone": "(08) 8206 8888", "address": "16 Hindmarsh Square, Adelaide SA 5000"},
-    {"name": "Majestic Minima Hotel", "lat": -34.907309, "lng": 138.60633499999994, "phone": "(08) 8334 7766", "address": "146 Melbourne St, North Adelaide SA 5006"},
-    {"name": "InterContinental Adelaide", "lat": -34.920679, "lng": 138.59651099999996, "phone": "(08) 8238 2400", "address": "North Terrace, Adelaide SA 5000"},
-    {"name": "Crown Metropol", "lat": -37.825867, "lng": 144.95764329999997, "phone": "(03) 9292 6211", "address": "8 Whiteman St, Southbank VIC 3006"},
-    {"name": "Atlantis Hotel", "lat": -37.8136194, "lng": 144.95192350000002, "phone": "(03) 9600 2900", "address": "300 Spencer St, Melbourne VIC 3000"},
-    {"name": "The Victoria Hotel Melbourne", "lat": -37.8143056, "lng": 144.9671426, "phone": "(03) 9669 0000", "address": "215 Little Collins St, Melbourne VIC 3000"}
-]
+																												//    {"name": "Hilton Adelaide", "lat": -34.929143, "lng": 138.5989062, "phone": "(08) 8217 2000", "address": "233 Victoria Square, Adelaide SA 5000"},
+																												//    {"name": "Pullman Adelaide", "lat": -34.9232473, "lng": 138.60630879999997, "phone": "(08) 8206 8888", "address": "16 Hindmarsh Square, Adelaide SA 5000"},
+																												//    {"name": "Majestic Minima Hotel", "lat": -34.907309, "lng": 138.60633499999994, "phone": "(08) 8334 7766", "address": "146 Melbourne St, North Adelaide SA 5006"},
+																												    {"name": "InterContinental Adelaide", "lat": -34.920679, "lng": 138.59651099999996, "phone": "(08) 8238 2400", "address": "North Terrace, Adelaide SA 5000"},
+																												    {"name": "Crown Metropol", "lat": -37.825867, "lng": 144.95764329999997, "phone": "(03) 9292 6211", "address": "8 Whiteman St, Southbank VIC 3006"},
+																												    {"name": "Atlantis Hotel", "lat": -37.8136194, "lng": 144.95192350000002, "phone": "(03) 9600 2900", "address": "300 Spencer St, Melbourne VIC 3000"},
+																												    {"name": "The Victoria Hotel Melbourne", "lat": -37.8143056, "lng": 144.9671426, "phone": "(03) 9669 0000", "address": "215 Little Collins St, Melbourne VIC 3000"}
+																																											]
+																																												
+																																						
+																																													
+INSERT INTO businesses(ABN, email, name, address, city, contact, rating, numRatings, pool, spa, wifi, fitness, parking, restaurant, lat, lng) VALUES(1823659, 'InterContinental Adelaide', 'intercontinental@adelaidehotels.com.au', '146 (08) 8238 2400', 'North Terrace', '(08) 8238 2400', 5, 89, 0, 1, 1, 1, 1, 0, -34.907309, 138.60633499999994);
