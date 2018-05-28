@@ -7,7 +7,7 @@ $(document).ready(function(){
                 type: 'POST',
                 success: function (data) {
                     console.log(data);
-                    if(data!=""){
+                    if(data!="-1"){
                         updateName();
                     }
                 }
@@ -42,14 +42,23 @@ $(document).ready(function(){
     });
     
      $("#Log-out").on("click",function(){
-         console.log("oo")
+         /*console.log("oo")
         $.ajax({
                 url: '/logout',
                 type: 'POST',
                 success: function (data) {
                     console.log("logged Out");
                 }
-            });
+            });*/
+         
+          var auth2 = gapi.auth2.getAuthInstance();
+          auth2.signOut().then(function(){
+             document.getElementById("signbutton").style.display = "none";
+             document.getElementById("gbutton").style.display = "inline-block";
+             $("#loggedDrop").slideUp();
+             $("#Sign-in").show();
+             $("#Logged-in").hide();
+          });
     });
     
     //off-clicks

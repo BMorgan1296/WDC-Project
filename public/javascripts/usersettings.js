@@ -6,6 +6,18 @@
 
 $(document).ready(function(){
     $.ajax({
+                url: '/login.json',
+                type: 'POST',
+                success: function (data) {
+                    console.log("Wee")
+                    console.log(data);
+                    if(data=="-1"){
+                         window.location.href = '/index.html';
+                    }
+                }
+            });
+    
+    $.ajax({
         type: "GET",
         url: '/populateBookings.json',
         success: function(response){
@@ -22,6 +34,7 @@ $(document).ready(function(){
             }
         }
     });
+    
     
 });
 

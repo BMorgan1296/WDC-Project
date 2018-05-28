@@ -1,4 +1,15 @@
 $(document).ready(function(){
+    $.ajax({
+        url: '/login.json',
+        type: 'POST',
+        success: function (data) {
+            console.log("Wee")
+            console.log(data);
+            if(data=="-1"){
+                window.location.href = '/index.html';
+            }
+        }
+    });
     var info;
     $.ajax({
         type: "GET",
@@ -42,16 +53,4 @@ $(document).ready(function(){
         $("#city").val(info.city);
         $("#country").val(info.country);
     }
-    
-    $.ajax({
-                url: '/login.json',
-                type: 'POST',
-                success: function (data) {
-                    console.log("Wee")
-                    console.log(data);
-                    if(data==""){
-                         window.location.href = '/index.html';
-                    }
-                }
-            });
 });

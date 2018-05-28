@@ -1,4 +1,16 @@
 $(document).ready(function(){
+    $.ajax({
+        url: '/login.json',
+        type: 'POST',
+        success: function (data) {
+            console.log("Wee")
+            console.log(data);
+            if(data=="-1"){
+                window.location.href = '/index.html';
+            }
+        }
+    });
+    
     $("#updatePassword").on("click",function(){
         if($("#newPass1").val()==$("#newPass2").val()){
             var password = {

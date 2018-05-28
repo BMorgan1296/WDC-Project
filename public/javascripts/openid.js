@@ -19,14 +19,13 @@
         // The ID token that need to pass to backend:
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
-
-        getUserInfo({idtoken: id_token});
+        updateName({idtoken: id_token})
+        //getUserInfo({idtoken: id_token});
       };
        
          function signOut(){
           var auth2 = gapi.auth2.getAuthInstance();
           auth2.signOut().then(function(){
-              alert("signed out");
              document.getElementById("signbutton").style.display = "none";
              document.getElementById("gbutton").style.display = "inline-block";
        });
@@ -62,4 +61,21 @@
             
             // Send request
             xhttp.send(JSON.stringify(params));
+    }
+
+       
+ function updateName(param){
+        $.ajax({
+                url: '/UserInfo.json',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $("#Sign-in").hide();
+                    $("#Logged-in").show();
+                    console.log(data);
+                    $("#Logged-in").html(" "+ data.fName);
+                    $("#loggedName").html(" "+ data.fName);
+                },
+                data: param
+            });
     }

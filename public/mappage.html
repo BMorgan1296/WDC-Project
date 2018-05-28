@@ -24,23 +24,17 @@
             <div class="popup">
                 <form>
                     <h3 class="popupItem center">Sign-up</h3>
-                    <div class="popupItem">Full name:</div>
-                    <input id = "nameS" type="text" class="">
+                    <div class="popupItem">First name:</div>
+                    <input id = "firstnameS" type="text" class="">
+                    <br>
+                    <div class="popupItem">Surname:</div>
+                    <input id = "surnameS" type="text" class="">
                     <br>
                     <div class="popupItem">Email:</div>
                     <input id = "emailS" type="email" class="">
                     <br>
-                    <div class="popupItem">Password:</div>
-                    <input id = "passwordS" type="password" class="">
+                    <div id="gbutton" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" onclick=""></div> <!-- google button -->
                     <br>
-                    <div class="popupItem">Confirm password:</div>
-                    <input id = "password2S" type="password" class="">
-                    <br>
-                    <button onclick="SignIn()" class="button">Sign-up</button>
-                    <div class="popupItem center">or</div>
-                    <div class="popupItem">Sign-up with </div>
-
-                    <div id="gbutton" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> <!-- google button -->
                     <button id="signbutton" class="signout" onclick="signOut()"> signout</button>  
                 </form>
             </div>
@@ -57,14 +51,15 @@
             <div id = "currencyDrop" class="fixedPopDownList">
             </div>
             <div id = "signDrop" class="sign fixedPopDownList">
-                    <div class="sign fixedPopDownItem signTitle">Email:</div>
+                    <!-- <div class="sign fixedPopDownItem signTitle">Email:</div>
                     <input id = "email" type="text" class="sign">
                     <div class="sign fixedPopDownItem signTitle">Password:</div>
                     <input id = "password" type="password" class="sign">
-                    <button  onclick = "logIn()" class="sign button">Sign-in</button>
+                    <!-- <p class="logInmessage" id = "content" ></p> -->
+                    <!-- <button  onclick = "logIn()" class="sign button">Sign-in</button> -->
+                <div id="gb2" class="g-signin2 gb" data-onsuccess="onSignIn" data-theme="dark" onclick=""></div> 
                 <div class="sign fixedPopDownItem signMidTitle">or</div>
                 <div class="sign fixedPopDownItem signMidTitle" id="Signup">Sign-up</div>
-                
             </div>
             <div id = "loggedDrop" class="logged fixedPopDownList">
                 <div class="logged fixedPopDownItem signTitle">Welcome back,<span id="loggedName" class="logged"> Daniel</span></div>

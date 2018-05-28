@@ -370,3 +370,12 @@ a{
 #Log-out{
     cursor:pointer;
 }
+
+.gb{
+    margin-top: 4% !important;
+    margin-left: calc((100% - 120px)/ 2) !important;
+}
+
+#gb2 .abcRioButton abcRioButtonBlue{
+    box-shadow: none;
+}

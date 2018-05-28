@@ -113,6 +113,7 @@ router.post('/login.json', function(req, res)
 
 			//QUERY FOR USER IN DATABASE USING USERID SEND 1
 			//IF NOT FOUND, SEND -1 AND HANDLE THAT ON FRONT END
+            res.send("1"); //temp, should be sending Fname back
 		}
 
 		verify().catch(console.error);
@@ -475,7 +476,3 @@ router.post('/hotels.json', function(req, res)
 });
 
 module.exports = router;
-
-
-
-
