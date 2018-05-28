@@ -91,29 +91,18 @@ router.get('/', function(req, res, next) {
 router.post('/login.json', function(req, res)
 {
 	var login = null;
-	console.log(JSON.stringify(req.body));
     var tempUser = req.body;
-
+    //user ID sent, check if matches.
+    //if matches, login
+    //if no match, refuse login
     // If login details present, attempt login 
     if(tempUser.email !== undefined && tempUser.password !== undefined)
     {
-		console.log("Username + Password received");
-		for (var i = 0; i < user.length; i++) 
-		{
-			if(tempUser.email === user[i].email && tempUser.password === user[i].password)
-			{
-	             console.log("user found");
-				user[i].currId = req.session.id; //setting currID. 
-				tempSession[req.session.id] = tempUser.email;
-	                login = req.body.email;
-	            }
-        }
-        res.json({email:login}); 		       
-	    // no login check to see if login with google. 
-	}
+
+    }
 	else if (tempUser.idtoken !== undefined)
 	{
-		console.log("Google Token Received");
+		/*console.log("Google Token Received");
 		async function verify(){
 			// verify google ID token
 			const ticket = await client.verifyIdToken({
@@ -123,81 +112,27 @@ router.post('/login.json', function(req, res)
 			// get user data from token
 		    const payload = ticket.getPayload();
 
-		    var email = payload['email'];
-		    var name = payload['given_name'];
 		    const userid = payload['sub'];
-
 		    // if email and fname match session saved, name sent sent 
-			for(var i = 0; i < user.length; i++)
-			{
-				if(user[i].email === email && user[i].personalInfo.fName === name)
-				{
-					console.log("User info matched");
-					tempSession[req.session.id] = user[i].personalInfo.fName;
-					login = user[i].personalInfo.fName;
-				}
-			}
+			
 		}
 		res.json({fName:login});
 		//catching errors from verify as it is async
-   		verify().catch(console.error);
+   		verify().catch(console.error);*/
    	}
    	// if no login details, but valid session  
 	else if(tempSession[req.session.id] !== undefined)
 	{
-	// console.log("valid session");
-		login = tempSession[req.session.id];
-		res.json({email:login});
+	
+		
 	} 
 	else
 	{
-		res.send({});
+		res.send({}); //why??
 	}
 });
 
-router.post('/businessLogin.json', function(req, res) {
-    var businessLogin = null;
-	console.log(JSON.stringify(req.body));
-    var businessUser = req.body;
-
-   if(businessUser.email !== undefined && businessUser.password !== undefined){
-       console.log("Username + Password received");
-	for (var i = 0; i < business.length; i++) 
-	{
-		if(businessUser.email === business[i].email && businessUser.password === business[i].password)
-		{
-            console.log("user found");
-			business[i].currId = req.session.id; //setting currID. 
-			tempSession[req.session.id] = req.body.email;
-            businessLogin = businessUSer.email
-            }
-        }
-		        res.json({email:businessLogin}); 
-   }
-   verify().catch(console.error);
-});
-
-
-router.post('/logout',function(req, res){
-	var index = validate(req.session.id, user); //finds valid user
-	if(index !== -1)
-	{
-		user[index].currId = "";
-        req.session.destroy();
-	}
-
-	res.send();
-});
-
-router.post('/logoutBusiness',function(req){
-	var index = validate(req.session.id, business); //finds valid user
-	if(index !== -1)
-	{
-		business[index].currId = "";
-	}
-});
-
-router.post('/signup.json', function(req, res)
+router.post('/signup.json', function(req, res) //will work by sending userID from google, and the other info from the signup part.
 {
 	var givenCredentials = req.body;
 	var accountFound = false;
@@ -260,6 +195,50 @@ router.post('/signup.json', function(req, res)
 	console.log("Added User");
     res.send("-1");
 });
+
+router.post('/businessLogin.json', function(req, res) {
+    var businessLogin = null;
+	console.log(JSON.stringify(req.body));
+    var businessUser = req.body;
+
+   if(businessUser.email !== undefined && businessUser.password !== undefined){
+       console.log("Username + Password received");
+	for (var i = 0; i < business.length; i++) 
+	{
+		if(businessUser.email === business[i].email && businessUser.password === business[i].password)
+		{
+            console.log("user found");
+			business[i].currId = req.session.id; //setting currID. 
+			tempSession[req.session.id] = req.body.email;
+            businessLogin = businessUSer.email
+            }
+        }
+		        res.json({email:businessLogin}); 
+   }
+   verify().catch(console.error);
+});
+
+
+router.post('/logout',function(req, res){
+	var index = validate(req.session.id, user); //finds valid user
+	if(index !== -1)
+	{
+		user[index].currId = "";
+        req.session.destroy();
+	}
+
+	res.send(); //should logout user
+});
+
+router.post('/logoutBusiness',function(req){
+	var index = validate(req.session.id, business); //finds valid user
+	if(index !== -1)
+	{
+		business[index].currId = "";
+	} //logs out the business?
+});
+
+
 
 router.post('/updateEmailUser.json', function(req, res) //should be called when user enters new email and presses done
 {
