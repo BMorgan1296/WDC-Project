@@ -69,9 +69,6 @@ business[0] =
 	},
 	amenities:[false, false, false, false, false, false] //pool, spa, wifi, fitness, parking, restaurant
 };
-var tempSession = [];
-var sessions = {};
-
 
 function validate(givenID, obj)
 {
@@ -88,8 +85,6 @@ function validate(givenID, obj)
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-//////////////////////////////////////////////NEED AUTO INCREMENT ID NEED AUTO INCREMENT ID!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//https://www.w3schools.com/nodejs/nodejs_mysql_create_db.asp
 
 router.post('/login.json', function(req, res)
 {
@@ -98,60 +93,63 @@ router.post('/login.json', function(req, res)
     var tempUser = req.body;
 
     // If login details present, attempt login 
-    if(tempUser.email !== undefined && tempUser.password !== undefined){
-       console.log("Username + Password received");
-	for (var i = 0; i < user.length; i++) 
-	{
-		if(tempUser.email === user[i].email && tempUser.password === user[i].password)
+    if(tempUser.email !== undefined && tempUser.password !== undefined)
+    {
+		console.log("Username + Password received");
+		for (var i = 0; i < user.length; i++) 
 		{
-             console.log("user found");
-			user[i].currId = req.session.id; //setting currID. 
-			tempSession[req.session.id] = tempUser.email;
-                login = req.body.email
-            }
+			if(tempUser.email === user[i].email && tempUser.password === user[i].password)
+			{
+	             console.log("user found");
+				user[i].currId = req.session.id; //setting currID. 
+				tempSession[req.session.id] = tempUser.email;
+	                login = req.body.email
+	            }
         }
-		        res.json({email:login}); 
-		       
-		        // no login check to see if login with google. 
-		}else if (tempUser.idtoken !== undefined){
-			console.log("Google Token Received");
-
-			async function verify(){
-				// verify google ID token
-				const ticket = await client.verifyIdToken({
-                idToken: req.body.idtoken,
-                audience: CLIENT_ID
-        });
-				// get user data from token
-   	     const payload = ticket.getPayload();
-   	     var email = payload['email'];
-   	     var name = payload['given_name'];
-   	     
-
-   	     // if email and fname match session saved, name sent sent 
-   	     for(var i = 0; i < user.length; i++){
-   		  if(user[i].email === email && user[i].personalInfo.fName === name){
-   		  	 console.log("User info matched");
-   		  	tempSession[req.session.id] = user[i].personalInfo.fName; 
-           
-            
-             login = user[i].personalInfo.fName;
-   		}
-   	}
-       
-       res.json({fName:login});
+        res.json({email:login}); 		       
+	    // no login check to see if login with google. 
+	}
+	else if (tempUser.idtoken !== undefined)
+	{
+		console.log("Google Token Received");
+		async function verify()
+		{
+			// verify google ID token
+			const ticket = await client.verifyIdToken(
+			{
+	            idToken: req.body.idtoken,
+	            audience: CLIENT_ID
+			});
+			// get user data from token
+		    const payload = ticket.getPayload();
+		    var email = payload['email'];
+		    var name = payload['given_name'];
+		    // if email and fname match session saved, name sent sent 
+			for(var i = 0; i < user.length; i++)
+			{
+				if(user[i].email === email && user[i].personalInfo.fName === name)
+				{
+					console.log("User info matched");
+					tempSession[req.session.id] = user[i].personalInfo.fName;
+					login = user[i].personalInfo.fName;
+				}
+			}
+		}
+		res.json({fName:login});
    	}
    	verify().catch(console.error);
-   	// if no login details, but valid session
-  } else if(tempSession[req.session.id] !== undefined){
-  	    // console.log("valid session");
-    	login = tempSession[req.session.id];
-    	res.json({email:login});
-// } else{
-//        res.send({});
-// }
-}
-}); 
+   	// if no login details, but valid session  
+	else if(tempSession[req.session.id] !== undefined)
+	{
+		    // console.log("valid session");
+		login = tempSession[req.session.id];
+		res.json({email:login});
+	} 
+	else
+	{
+		res.send({});
+	}
+});
 
 router.post('/businessLogin.json', function(req, res) {
     var businessLogin = null;
@@ -233,7 +231,7 @@ router.post('/signup.json', function(req, res)
 			personalInfo: 
 			{
 				gender:"",
-				fName:firstName, //gotten firstname previously in for loop
+				fName:firstName, //gotten firstname previously in ofr loop
 				sName:surName, //gets surname as it is last token of the string
 				address:"",
 				postcode:"",
@@ -255,22 +253,6 @@ router.post('/signup.json', function(req, res)
 
 	}
 
-
-	req.pool.getConnection(function(err,connection) 
-	{ 
-		console.log("HERE");
-		if (err)  
-			//throw err;
-			console.log(err);  
-		var sql = "INSERT INTO users(email) VALUES ('"+newUser.email+"')"; 
-		console.log(sql);
-		connection.query(sql, function(err, results)
-		{ 
-			/*Some actions to handle the query results*/
-			connection.release(); // release connection
-		}); 
-	});
-
 	console.log("Added User");
     res.send("-1");
 });
@@ -286,8 +268,7 @@ router.post('/updateEmailUser.json', function(req, res) //should be called when 
 	else
 	{
 		res.send("-1");
-	}
-	
+	}	
 });
 
 router.post('/updatePasswordUser.json', function(req, res) //may not be needed depending on openID
@@ -301,8 +282,7 @@ router.post('/updatePasswordUser.json', function(req, res) //may not be needed d
 	else
 	{
 		res.send("-1");
-	}
-	
+	}	
 });
 
 router.post('/updateEmailBusiness.json', function(req, res) //should be called when business enters new email and presses done
@@ -454,8 +434,8 @@ router.post('/UpdatePaymentInfo.json', function(req, res) //updates payment info
 		res.send("-1");
 	}
 });
-
 router.post('/BusinessInfo.json', function(req, res) //gives business info
+
 {
 	var index = validate(req.session.id, business);	
 	if(index !== -1)
@@ -486,11 +466,10 @@ router.post('/UpdateBusinessInfo.json', function(req, res) //updates it when don
 
 router.post('/addRoom.json', function(req, res) //updates it when done button pressed
 {
-	var index = validate(req.session.id, business);	
 	var newRoom = req.body.room;
 	if(index !== -1)
 	{
-		business[index].rooms.push(newRoom);
+		
 	}
 	else
 	{
@@ -502,59 +481,21 @@ router.get('/search.json', function(req, res)
 {
 	var searchQueries = req.body.queries; //search words
 	var searchFilters = req.body.filters; //search filters
-	var results = [];
-
-	var ratings = false;
-	var amenities = true; //is true as if one anemity doesnt match then it becomes false
-	var roomType = false;
-	var priceBelow = false;
-
-	var nameMatch = false;
-	var titleMatch = false;
-	var suburbMatch = false;
-	var cityMatch = false;
-
-	for (var i = 0; i < business.length; i++) //searches all businesses
-	{
-		for (var j = 0; j < business[i].rooms.length; j++)  //searches all rooms for each business
-		{
-			var currBusiness = business[i];
-			var currRoom = business[i].rooms[j];
-
-			if(currBusiness.numRatings >= searchFilters.ratings) //ratings inside limit
-				ratings = true;
-
-			for (var a = 0; a < currBusiness.anemities.length; a++)//will make anemities false if it doesn't match with given anemities
-			{ 
-				if(currBusiness.anemities[a] !== searchFilters.anemities[a])
-					amenities = false;
-			}
-			if(currRoom.type === searchFilters.roomType) //if the type is the same, then roomType is correct
-				roomType = true;
-			if(currRoom.priceBelow >= searchFilters.priceLimit) //if the price limit is below or equal then it is below the price limit
-				priceBelow = true;
-
-			for(var q = 0; q < searchQueries.length; q++)
-			{
-				if(currRoom.title.includes(searchQueries[q]) === true) //room matching title
-					titleMatch = true;
-				if(currBusiness.name.includes(searchQueries[q]) === true) //if just one of the business descriptions is true after passing the previous tests, then we will add the room
-					nameMatch = true;				
-				else if(currBusiness.suburb.includes(searchQueries[q]) === true)
-					suburbMatch = true;
-				else if(currBusiness.city.includes(searchQueries[q]) === true)
-					cityMatch = true;
-			}
-
-			if(ratings === true && amenities === true && roomType === true && priceBelow === true)
-			{
-				if(titleMatch === true) //will add room if the title matches
-					results.push(currRoom);
-				else if(nameMatch === true || suburbMatch === true || cityMatch === true) //or will add the room if the name, suburb or city matches
-					results.push(currRoom);
-			}			
-		}
-	}
+	
+	req.pool.getConnection(function(err,connection) 
+	{ 
+		if (err)  
+			throw err;
+			console.log(err);  
+		var sql = "SELECT * from businesses WHERE ='"++"'"; 
+		console.log(sql);
+		connection.query(sql, function(err, results)
+		{ 
+			/*Some actions to handle the query results*/
+			connection.release(); // release connection
+			console.log(results);
+		}); 
+	});
 
 	res.send(JSON.stringify(results)); //sends the compiled results
 });
@@ -563,7 +504,6 @@ router.get('/search.json', function(req, res)
 
 router.post('/userBookings.json', function(req, res)
 {
-	var index = validate(req.session.id, business);	
 	if(index !== -1)
 	{
 		var toString = business[index].bookings; //sends bookings
@@ -593,9 +533,6 @@ router.post('/addReview.json', function(req, res) {
     reviews.push({name: req.body.name, date: req.body.date, text: req.body.text});
     res.send();
 });
-
-
-
 
 var fs = require('fs');
 
