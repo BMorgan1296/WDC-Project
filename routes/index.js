@@ -70,6 +70,8 @@ business[0] =
 	amenities:[false, false, false, false, false, false] //pool, spa, wifi, fitness, parking, restaurant
 };
 
+var tempSession = {};
+
 function validate(givenID, obj)
 {
 	for (var i = 0; i < obj.length; i++)
@@ -103,7 +105,7 @@ router.post('/login.json', function(req, res)
 	             console.log("user found");
 				user[i].currId = req.session.id; //setting currID. 
 				tempSession[req.session.id] = tempUser.email;
-	                login = req.body.email
+	                login = req.body.email;
 	            }
         }
         res.json({email:login}); 		       
@@ -112,18 +114,19 @@ router.post('/login.json', function(req, res)
 	else if (tempUser.idtoken !== undefined)
 	{
 		console.log("Google Token Received");
-		async function verify()
-		{
+		async function verify(){
 			// verify google ID token
-			const ticket = await client.verifyIdToken(
-			{
+			const ticket = await client.verifyIdToken({
 	            idToken: req.body.idtoken,
 	            audience: CLIENT_ID
 			});
 			// get user data from token
 		    const payload = ticket.getPayload();
+
 		    var email = payload['email'];
 		    var name = payload['given_name'];
+		    const userid = payload['sub'];
+
 		    // if email and fname match session saved, name sent sent 
 			for(var i = 0; i < user.length; i++)
 			{
@@ -136,12 +139,13 @@ router.post('/login.json', function(req, res)
 			}
 		}
 		res.json({fName:login});
+		//catching errors from verify as it is async
+   		verify().catch(console.error);
    	}
-   	verify().catch(console.error);
    	// if no login details, but valid session  
 	else if(tempSession[req.session.id] !== undefined)
 	{
-		    // console.log("valid session");
+	// console.log("valid session");
 		login = tempSession[req.session.id];
 		res.json({email:login});
 	} 
@@ -487,7 +491,7 @@ router.get('/search.json', function(req, res)
 		if (err)  
 			throw err;
 			console.log(err);  
-		var sql = "SELECT * from businesses WHERE ='"++"'"; 
+		var sql;// = "SELECT * from businesses WHERE ='"++"'"; 
 		console.log(sql);
 		connection.query(sql, function(err, results)
 		{ 
