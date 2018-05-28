@@ -16,6 +16,7 @@
 <script type="application/javascript" src="javascripts/jquery-1.12.4.js"></script>
 <script type="application/javascript" src="javascripts/shared.js"></script>
 <script type="application/javascript" src="javascripts/openid.js"></script>
+<script type="application/javascript" src="javascripts/signIn.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body onload="getUserInfo({})">
@@ -35,7 +36,7 @@
                     <div class="popupItem">Confirm password:</div>
                     <input id = "password2S" type="password" class="">
                     <br>
-                    <button class="button">Sign-up</button>
+                    <button onclick="SignIn()" class="button">Sign-up</button>
                     <div class="popupItem center">or</div>
                     <div class="popupItem">Sign-up with </div>
 

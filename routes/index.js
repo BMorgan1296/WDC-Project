@@ -42,7 +42,7 @@ user[0] =
 	{
 		cardType:"MasterCard",
 		cardNo:"12345",
-		cardVV:"354",
+		cardCVV:"354",
 		expiryM:"07",
 		expiryY:"2020"
 	}	
@@ -144,7 +144,7 @@ router.post('/login.json', function(req, res)
    	verify().catch(console.error);
    	// if no login details, but valid session
   } else if(tempSession[req.session.id] !== undefined){
-  	    console.log("valid session");
+  	    // console.log("valid session");
     	login = tempSession[req.session.id];
     	res.json({email:login});
 // } else{
@@ -200,7 +200,7 @@ router.post('/signup.json', function(req, res)
 	var givenCredentials = req.body;
 	var accountFound = false;
 
-	for (var i = 0; i < user.length; i++) //need to query here
+	for (var i = 0; i < user.length; i++) 
 	{
 		if(givenCredentials.email === user[i].email)
 		{
@@ -210,45 +210,58 @@ router.post('/signup.json', function(req, res)
 
 	if(accountFound === false)
 	{
+		
 		var fullName = givenCredentials.fullName.split(" ");
-		var firstName;
+		console.log(fullName);
+		var firstName = "";
 		for (i = 0; i < fullName.length-1; i++)
 		{
-			firstName = firstName + fullName[i];
+			firstName = firstName+fullName[i];
 		}
+		
+		var surName=fullName[fullName.length-1];
+		
+
+      	
 		var newUser =
 		{
 			email:givenCredentials.email,
 			password:givenCredentials.password,
 			localCurr:"AUD",
-			currId:req.sesion.id, //sets new user's session id to the current one
+			currId:"", //sets new user's session id to the current one
 			bookings:[],
 			personalInfo: 
 			{
 				gender:"",
-				first:firstName, //gotten firstname previously in for loop
-				surname:fullName[fullName.length-1], //gets surname as it is last token of the string
+				fName:firstName, //gotten firstname previously in for loop
+				sName:surName, //gets surname as it is last token of the string
+				address:"",
 				postcode:"",
 				city:"",
 				Country:""
 			},
 			paymentInfo:
 			{
-				card:"",
+				cardType:"",
 				cardNo:"",
-				expiryM:"",
-				expiryY:""
-			}	
+		        cardCVV:"",
+		        expiryM:"",
+		        expiryY:""			
+		    }	
 		};
-
+        console.log("newUser");
 		user.push(newUser);
+		
+
 	}
+
 
 	req.pool.getConnection(function(err,connection) 
 	{ 
 		console.log("HERE");
 		if (err)  
-			throw err; 
+			//throw err;
+			console.log(err);  
 		var sql = "INSERT INTO users(email) VALUES ('"+newUser.email+"')"; 
 		console.log(sql);
 		connection.query(sql, function(err, results)

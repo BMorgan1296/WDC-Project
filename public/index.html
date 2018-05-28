@@ -12,6 +12,7 @@
     <script type="application/javascript" src="javascripts/shared.js"></script>
     <script type="application/javascript" src="javascripts/landing.js"></script>
     <script type="application/javascript" src="javascripts/openid.js"></script>
+    <script type="application/javascript" src="javascripts/signIn.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>gwesty</title>
 </head>
@@ -32,7 +33,7 @@
                     <div class="popupItem">Confirm password:</div>
                     <input id = "password2S" type="password" class="">
                     <br>
-                    <button class="button">Sign-up</button>
+                    <button onclick="SignIn()" class="button">Sign-up</button>
                     <div class="popupItem center">or</div>
                     <div class="popupItem">Sign-up with </div>
                     
@@ -58,6 +59,7 @@
                     <input id = "email" type="text" class="sign">
                     <div class="sign fixedPopDownItem signTitle">Password:</div>
                     <input id = "password" type="password" class="sign">
+                    <!-- <p class="logInmessage" id = "content" ></p> -->
                     <button  onclick = "logIn()" class="sign button">Sign-in</button>
                 <div class="sign fixedPopDownItem signMidTitle">or</div>
                 <div class="sign fixedPopDownItem signMidTitle" id="Signup">Sign-up</div>
@@ -67,7 +69,7 @@
                 <div class="logged fixedPopDownItem signTitle">Welcome back,<span id="loggedName" class="logged"> Daniel</span></div>
                 <ul class="logged fixedPopDownItem signTitle">
                     <li><a class="logged" href="mappage.html">Find a hotel</a></li>
-                    <li><a href="settings_details.html"class="logged">Settings</a></li>
+                    <li><a href="settings_details.html" class="logged">Settings</a></li>
                 </ul>
                 <div class="logged fixedPopDownItem signMidTitle" id="Log-out">Logout</div>
             </div>
