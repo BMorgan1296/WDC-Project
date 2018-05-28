@@ -13,6 +13,7 @@
 	<script type="application/javascript" src="javascripts/shared.js"></script>
 	<script type="application/javascript" src="javascripts/landing.js"></script>
     <script type="application/javascript" src="javascripts/signIn.js"></script>
+    <script type="application/javascript" src="javascripts/booking_confirm.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
     <title>Booking - Confirm</title>
@@ -86,7 +87,7 @@
         </div>
         <div class="main"> 
             <div class="mainCol">
-                <div class="colRow rowTitle">#HotelPlaceholder</div>
+                <div class="colRow rowTitle">Hotel Details</div>
                 <div class="colRow subRow">Hotel Name
                     <div class="rowOutput" id="hotelName">Placeholder name</div> 
                 </div>
@@ -123,7 +124,7 @@
             </div>
         </div>
         <div class="mainFooter">
-            <div class="nextButton button" onclick="window.location.href='settings_bookings.html'">Confirm</div>
+            <div class="nextButton button" id = "confirm">Confirm</div>
         </div>
         <div class="footer">
                 <div class="footerQuarter">

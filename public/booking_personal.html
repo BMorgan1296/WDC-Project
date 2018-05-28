@@ -14,6 +14,7 @@
 	<script type="application/javascript" src="javascripts/landing.js"></script>
     <script type="application/javascript" src="javascripts/openid.js"></script>
     <script type="application/javascript" src="javascripts/signIn.js"></script>
+    <script type="application/javascript" src="javascripts/booking_personal.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>Booking - Personal information</title>
 </head>
@@ -95,10 +96,10 @@
                     </select>
                 </div>
                 <div class="colRow">First name
-                    <input class="rowInput" type="text" id="firstname" placeholder="First name">
+                    <input class="rowInput" type="text" id="fName" placeholder="First name">
                 </div>
                 <div class="colRow">Surname
-                    <input class="rowInput" type="text" id="surname" placeholder="Surname">
+                    <input class="rowInput" type="text" id="sName" placeholder="Surname">
                 </div>
                 <div class="colRow">Contact number
                     <input class="rowInput" type="text" id="number" placeholder="Contact number">
@@ -370,7 +371,7 @@
             </div>
         </div>
         <div class="mainFooter">
-            <div class="nextButton button" onclick="window.location.href='booking_confirm.html'">Next</div>
+            <div class="nextButton button" id ="nextButton">Next</div>
         </div>
         <div class="footer">
                 <div class="footerQuarter">
