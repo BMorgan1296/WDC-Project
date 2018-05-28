@@ -1,42 +1,55 @@
+/* exported MapFunction*/
+/* exported showHotels*/
+/* exported addMarkers*/
+/* exported setRating*/
+
 var map = null;
 var hotels = [];
 var markers = [];
+var currRating = 0;
+
+function setRating(given)
+{
+  currRating = given;
+}
         
 // Initialise map
-function MapFunction() {
+function MapFunction() 
+{
   geocoder = new google.maps.Geocoder();
-        map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(document.getElementById('map'), {
 
-          center: {lat: -34.9284989, lng: 138.60074559999998},
-          zoom: 13,
-          clickableIcons: false
-        });
+    center: {lat: -34.9284989, lng: 138.60074559999998},
+    zoom: 13,
+    clickableIcons: false
+  });
 
-        var input = document.getElementById('search2');
-        var searchBox = new google.maps.places.SearchBox(input);
-        map.addListener('bounds_changed', function() {
-          searchBox.setBounds(map.getBounds());
-        });
-        searchBox.addListener('places_changed', function() {
-          var places = searchBox.getPlaces();
+  var input = document.getElementById('search2');
+  var searchBox = new google.maps.places.SearchBox(input);
+  map.addListener('bounds_changed', function() {
+    searchBox.setBounds(map.getBounds());
+  });
+  searchBox.addListener('places_changed', function() {
+    var places = searchBox.getPlaces();
 
-          if (places.length == 0) {
-            return;
-          }
-          var bounds = new google.maps.LatLngBounds();
-          places.forEach(function(place) {
-            if (!place.geometry) {
-              console.log("Returned place contains no geometry");
-              return;
-            }
-            if (place.geometry.viewport) {
-              bounds.union(place.geometry.viewport);
-            } else {
-              bounds.extend(place.geometry.location);
-            }
-          });
-          map.fitBounds(bounds);
-        });
+    if (places.length === 0) {
+      return;
+    }
+
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function(place) {
+      if (!place.geometry) {
+        console.log("Returned place contains no geometry");
+        return;
+      }
+      if (place.geometry.viewport) {
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    map.fitBounds(bounds);
+  });
     
    } 
   
@@ -50,21 +63,33 @@ function showHotels() {
     // Define behaviour for a response       
     xhttp.onreadystatechange = function() {
                    
-        if (this.readyState == 4 && this.status == 200) {
-                        
-            // convert from string to JSON, populate hotels array      
-            hotels = JSON.parse(xhttp.responseText);
-                          
+        if (this.readyState == 4 && this.status == 200) {                        
+            // convert from string to JSON, populate hotels array!!!
+
             // Populates the map with markers      
-            addMarkers();    
+            //addMarkers();     //UNCOMMENT THIS
         }      
+    };
+    var searchObj = {
+      query:document.getElementById("search2").value,
+      numGuests:document.getElementById("roomID").value,
+      maxPrice:document.getElementById("Range").value,
+      //amenities
+      pool:document.getElementById("pool").checked | 0,
+      spa:document.getElementById("spa").checked | 0,
+      wifi:document.getElementById("wifi").checked | 0,
+      fitness:document.getElementById("fitness").checked | 0,
+      parking:document.getElementById("parking").checked | 0,
+      restaurant:document.getElementById("restaurant").checked | 0,
+      //ratings
+      rating: currRating
     };
                   
     // Initiate connection   
-    xhttp.open("GET", "hotels.json", true);
-                  
+    xhttp.open("POST", "hotels.json", true);
+    xhttp.setRequestHeader("Content-type","application/json");
     // Send request    
-    xhttp.send();
+    xhttp.send(JSON.stringify(searchObj));
 }
 
         
@@ -86,7 +111,7 @@ function addMarkers() {
     
 // //adds details box to markers 
     var infowindow = new google.maps.InfoWindow;
-        for(var i =0; i<hotels.length;i++){
+        for(i =0; i<hotels.length;i++){
             
         marker = new google.maps.Marker({
          position: {lat: hotels[i].lat, lng: hotels[i].lng},

@@ -13,10 +13,10 @@
 <link rel="stylesheet" type="text/css" href="stylesheets/gwestyStyle.css">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
 <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-<script type="application/javascript" src="javascripts/jquery-1.12.4.js"></script>
-<script type="application/javascript" src="javascripts/shared.js"></script>
-<script type="application/javascript" src="javascripts/openid.js"></script>
-<script type="application/javascript" src="javascripts/signIn.js"></script>
+<script src="javascripts/jquery-1.12.4.js"></script>
+<script src="javascripts/shared.js"></script>
+<script src="javascripts/openid.js"></script>
+<script src="javascripts/signIn.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body onload="getUserInfo({})">
@@ -70,7 +70,7 @@
                 <div class="logged fixedPopDownItem signTitle">Welcome back,<span id="loggedName" class="logged"> Daniel</span></div>
                 <ul class="logged fixedPopDownItem signTitle">
                     <li><a class="logged" href="mappage.html">Find a hotel</a></li>
-                    <li><a href="settings_details.html"class="logged">Settings</a></li>
+                    <li><a href="settings_details.html" class="logged">Settings</a></li>
                 </ul>
                 <div class="logged fixedPopDownItem signMidTitle" id="Log-out">Logout</div>
             </div>
@@ -83,27 +83,27 @@
   </button>
   <div class="dropdown-container">
   <label class="container_check">Pool
-  <input type="checkbox" checked="checked">
+  <input id="pool" type="checkbox" checked="checked">
   <span class="checkmark"></span>
   </label>
   <label class="container_check">Spa
-  <input type="checkbox" checked="checked">
+  <input id="spa" type="checkbox" checked="checked">
   <span class="checkmark"></span>
   </label>
   <label class="container_check">Wi-Fi
-  <input type="checkbox" checked="checked">
+  <input id="wifi" type="checkbox" checked="checked">
   <span class="checkmark"></span>
   </label>
   <label class="container_check">Fitness
-  <input type="checkbox" checked="checked">
+  <input id="fitness" type="checkbox" checked="checked">
   <span class="checkmark"></span>
   </label>
-  <label class="container_check">Parkings
-  <input type="checkbox" checked="checked">
+  <label class="container_check">Parking
+  <input id="parking" type="checkbox" checked="checked">
   <span class="checkmark"></span>
   </label>
   <label class="container_check">Restaurant
-  <input type="checkbox" checked="checked">
+  <input id="restaurant" type="checkbox" checked="checked">
   <span class="checkmark"></span>
   </label>
 
@@ -113,13 +113,13 @@
     <i class="extrafilterdown"></i>
   </button>
   <div class="dropdown-container">
-   <div class="btn-group">
-  <button class="btn1">0+</button>
-  <button class="btn2">2+</button>
-  <button class="btn1">4+</button>
-  <button class="btn2">6+</button>
-  <button class="btn1">8+</button>
-</div>
+  <div class="btn-group">
+    <button class="btn1" onclick="setRating(0)">0+</button>
+    <button class="btn2" onclick="setRating(1)">1+</button>
+    <button class="btn1" onclick="setRating(2)">2+</button>
+    <button class="btn2" onclick="setRating(3)">3+</button>
+    <button class="btn1" onclick="setRating(4)">4+</button>
+  </div>
   </div>
 </div>
 
@@ -135,7 +135,7 @@
   <button class="dropbtn">Price</button>
   <div class="dropdown-content">
     <div class="slidecontainer">
-      <input type="range" min="0" max="1000" value="0" class="slider"   id="Range">
+      <input type="range" min="0" max="1000" value="0" class="slider" id="Range">
       <p>Price:$<span id="price"></span></p>
     </div>
   </div>
@@ -143,14 +143,14 @@
 
 <!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
 <div class="custom-select" style="width:200px;">
-  <select>
+  <select id="roomID">
     <option value="0">Rooms</option>
     <option value="1">Single</option>
     <option value="2">Double</option>
     <option value="3">Family</option>
     <option value="4">Multiple</option>
-   </select>
-  </div>
+  </select>
+</div>
  
   <div class="search_bar">
       <input id="search2" type="text" placeholder="Search.." name="search">
@@ -210,8 +210,8 @@
    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-   <script type="text/javascript" src="javascripts/moment.min.js"></script>
-   <script type="text/javascript" src="javascripts/daterangepicker.js"></script>
-   <script type="text/javascript" src="javascripts/datepicker.js"></script>
+   <script src="javascripts/moment.min.js"></script>
+   <script src="javascripts/daterangepicker.js"></script>
+   <script src="javascripts/datepicker.js"></script>
   </body>
 </html>
