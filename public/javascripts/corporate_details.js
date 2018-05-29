@@ -20,7 +20,7 @@ $(document).ready(function(){
             postcode:$("#postcode").val(),
             city:$("#city").val(),
             country:$("#country").val()
-        }
+        };
 
         $.ajax({
             url: '/UpdateBusinessInfo.json',

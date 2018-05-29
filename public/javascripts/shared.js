@@ -42,7 +42,7 @@ $(document).ready(function(){
     });
     
      $("#Log-out").on("click",function(){
-         console.log("oo")
+         console.log("oo");
         $.ajax({
                 url: '/logout',
                 type: 'POST',

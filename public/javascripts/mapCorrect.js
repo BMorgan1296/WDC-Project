@@ -132,7 +132,7 @@ var infowindow = new google.maps.InfoWindow;
               '<br>' +'<b>Moreinfo:</b>'+ ' '+ hotels[i].Moreinfo+  
               '<br>'+'<button id=moreinfo onclick=myFunction(); hoteltitle() class=moreinfo>Book</button>');
               infowindow.open(map, marker);
-         }
+         };
     })(marker, i));
   
   }

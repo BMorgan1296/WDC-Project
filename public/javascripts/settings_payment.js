@@ -11,7 +11,7 @@ $(document).ready(function(){
                 window.location.href = '/index.html';
             }
         }
-    });/*
+    });*/
     
     $.ajax({
         type: "GET",
@@ -31,7 +31,7 @@ $(document).ready(function(){
             cardVV:$("#cardVV").val(),
             expiryM:$("#expiryM").val(),
             expiryY:$("#expiryY").val()
-        }
+        };
 
         $.ajax({
             url: '/UpdatePaymentInfo.json',
