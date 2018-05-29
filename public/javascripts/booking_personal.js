@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 $.ajax({
     url: '/UserInfo.json',
-    type: 'GET',
+    type: 'POST',
     dataType: 'json',
     success: function (info) 
     {
