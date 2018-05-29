@@ -1,8 +1,8 @@
 
-var id = {id:getParameterByName('hotelId')};
+var id = {id:getParameterByName('roomId')};
 
 $.ajax({
-    url: '/hotelInfo.json',
+    url: '/roomInfo.json',
     type: 'GET',
     dataType: 'json',
     success: function (data) {
@@ -14,9 +14,33 @@ $.ajax({
 });
 
 $(document).ready(function(){
-    $("confirm").on("click",function(){
+    $("#confirm").on("click",function(){
+        var info = {
+            roomId:getParameterByName('roomId'),
+            guestNum:getParameterByName('guestNum'),
+            checkIn:getParameterByName('checkIn'),
+            checkOut:getParameterByName('checkOut'),
+            gender: getParameterByName('gender'),
+            fName:getParameterByName('fName'),
+            sName:getParameterByName('sName'),
+            address:getParameterByName('address'),
+            number:getParameterByName('number'),
+            postcode:getParameterByName('postcode'),
+            city:getParameterByName('city'),
+            country:getParameterByName('country')
+        }
+        $.ajax({
+            url: '/newBooking.json',
+            type: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                console.log("Yeeboi");
+                window.location.href='/settings_bookings.html';
+            },
+            data: info
+        });
     
-        window.location.href='/booking_confirm.html?hotelId='+getParameterByName('hotelId')+'&guestNum='+getParameterByName('guestNum')+'&checkIn='+getParameterByName('checkIn')+'&checkout='+getParameterByName('checkOut')+'&gender='+$("#gender").val()+'&fName='+$("#fName").val()+'&sName='+$("#sName").val()+'&address='+$("#address").val()+'&number='+$("#number").val()+'&postcode='+$("#postcode").val()+'&city='+$("#city").val()+'&country='+$("#country").val(); 
+        window.location.href='/settings_bookings.html';
     
     });
     

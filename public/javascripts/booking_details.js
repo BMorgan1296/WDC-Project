@@ -1,8 +1,8 @@
 
-var id = {id:getParameterByName('hotelId')};
+var id = {id:getParameterByName('roomId')};
 
 $.ajax({
-    url: '/hotelInfo.json',
+    url: '/roomInfo.json',
     type: 'GET',
     dataType: 'json',
     success: function (data) {
@@ -20,7 +20,7 @@ $.ajax({
 $(document).ready(function(){
     $("#nextButton").on("click",function(){
     
-        window.location.href='/booking_personal.html?hotelId='+getParameterByName('hotelId')+'&guestNum='+$("#guestNum").val()+'&checkIn='+$("#checkIn").val()+'&checkout='+$("#checkOut").val(); 
+        window.location.href='/booking_personal.html?roomId='+getParameterByName('roomId')+'&guestNum='+$("#guestNum").val()+'&checkIn='+$("#checkIn").val()+'&checkout='+$("#checkOut").val(); 
     
     });
     
