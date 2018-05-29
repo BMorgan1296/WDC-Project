@@ -379,3 +379,7 @@ a{
 #gb2 .abcRioButton abcRioButtonBlue{
     box-shadow: none;
 }
+
+.settings{
+    display:none;
+}
