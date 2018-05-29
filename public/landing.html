@@ -12,11 +12,11 @@
     <script type="application/javascript" src="javascripts/shared.js"></script>
     <script type="application/javascript" src="javascripts/landing.js"></script>
     <script type="application/javascript" src="javascripts/openid.js"></script>
+    <script type="application/javascript" src="javascripts/signIn.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>gwesty</title>
 </head>
-<body onload="getUserInfo({})">
-    <div id="pcontainer">
+<body id="pcontainer" onload="getUserInfo({})">
         <div class="popupCon" id="newSignup">
             <div class="popup">
                 <form>
@@ -44,30 +44,28 @@
             <div class="headerLabel divider">|</div>
             <div id="Sign-in" class="sign headerLabel">Sign-in
             </div>
-            <div id="Logged-in" class="logged headerLabel">
+            <div id="Logged-in" class="logged headerLabel">Daniel
             </div>
             <div id = "currencyDrop" class="fixedPopDownList">
-            </div>
-            <div id = "signDrop" class="sign fixedPopDownList">
-                    <div class="sign fixedPopDownItem signTitle">Email:</div>
-                    <input id = "email" type="text" class="sign">
-                    <div class="sign fixedPopDownItem signTitle">Password:</div>
-                    <input id = "password" type="password" class="sign">
-                    <button  onclick = "logIn()" class="sign button">Sign-in</button> 
-                <!--<div class="sign fixedPopDownItem signMidTitle">or</div>
-                <div class="sign fixedPopDownItem signMidTitle" id="Signup">Sign-up</div> -->
-                
             </div>
             <div id = "signDrop" class="sign fixedPopDownList">
                     <!-- <div class="sign fixedPopDownItem signTitle">Email:</div>
                     <input id = "email" type="text" class="sign">
                     <div class="sign fixedPopDownItem signTitle">Password:</div>
                     <input id = "password" type="password" class="sign">
-                    <!-- <p class="logInmessage" id = "content" ></p> -->
-                    <!-- <button  onclick = "logIn()" class="sign button">Sign-in</button> -->
+                    <p class="logInmessage" id = "content" ></p>
+                    <button  onclick = "logIn()" class="sign button">Sign-in</button> -->
                 <div id="gb2" class="g-signin2 gb" data-onsuccess="onSignIn" data-theme="dark" onclick=""></div> 
-                <div class="sign fixedPopDownItem signMidTitle">or</div>
-                <div class="sign fixedPopDownItem signMidTitle" id="Signup">Sign-up</div>
+                <!--<div class="sign fixedPopDownItem signMidTitle">or</div>
+                <div class="sign fixedPopDownItem signMidTitle" id="Signup">Sign-up</div> -->
+            </div>
+            <div id = "loggedDrop" class="logged fixedPopDownList">
+                <div class="logged fixedPopDownItem signTitle">Welcome back,<span id="loggedName" class="logged"> Daniel</span></div>
+                <ul class="logged fixedPopDownItem signTitle">
+                    <li><a class="logged" href="mappage.html">Find a hotel</a></li>
+                    <li><a href="settings_details.html" class="logged">Settings</a></li>
+                </ul>
+                <div class="logged fixedPopDownItem signMidTitle" id="Log-out" onclick="signOut()">Logout</div>
             </div>
         </div>
         <div class="title">gwesty</div>
@@ -81,8 +79,7 @@
             </div>
             
         </div>
-        <div id="content"></div> <!-- testing login  -->
-       <!--  <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> -->
+       
        
         </div>
         <div class="fullPage" id="half2">
@@ -90,7 +87,7 @@
                 <img 
                     id = "priceIcon"
                     class = "secHalfIcon"
-                    src="images/experience.svg" 
+                    src="images/price.svg" 
                     alt="Best Price"/>
                 <div class="secHalfText">
                 <span class="secHalfTitle">Best Price<br></span>
@@ -146,6 +143,5 @@
                 </div> 
                 <div class="footerHalf">gwesty</div>   
             </div>
-    </div>
 </body>
 </html>
