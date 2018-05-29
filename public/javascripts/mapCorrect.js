@@ -109,25 +109,35 @@ function addMarkers() {
     }      
     
     
-// //adds details box to markers 
-    var infowindow = new google.maps.InfoWindow;
+var infowindow = new google.maps.InfoWindow;
         for(i =0; i<hotels.length;i++){
             
         marker = new google.maps.Marker({
          position: {lat: hotels[i].lat, lng: hotels[i].lng},
          map: map,
-         title: hotels[i].name
+         pixelOffset: new google.maps.Size(400,450),
+         title: hotels[i].name,
+         
+
     });
     google.maps.event.addListener(marker, 'click', (function(marker, i)
      {
         
          return function() {
-             infowindow.setContent(hotels[i].name+"<br>Phone: "+hotels[i].phone+"<br>Address: "+hotels[i].address+ "<br>" +"<button class=moreinfo>More Info</button>");
-             infowindow.open(map, marker);
+             
+             // infowindow.setContent(hotels[i].name+"<br>Phone: "+hotels[i].phone+"<br>Address: "+hotels[i].address+ "<br>" +"<button class=moreinfo>More Info</button>");
+             infowindow.setContent('<h2>'+hotels[i].name+'</h2>'+
+              '<br>'+'<b>Phone:</b>'+ ' ' +hotels[i].phone+
+              '<br>'+'<b>Adress:</b>'+ ' '+hotels[i].address+ 
+              '<br>' +'<b>Moreinfo:</b>'+ ' '+ hotels[i].Moreinfo+  
+              '<br>'+'<button id=moreinfo onclick=myFunction(); hoteltitle() class=moreinfo>Book</button>');
+              infowindow.open(map, marker);
          }
     })(marker, i));
   
   }
 
   }
+
+  
 
