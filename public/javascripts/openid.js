@@ -20,8 +20,11 @@
   var auth2 = gapi.auth2.getAuthInstance();
   auth2.signOut().then(function()
   {
-     document.getElementById("signbutton").style.display = "none";
+     //document.getElementById("signbutton").style.display = "none";
      document.getElementById("gbutton").style.display = "inline-block";
+     $("#Sign-in").show();
+     $("#Logged-in").hide();
+     $(".settings").hide();
   });
 }  
 
@@ -60,6 +63,7 @@ function updateName(param)
               $("#Sign-in").hide();
               $("#Logged-in").show();
               console.log(param);
+              $(".settings").show();
               $("#Logged-in").html(" "+ param.ofa);
               $("#loggedName").html(" "+ param.ofa);
           },
