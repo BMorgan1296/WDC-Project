@@ -2,7 +2,7 @@ $(document).ready(function(){
     var currencies = ["AUD","CAD","USD","EUR"];
     
     //is logged in?
-    $.ajax({
+    /*$.ajax({
                 url: '/login.json',
                 type: 'POST',
                 success: function (data) {
@@ -11,7 +11,7 @@ $(document).ready(function(){
                         updateName();
                     }
                 }
-            });
+            });*/
     
     updateCurrency("AUD");
     

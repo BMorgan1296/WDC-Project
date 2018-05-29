@@ -60,12 +60,16 @@ function updateName(param)
           type: 'POST',
           dataType: 'json',
           success: function (data) {
-              $("#Sign-in").hide();
-              $("#Logged-in").show();
-              console.log(param);
-              $(".settings").show();
-              $("#Logged-in").html(" "+ param.ofa);
-              $("#loggedName").html(" "+ param.ofa);
+            if(data!="-1"){
+                  $("#Sign-in").hide();
+                  $("#Logged-in").show();
+                  console.log(param);
+                  $(".settings").show();
+                  $("#Logged-in").html(" "+ param.ofa);
+                  $("#loggedName").html(" "+ param.ofa);
+            }else{
+                window.location.href = '/index.html';
+            }
           },
           data: param
       });

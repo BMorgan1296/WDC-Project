@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var info;
-    
+    /*
     $.ajax({
         url: '/login.json',
         type: 'POST',
@@ -11,7 +11,7 @@ $(document).ready(function(){
                 window.location.href = '/index.html';
             }
         }
-    });
+    });/*
     
     $.ajax({
         type: "GET",

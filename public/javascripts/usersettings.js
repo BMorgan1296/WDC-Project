@@ -5,7 +5,7 @@
 /*exported closeEdit*/
 
 $(document).ready(function(){
-    $.ajax({
+    /*$.ajax({
                 url: '/login.json',
                 type: 'POST',
                 success: function (data) {
@@ -16,7 +16,7 @@ $(document).ready(function(){
                     }
                 }
             });
-    
+    */
     $.ajax({
         type: "GET",
         url: '/populateBookings.json',
