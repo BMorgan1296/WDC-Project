@@ -6,12 +6,15 @@ $.ajax({
     type: 'POST',
     dataType: 'json',
     success: function (data) {
-        $("#hotelName").html(data.name);
-        $("#price").html("$" + data.price);
-        for(var i = 0; i < data.maxGuestsl; i++){
+        var room = JSON.parse(data.room);
+        var business = JSON.parse(data.business);
+        $("#hotelName").html(business[0].name);
+        $("#price").html(room[0].currency+" "+room[0].price);
+        $("#hotelImg").html(room[0].description);
+        for(var i = 0; i < room[0].max_guests; i++){
             $('#guestNum').append($('<option>', {
-                value: i,
-                text: i
+                value: i+1,
+                text: i+1
             }));
         }
     },

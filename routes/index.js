@@ -188,16 +188,59 @@ router.post('/UserInfo.json', function(req, res) //gives user info
 	});
 });
 
+router.post('/roomInfo.json', function(req, res) //sends room and business info
+{
+	var room = [];
+	var business = [];
+	console.log("RoomId: "+req.body.id);
+	req.pool.getConnection(function(err,connection) 
+	{ 
+		if (err)  
+			throw err;
+		var dirty = "SELECT * from rooms WHERE roomID = '"+req.body.id+"';";
+		var sql = sanitizeHtml(dirty); 
+		connection.query(sql, function(err, results)
+		{ 
+			connection.release(); // release connection
+			room = JSON.stringify(results);
+			console.log("ROOM: "+room);
+			
+			req.pool.getConnection(function(err,connection) 
+			{ 
+				if (err)  
+					throw err;
+				var dirty = "SELECT * from businesses WHERE ABN = '"+JSON.parse(room)[0].ABN+"';";
+				var sql = sanitizeHtml(dirty); 
+				connection.query(sql, function(err, results)
+				{ 
+					connection.release(); // release connection
+					business = JSON.stringify(results);
+					var both = {room, business};
+					res.send(JSON.stringify(both));
+				}); 
+			});
+			
+		}); 
+	});
+});
 
 router.post('/logout',function(req, res){
-	var user = validate(req.session.id, req); //finds valid user
-	if(index !== -1)
-	{
-		user[index].currId = "";
-        req.session.destroy();
-	}
+	req.pool.getConnection(function(err,connection) 
+	{ 
+		if (err)  
+			throw err;
+		var dirty = "SELECT * from users WHERE currID = '"+req.session.id+"'";
+		var sql = sanitizeHtml(dirty); 
+		connection.query(sql, function(err, results)
+		{ 
+			connection.release(); // release connection
+			var user = [];
+			user = JSON.stringify(results);
+			console.log(user);
+			res.send();
+		}); 
+	});
 
-	res.send(); //should logout user
 });
 
 
