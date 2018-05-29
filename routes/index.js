@@ -352,7 +352,7 @@ router.post('/UpdatePaymentInfo.json', function(req, res) //updates payment info
 		res.send("-1");
 	}
 });
-router.post('/BusinessInfo.json', function(req, res) //gives business info
+/*router.post('/BusinessInfo.json', function(req, res) //gives business info
 
 {
 	var index = validate(req.session.id, business);	
@@ -380,7 +380,7 @@ router.post('/UpdateBusinessInfo.json', function(req, res) //updates it when don
 	{
 		res.send("-1");
 	}
-});
+});*/
 
 router.post('/addRoom.json', function(req, res) //updates it when done button pressed
 {
@@ -393,28 +393,6 @@ router.post('/addRoom.json', function(req, res) //updates it when done button pr
 	{
 		res.send("-1");
 	}
-});
-
-router.get('/search.json', function(req, res)
-{
-	var searchQueries = req.body.queries; //search words
-	var searchFilters = req.body.filters; //search filters
-	
-	req.pool.getConnection(function(err,connection) 
-	{ 
-		if (err)  
-			throw err;
-		var sql;// = "SELECT * from businesses WHERE ='"++"'"; 
-		console.log(sql);
-		connection.query(sql, function(err, results)
-		{ 
-			/*Some actions to handle the query results*/
-			connection.release(); // release connection
-			console.log(results);
-		}); 
-	});
-
-	res.send(JSON.stringify(results)); //sends the compiled results
 });
 
 /// bookings ///
@@ -458,13 +436,13 @@ router.post('/hotels.json', function(req, res) //searchs for hotels using the gi
 	{ 
 		if (err)  
 			throw err;
-		var sql = "SELECT * from businesses WHERE name LIKE '%"+search.query+"%' OR address LIKE '%"+search.city+"%' OR city LIKE '%"+search.query+"%'";
-		console.log(sql);
+		var dirty = "SELECT * from businesses WHERE name LIKE '%"+search.query+"%' OR address LIKE '%"+search.query+"%' OR city LIKE '%"+search.query+"%'";
+		var sql = sanitizeHtml(dirty); 
 		connection.query(sql, function(err, results)
 		{ 
 			/*Some actions to handle the query results*/
 			connection.release(); // release connection
-			console.log(results);
+			console.log(JSON.parse(results));
 		}); 
 	});
 
@@ -479,7 +457,8 @@ router.post('/searchFilter.json', function(req, res) //filters search and return
 	{ 
 		if (err)  
 			throw err;
-		var sql = "SELECT * from businesses WHERE rating = '"+search.rating+"' AND pool = '"+search.pool+"' AND spa = '"+search.spa+"' AND wifi = '"+search.wifi+"' AND fitness = '"+search.fitness+"' AND parking = '"+search.parking+"' AND restaurant = '"+search.restaurant+"'";
+		var dirty = "SELECT * from businesses WHERE rating = '"+search.rating+"' AND pool = '"+search.pool+"' AND spa = '"+search.spa+"' AND wifi = '"+search.wifi+"' AND fitness = '"+search.fitness+"' AND parking = '"+search.parking+"' AND restaurant = '"+search.restaurant+"'";
+		var sql = sanitizeHtml(dirty); 
 		console.log(sql);
 		connection.query(sql, function(err, results)
 		{ 
@@ -501,7 +480,8 @@ router.post('/searchRooms.json', function(req, res) //filters rooms by given hot
 	{ 
 		if (err)  
 			throw err;
-		var sql = "SELECT * from businesses WHERE price = '"+search.maxPrice+"' AND max_guests = '"+search.numGuests+"'";
+		var dirty = "SELECT * from businesses WHERE price = '"+search.maxPrice+"' AND max_guests = '"+search.numGuests+"'";
+		var sql = sanitizeHtml(dirty); 
 		console.log(sql);
 		connection.query(sql, function(err, results)
 		{ 
