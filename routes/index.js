@@ -182,7 +182,6 @@ router.post('/UserInfo.json', function(req, res) //gives user info
 			connection.release(); // release connection
 			var user = [];
 			user = JSON.stringify(results);
-			console.log(user);
 			res.send(user);
 		}); 
 	});
@@ -203,23 +202,23 @@ router.post('/roomInfo.json', function(req, res) //sends room and business info
 		{ 
 			connection.release(); // release connection
 			room = JSON.stringify(results);
-			console.log("ROOM: "+room);
 			
 			req.pool.getConnection(function(err,connection) 
 			{ 
 				if (err)  
 					throw err;
-				var dirty = "SELECT * from businesses WHERE ABN = '"+JSON.parse(room)[0].ABN+"';";
-				var sql = sanitizeHtml(dirty); 
+				res.send();
+				var dirty = "SELECT * from businesses WHERE ABN = '"+JSON.parse(room)[0].ABN+"'";
+				var sql = sanitizeHtml(dirty); //sanitises
 				connection.query(sql, function(err, results)
 				{ 
 					connection.release(); // release connection
-					business = JSON.stringify(results);
+					business = JSON.stringify(results); //combines them
 					var both = {room, business};
-					res.send(JSON.stringify(both));
+					console.log(both);
+					res.end(JSON.stringify(both));
 				}); 
-			});
-			
+			});		
 		}); 
 	});
 });

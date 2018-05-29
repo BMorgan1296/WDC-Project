@@ -7,16 +7,16 @@ $.ajax({
     dataType: 'json',
     success: function (info) 
     {
-    console.log("HERE");
-        var user = JSON.parse(info.user);
-        console.log(JSON.stringify(info));
-        $("#gender").val(info.gender);
-        $("#fName").val(info.fName);
-        $("#sName").val(info.sName);
-        $("#address").val(info.address);
-        $("#postcode").val(info.postcode);
-        $("#city").val(info.city);
-        $("#country").val(info.country);
+        var user = info[0];
+        console.log(user);
+        $("#gender").val(user.gender);
+        $("#fName").val(user.first_name);
+        $("#sName").val(user.last_name);
+        $("#number").val(user.contact);
+        $("#address").val(user.address);
+        $("#postcode").val(user.postcode);
+        $("#city").val(user.city);
+        $("#country").val(user.country);
     }
 });
 

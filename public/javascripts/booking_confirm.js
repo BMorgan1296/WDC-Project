@@ -6,9 +6,11 @@ $.ajax({
     type: 'POST',
     dataType: 'json',
     success: function (data) {
-        $("#hotelName").html(data.name);
-        $("#price").html("$" + data.price);
-        $("#hotelAddress").html(data.address);
+        var room = JSON.parse(data.room);
+        var business = JSON.parse(data.business);
+        $("#hotelName").html(business[0].name);
+        $("#price").html(room[0].currency+" "+room[0].price);
+         $("#hotelAddress").html(business[0].address);
     },
     data: id
 });
