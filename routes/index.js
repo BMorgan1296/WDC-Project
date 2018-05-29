@@ -1,4 +1,6 @@
 var express = require('express');
+var sanitizeHtml = require('sanitize-html');
+const SQLtoJSON = require('sql-to-json');
 var router = express.Router();
 var CLIENT_ID = '314455925120-3eqrg8kqg9u39qup8ctkoo7ur7hfv44v.apps.googleusercontent.com';
 var {OAuth2Client} = require('google-auth-library');
@@ -432,6 +434,7 @@ router.post('/addReview.json', function(req, res) {
 router.post('/hotels.json', function(req, res) //searchs for hotels using the given query
 {
 	var search = req.body;
+	var hotels;
 	req.pool.getConnection(function(err,connection) 
 	{ 
 		if (err)  
@@ -440,19 +443,21 @@ router.post('/hotels.json', function(req, res) //searchs for hotels using the gi
 		var sql = sanitizeHtml(dirty); 
 		connection.query(sql, function(err, results)
 		{ 
-			/*Some actions to handle the query results*/
 			connection.release(); // release connection
-			console.log(JSON.parse(results));
+			JSON.stringify(results);
+			hotels = results;
+			console.log(hotels.length);
 		}); 
 	});
 
     //get the query results and send back
-    res.send();
+    res.send(hotels);
 });
 
-router.post('/searchFilter.json', function(req, res) //filters search and returns array of hotels that match the filters specified
+router.post('/searchFilter.json', function(req, res) //filters search and returns array of hotels that match the filters specified with the update button
 {
 	var search = req.body;
+	var hotels;
 	req.pool.getConnection(function(err,connection) 
 	{ 
 		if (err)  
@@ -462,18 +467,20 @@ router.post('/searchFilter.json', function(req, res) //filters search and return
 		console.log(sql);
 		connection.query(sql, function(err, results)
 		{ 
-			/*Some actions to handle the query results*/
 			connection.release(); // release connection
-			console.log(results);
+			JSON.stringify(results);
+			hotels = results;
+			console.log(hotels.length);
 		}); 
 	});
     //get the query results and send back
-    res.send();
+    res.send(hotels);
 });
 
 router.post('/searchRooms.json', function(req, res) //filters rooms by given hotel and returns array of rooms that match the filters specified, filters being price and num guests
 {
 	var search = req.body;
+	var rooms;
 	req.pool.getConnection(function(err,connection) 
 	{ 
 		if (err)  
@@ -483,15 +490,16 @@ router.post('/searchRooms.json', function(req, res) //filters rooms by given hot
 		console.log(sql);
 		connection.query(sql, function(err, results)
 		{ 
-			/*Some actions to handle the query results*/
 			connection.release(); // release connection
-			console.log(results);
+			JSON.stringify(results);
+			rooms = results;
+			console.log(rooms.length);
 		}); 
 	});
 
 
     //get the query results and send back
-    res.send();
+    res.send(rooms);
 });
 
 module.exports = router;
