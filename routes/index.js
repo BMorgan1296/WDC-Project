@@ -74,22 +74,10 @@ business[0] =
 
 var tempSession = {};
 
-function validate(givenID, obj)
+function validate(givenID, req)
 {
-	req.pool.getConnection(function(err,connection) 
-	{ 
-		if (err)  
-			throw err;
-		var dirty = "SELECT * from businesses WHERE name LIKE '%"+search.query+"%' OR address LIKE '%"+search.query+"%' OR city LIKE '%"+search.query+"%'";
-		var sql = sanitizeHtml(dirty); 
-		connection.query(sql, function(err, results)
-		{ 
-			connection.release(); // release connection
-			JSON.stringify(results);
-			hotels = results;
-			console.log(hotels.length);
-		}); 
-	});
+	console.log("USING DEPRECATED VALIDATE");
+	return "-1";
 }
 
 //Hi Marker!
@@ -99,7 +87,6 @@ router.get('/', function(req, res, next) {
 
 router.post('/login.json', function(req, res)
 {
-	var login = null;
     //user ID sent, check if matches.
     //if matches, login
     //if no match, refuse login
@@ -110,35 +97,109 @@ router.post('/login.json', function(req, res)
 
 		async function verify()
 		{
-			const ticket = await client.verifyIdToken({ //verifies token
+			const ticket = await client.verifyIdToken({ //verifies token given from getUserInfo from openid.js
 				idToken: req.body.idtoken, //openID stuff from google
 				audience: CLIENT_ID
 			});
 
 			const payload = ticket.getPayload();
 			const userid = payload['sub'];
+			const email = payload['email'];
+			const firstname = payload['given_name'];
+			const surname = payload['family_name'];
 
-			console.log(userid);
+			//search for userID, if not found, create new user and input all those things
+			//otherwise set the currID to the currSesh which will be done in validate
 
-			//QUERY FOR USER IN DATABASE USING USERID SEND 1
-			//IF NOT FOUND, SEND -1 AND HANDLE THAT ON FRONT END
-            res.send("1"); //temp, should be sending Fname back
+			req.pool.getConnection(function(err,connection) 
+			{ 
+				if (err)  
+					throw err;
+				var dirty = "SELECT * from users WHERE userID = '"+userid+"'";
+				var sql = sanitizeHtml(dirty); 
+				connection.query(sql, function(err, results)
+				{ 
+					connection.release(); // release connection
+					var user = [];
+					user = results;
+
+					if(user.length === 0) //no user found, creates new user with given info
+					{
+						console.log("USER NOT FOUND, CREATING NEW");
+						req.pool.getConnection(function(err,connection) 
+						{ 
+							if (err)  
+								throw err;
+							var dirty = "INSERT INTO users(userID, email, currID, first_name, last_name) VALUES('"+userid+"', '"+email+"', '"+req.session.id+"', '"+firstname+"', '"+surname+"')";
+							var sql = sanitizeHtml(dirty); 
+							connection.query(sql, function(err, results)
+							{ 
+								connection.release(); // release connection
+								console.log("User made successfuly");			    		
+							}); 
+						});
+					}
+					else if(user.length === 1) //user found modify curr ID to logged in
+					{
+						console.log("USER FOUND WITH ID: "+req.session.id);
+						req.pool.getConnection(function(err,connection) 
+						{ 
+							if (err)  
+								throw err;
+							var dirty = "UPDATE users SET currID = '"+req.session.id+"' WHERE userID = '"+userid+"'"; //updates sessionID
+							var sql = sanitizeHtml(dirty); 
+							connection.query(sql, function(err, results)
+							{ 
+								connection.release(); // release connection	    		
+							}); 
+						});
+					}
+		    		
+				}); 
+			});
+
+			res.send(firstname);
 		}
-
 		verify().catch(console.error);
 	}
-	else //idtoken not found, send -1 as error
+	else if(req.body.idtoken === undefined) //idtoken not found, send -1 as error
 	{
 		console.log(req.body.idtoken);
 		res.send("-1");
 	}
-
 });
 
-router.post('/signup.json', function(req, res) //will work by sending userID from google, and the other info from the signup part.
+router.post('/UserInfo.json', function(req, res) //gives user info
 {
-	
+	req.pool.getConnection(function(err,connection) 
+	{ 
+		if (err)  
+			throw err;
+		var dirty = "SELECT * from users WHERE currID = '"+req.session.id+"'";
+		var sql = sanitizeHtml(dirty); 
+		connection.query(sql, function(err, results)
+		{ 
+			connection.release(); // release connection
+			var user = [];
+			user = JSON.stringify(results);
+			console.log(user);
+			res.send(user);
+		}); 
+	});
 });
+
+
+router.post('/logout',function(req, res){
+	var user = validate(req.session.id, req); //finds valid user
+	if(index !== -1)
+	{
+		user[index].currId = "";
+        req.session.destroy();
+	}
+
+	res.send(); //should logout user
+});
+
 
 router.post('/businessLogin.json', function(req, res) {
     var businessLogin = null;
@@ -163,30 +224,17 @@ router.post('/businessLogin.json', function(req, res) {
 });
 
 
-router.post('/logout',function(req, res){
-	var user = validate(req.session.id); //finds valid user
-	if(index !== -1)
-	{
-		user[index].currId = "";
-        req.session.destroy();
-	}
-
-	res.send(); //should logout user
-});
-
 router.post('/logoutBusiness',function(req){
-	var user = validate(req.session.id, business); //finds valid user
+	var user = validate(req.session.id, req, business); //finds valid user
 	if(index !== -1)
 	{
 		business[index].currId = "";
 	} //logs out the business?
 });
 
-
-
-router.post('/updateEmailUser.json', function(req, res) //should be called when user enters new email and presses done
+/*router.post('/updateEmailUser.json', function(req, res) //should be called when user enters new email and presses done
 {
-	var user = validate(req.session.id); //finds valid user
+	var user = validate(req.session.id, req); //finds valid user
 	if(index !== -1)
 	{
 		var newEmail = JSON.parse(req.body.email);
@@ -200,7 +248,7 @@ router.post('/updateEmailUser.json', function(req, res) //should be called when 
 
 router.post('/updatePasswordUser.json', function(req, res) //may not be needed depending on openID
 {
-	var user = validate(req.session.id); //finds valid user
+	var user = validate(req.session.id, req); //finds valid user
 	if(index !== -1)
 	{
 		var newPW = JSON.parse(req.body.password);
@@ -210,11 +258,11 @@ router.post('/updatePasswordUser.json', function(req, res) //may not be needed d
 	{
 		res.send("-1");
 	}	
-});
+});*/
 
 router.post('/updateEmailBusiness.json', function(req, res) //should be called when business enters new email and presses done
 {
-	var user = validate(req.session.id, business); //finds valid business
+	var user = validate(req.session.id, req, business); //finds valid business
 	if(index !== -1)
 	{
 		var newEmail = JSON.parse(req.body.email);
@@ -228,7 +276,7 @@ router.post('/updateEmailBusiness.json', function(req, res) //should be called w
 
 router.post('/updatePasswordBusiness.json', function(req, res) //may not be needed depending on openID
 {
-	var user = validate(req.session.id, business); //finds valid business
+	var user = validate(req.session.id, req, business); //finds valid business
 	if(index !== -1)
 	{
 		var newPW = JSON.parse(req.body.password);
@@ -244,7 +292,7 @@ router.post('/updatePasswordBusiness.json', function(req, res) //may not be need
 router.post('/currency.json', function(req, res) //handles the changing of local currency
 {
 	var givenCurr = req.body.curr;
-	var user = validate(req.session.id); //validates user to check for session
+	var user = validate(req.session.id, req); //validates user to check for session
 
 	if(index !== -1) //if user found
 	{
@@ -261,7 +309,7 @@ router.post('/currency.json', function(req, res) //handles the changing of local
 router.post('/newUserBooking.json', function(req, res) //pressing [x] on view manage bookings
 {
 	var newBooking = JSON.parse(req.body.newBooking);
-	var user = validate(req.session.id);	
+	var user = validate(req.session.id, req);	
 
 	if(index !== -1)
 	{
@@ -276,7 +324,7 @@ router.post('/newUserBooking.json', function(req, res) //pressing [x] on view ma
 
 router.get('/populateBookings.json', function(req, res) //should be called when user enters view manage bookings
 {
-	var user = validate(req.session.id); //finds valid user
+	var user = validate(req.session.id, req); //finds valid user
 	if(index !== -1)
 	{
 		var toString = JSON.stringify(user[index].bookings);
@@ -291,7 +339,7 @@ router.get('/populateBookings.json', function(req, res) //should be called when 
 router.post('/removeBookings.json', function(req, res) //pressing [x] on view manage bookings
 {
 	var bookingId = JSON.parse(req.body.removeId); //parses the removeId field from the given request
-	var user = validate(req.session.id);	
+	var user = validate(req.session.id, req);	
 
 	if(index !== -1)
 	{
@@ -304,23 +352,9 @@ router.post('/removeBookings.json', function(req, res) //pressing [x] on view ma
 	}
 });
 
-router.get('/UserInfo.json', function(req, res) //gives user info
-{
-	var user = validate(req.session.id);	
-	if(index !== -1)
-	{
-		var toString = user[index].personalInfo;
-		res.send(toString);
-	}
-	else
-	{
-		res.send("-1");
-	}
-});
-
 router.post('/UpdateUserInfo.json', function(req, res) //updates it when done button pressed
 {
-	var user = validate(req.session.id);	
+	var user = validate(req.session.id, req);	
 	if(index !== -1)
 	{
 		var info = JSON.parse(req.body.info);
@@ -335,7 +369,7 @@ router.post('/UpdateUserInfo.json', function(req, res) //updates it when done bu
 
 router.get('/PaymentInfo.json', function(req, res) //gives payment info
 {
-	var user = validate(req.session.id);	
+	var user = validate(req.session.id, req);	
 	if(index !== -1)
 	{
 		var toString = user[index].paymentInfo;
@@ -349,7 +383,7 @@ router.get('/PaymentInfo.json', function(req, res) //gives payment info
 
 router.post('/UpdatePaymentInfo.json', function(req, res) //updates payment info when done is clicked
 {
-	var user = validate(req.session.id);	
+	var user = validate(req.session.id, req);	
 	if(index !== -1)
 	{
 		var info = JSON.parse(req.body.info);
@@ -364,7 +398,7 @@ router.post('/UpdatePaymentInfo.json', function(req, res) //updates payment info
 /*router.post('/BusinessInfo.json', function(req, res) //gives business info
 
 {
-	var user = validate(req.session.id, business);	
+	var user = validate(req.session.id, req, business);	
 	if(index !== -1)
 	{
 		var toString = business[index].details;
@@ -378,7 +412,7 @@ router.post('/UpdatePaymentInfo.json', function(req, res) //updates payment info
 
 router.post('/UpdateBusinessInfo.json', function(req, res) //updates it when done button pressed
 {
-	var user = validate(req.session.id, business);	
+	var user = validate(req.session.id, req, business);	
 	if(index !== -1)
 	{
 		var info = JSON.parse(req.body.info);
@@ -452,8 +486,7 @@ router.post('/hotels.json', function(req, res) //searchs for hotels using the gi
 		{ 
 			connection.release(); // release connection
 			hotels = results;
-			console.log(hotels);
-    //get the query results and send back
+    		//get the query results and send back
     		res.send(hotels);
 		}); 
 	});
@@ -473,13 +506,11 @@ router.post('/searchFilter.json', function(req, res) //filters search and return
 		connection.query(sql, function(err, results)
 		{ 
 			connection.release(); // release connection
-			JSON.stringify(results);
 			hotels = results;
-			console.log(hotels.length);
+    		//get the query results and send back
+    		res.send(hotels);
 		}); 
 	});
-    //get the query results and send back
-    res.send(hotels);
 });
 
 router.post('/searchRooms.json', function(req, res) //filters rooms by given hotel and returns array of rooms that match the filters specified, filters being price and num guests
@@ -496,15 +527,11 @@ router.post('/searchRooms.json', function(req, res) //filters rooms by given hot
 		connection.query(sql, function(err, results)
 		{ 
 			connection.release(); // release connection
-			JSON.stringify(results);
 			rooms = results;
-			console.log(rooms.length);
+    		//get the query results and send back
+    		res.send(rooms);
 		}); 
 	});
-
-
-    //get the query results and send back
-    res.send(rooms);
 });
 
 module.exports = router;

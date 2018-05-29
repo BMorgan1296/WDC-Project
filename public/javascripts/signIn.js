@@ -10,7 +10,7 @@
              };
          xhttp.open("POST", "/signup.json", true);      
          xhttp.setRequestHeader("Content-type","application/json");
-         var newUser= {fullName:document.getElementById('nameS').value, email:document.getElementById('emailS').value,password:document.getElementById('passwordS').value} 
+         var newUser= {firstname:document.getElementById('firstnameS').value, surname:document.getElementById('surnameS').value, email:document.getElementById('emailS').value,password:document.getElementById('passwordS').value} 
          xhttp.send(JSON.stringify(newUser)); 
         }
 
