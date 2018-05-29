@@ -3,7 +3,7 @@ var id = {id:getParameterByName('roomId')};
 
 $.ajax({
     url: '/roomInfo.json',
-    type: 'GET',
+    type: 'POST',
     dataType: 'json',
     success: function (data) {
         $("#hotelName").html(data.name);

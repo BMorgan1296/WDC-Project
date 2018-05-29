@@ -3,7 +3,7 @@ var id = {id:getParameterByName('roomId')};
 
 $.ajax({
     url: '/roomInfo.json',
-    type: 'GET',
+    type: 'POST',
     dataType: 'json',
     success: function (data) {
         $("#hotelName").html(data.name);
@@ -28,7 +28,8 @@ $(document).ready(function(){
             postcode:getParameterByName('postcode'),
             city:getParameterByName('city'),
             country:getParameterByName('country')
-        }
+        };
+        
         $.ajax({
             url: '/newBooking.json',
             type: 'POST',

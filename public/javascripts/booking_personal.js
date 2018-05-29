@@ -4,7 +4,6 @@ $.ajax({
     type: 'GET',
     dataType: 'json',
     success: function (info) {
-        
         $("#gender").val(info.gender);
         $("#fName").val(info.fName);
         $("#sName").val(info.sName);
