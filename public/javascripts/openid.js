@@ -20,7 +20,7 @@
   var auth2 = gapi.auth2.getAuthInstance();
   auth2.signOut().then(function()
   {
-     document.getElementById("signbutton").style.display = "none";
+     //document.getElementById("signbutton").style.display = "none";
      document.getElementById("gbutton").style.display = "inline-block";
   });
 }  

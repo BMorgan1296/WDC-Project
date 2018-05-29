@@ -130,7 +130,7 @@ router.post('/login.json', function(req, res)
 						{ 
 							if (err)  
 								throw err;
-							var dirty = "INSERT INTO users(userID, email, currID, first_name, last_name) VALUES('"+userid+"', '"+email+"', '"+req.session.id+"', '"+firstname+"', '"+surname+"')";
+							var dirty = "INSERT INTO users(userID, email, currID, first_name, last_name, logged_in) VALUES('"+userid+"', '"+email+"', '"+req.session.id+"', '"+firstname+"', '"+surname+"', 1)";
 							var sql = sanitizeHtml(dirty); 
 							connection.query(sql, function(err, results)
 							{ 
@@ -146,7 +146,7 @@ router.post('/login.json', function(req, res)
 						{ 
 							if (err)  
 								throw err;
-							var dirty = "UPDATE users SET currID = '"+req.session.id+"' WHERE userID = '"+userid+"'"; //updates sessionID
+							var dirty = "UPDATE users SET currID = '"+req.session.id+"', logged_in = 1 WHERE userID = '"+userid+"'"; //updates sessionID
 							var sql = sanitizeHtml(dirty); 
 							connection.query(sql, function(err, results)
 							{ 
@@ -225,6 +225,7 @@ router.post('/roomInfo.json', function(req, res) //sends room and business info
 });
 
 router.post('/logout',function(req, res){
+	var user = [];
 	req.pool.getConnection(function(err,connection) 
 	{ 
 		if (err)  
@@ -234,10 +235,22 @@ router.post('/logout',function(req, res){
 		connection.query(sql, function(err, results)
 		{ 
 			connection.release(); // release connection
-			var user = [];
 			user = JSON.stringify(results);
-			console.log(user);
-			res.send();
+
+			req.pool.getConnection(function(err,connection) 
+			{ 
+				if (err)  
+					throw err;
+				var dirty = "UPDATE users SET currID = NULL, logged_in = 0 WHERE currId = '"+req.session.id+"'";
+				var sql = sanitizeHtml(dirty); 
+				connection.query(sql, function(err, results)
+				{ 
+					connection.release(); // release connection
+					user = JSON.stringify(results);
+					console.log(user);
+					res.send();
+				}); 
+			});
 		}); 
 	});
 

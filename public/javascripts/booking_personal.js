@@ -1,9 +1,15 @@
 
+$(document).ready(function(){
+
 $.ajax({
     url: '/UserInfo.json',
     type: 'GET',
     dataType: 'json',
-    success: function (info) {
+    success: function (info) 
+    {
+    console.log("HERE");
+        var user = JSON.parse(info.user);
+        console.log(JSON.stringify(info));
         $("#gender").val(info.gender);
         $("#fName").val(info.fName);
         $("#sName").val(info.sName);
@@ -13,7 +19,7 @@ $.ajax({
         $("#country").val(info.country);
     }
 });
-$(document).ready(function(){
+
     $("#nextButton").on("click",function(){
     
         window.location.href='/booking_confirm.html?roomId='+getParameterByName('roomId')+'&guestNum='+getParameterByName('guestNum')+'&checkIn='+getParameterByName('checkIn')+'&checkout='+getParameterByName('checkOut')+'&gender='+$("#gender").val()+'&fName='+$("#fName").val()+'&sName='+$("#sName").val()+'&address='+$("#address").val()+'&number='+$("#number").val()+'&postcode='+$("#postcode").val()+'&city='+$("#city").val()+'&country='+$("#country").val(); 

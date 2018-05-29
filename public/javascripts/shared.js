@@ -42,14 +42,14 @@ $(document).ready(function(){
     });
     
      $("#Log-out").on("click",function(){
-         /*console.log("oo")
+         console.log("oo")
         $.ajax({
                 url: '/logout',
                 type: 'POST',
                 success: function (data) {
                     console.log("logged Out");
                 }
-            });*/
+            });
          
           var auth2 = gapi.auth2.getAuthInstance();
           auth2.signOut().then(function(){
