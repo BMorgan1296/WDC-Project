@@ -65,9 +65,9 @@ function showHotels() {
                    
         if (this.readyState == 4 && this.status == 200) {                        
             // convert from string to JSON, populate hotels array!!!
-
+            hotels = JSON.parse(xhttp.responseText);
             // Populates the map with markers      
-            //addMarkers();     //UNCOMMENT THIS
+            addMarkers();
         }      
     };
     var searchObj = {
