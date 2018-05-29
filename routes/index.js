@@ -1,4 +1,6 @@
 var express = require('express');
+var sanitizeHtml = require('sanitize-html');
+const SQLtoJSON = require('sql-to-json');
 var router = express.Router();
 var CLIENT_ID = '314455925120-3eqrg8kqg9u39qup8ctkoo7ur7hfv44v.apps.googleusercontent.com';
 var {OAuth2Client} = require('google-auth-library');
@@ -74,13 +76,20 @@ var tempSession = {};
 
 function validate(givenID, obj)
 {
-	for (var i = 0; i < obj.length; i++)
-	{
-		if(givenID == obj[i].currId) //searches for ID match
-			return i;
-	}
-
-	return -1; //failure to find ID match, i.e. not logged in
+	req.pool.getConnection(function(err,connection) 
+	{ 
+		if (err)  
+			throw err;
+		var dirty = "SELECT * from businesses WHERE name LIKE '%"+search.query+"%' OR address LIKE '%"+search.query+"%' OR city LIKE '%"+search.query+"%'";
+		var sql = sanitizeHtml(dirty); 
+		connection.query(sql, function(err, results)
+		{ 
+			connection.release(); // release connection
+			JSON.stringify(results);
+			hotels = results;
+			console.log(hotels.length);
+		}); 
+	});
 }
 
 //Hi Marker!
@@ -155,7 +164,7 @@ router.post('/businessLogin.json', function(req, res) {
 
 
 router.post('/logout',function(req, res){
-	var index = validate(req.session.id, user); //finds valid user
+	var user = validate(req.session.id); //finds valid user
 	if(index !== -1)
 	{
 		user[index].currId = "";
@@ -166,7 +175,7 @@ router.post('/logout',function(req, res){
 });
 
 router.post('/logoutBusiness',function(req){
-	var index = validate(req.session.id, business); //finds valid user
+	var user = validate(req.session.id, business); //finds valid user
 	if(index !== -1)
 	{
 		business[index].currId = "";
@@ -177,7 +186,7 @@ router.post('/logoutBusiness',function(req){
 
 router.post('/updateEmailUser.json', function(req, res) //should be called when user enters new email and presses done
 {
-	var index = validate(req.session.id, user); //finds valid user
+	var user = validate(req.session.id); //finds valid user
 	if(index !== -1)
 	{
 		var newEmail = JSON.parse(req.body.email);
@@ -191,7 +200,7 @@ router.post('/updateEmailUser.json', function(req, res) //should be called when 
 
 router.post('/updatePasswordUser.json', function(req, res) //may not be needed depending on openID
 {
-	var index = validate(req.session.id, user); //finds valid user
+	var user = validate(req.session.id); //finds valid user
 	if(index !== -1)
 	{
 		var newPW = JSON.parse(req.body.password);
@@ -205,7 +214,7 @@ router.post('/updatePasswordUser.json', function(req, res) //may not be needed d
 
 router.post('/updateEmailBusiness.json', function(req, res) //should be called when business enters new email and presses done
 {
-	var index = validate(req.session.id, business); //finds valid business
+	var user = validate(req.session.id, business); //finds valid business
 	if(index !== -1)
 	{
 		var newEmail = JSON.parse(req.body.email);
@@ -219,7 +228,7 @@ router.post('/updateEmailBusiness.json', function(req, res) //should be called w
 
 router.post('/updatePasswordBusiness.json', function(req, res) //may not be needed depending on openID
 {
-	var index = validate(req.session.id, business); //finds valid business
+	var user = validate(req.session.id, business); //finds valid business
 	if(index !== -1)
 	{
 		var newPW = JSON.parse(req.body.password);
@@ -235,7 +244,7 @@ router.post('/updatePasswordBusiness.json', function(req, res) //may not be need
 router.post('/currency.json', function(req, res) //handles the changing of local currency
 {
 	var givenCurr = req.body.curr;
-	var index = validate(req.session.id, user); //validates user to check for session
+	var user = validate(req.session.id); //validates user to check for session
 
 	if(index !== -1) //if user found
 	{
@@ -252,7 +261,7 @@ router.post('/currency.json', function(req, res) //handles the changing of local
 router.post('/newUserBooking.json', function(req, res) //pressing [x] on view manage bookings
 {
 	var newBooking = JSON.parse(req.body.newBooking);
-	var index = validate(req.session.id, user);	
+	var user = validate(req.session.id);	
 
 	if(index !== -1)
 	{
@@ -267,7 +276,7 @@ router.post('/newUserBooking.json', function(req, res) //pressing [x] on view ma
 
 router.get('/populateBookings.json', function(req, res) //should be called when user enters view manage bookings
 {
-	var index = validate(req.session.id, user); //finds valid user
+	var user = validate(req.session.id); //finds valid user
 	if(index !== -1)
 	{
 		var toString = JSON.stringify(user[index].bookings);
@@ -282,7 +291,7 @@ router.get('/populateBookings.json', function(req, res) //should be called when 
 router.post('/removeBookings.json', function(req, res) //pressing [x] on view manage bookings
 {
 	var bookingId = JSON.parse(req.body.removeId); //parses the removeId field from the given request
-	var index = validate(req.session.id, user);	
+	var user = validate(req.session.id);	
 
 	if(index !== -1)
 	{
@@ -297,7 +306,7 @@ router.post('/removeBookings.json', function(req, res) //pressing [x] on view ma
 
 router.get('/UserInfo.json', function(req, res) //gives user info
 {
-	var index = validate(req.session.id, user);	
+	var user = validate(req.session.id);	
 	if(index !== -1)
 	{
 		var toString = user[index].personalInfo;
@@ -311,7 +320,7 @@ router.get('/UserInfo.json', function(req, res) //gives user info
 
 router.post('/UpdateUserInfo.json', function(req, res) //updates it when done button pressed
 {
-	var index = validate(req.session.id, user);	
+	var user = validate(req.session.id);	
 	if(index !== -1)
 	{
 		var info = JSON.parse(req.body.info);
@@ -326,7 +335,7 @@ router.post('/UpdateUserInfo.json', function(req, res) //updates it when done bu
 
 router.get('/PaymentInfo.json', function(req, res) //gives payment info
 {
-	var index = validate(req.session.id, user);	
+	var user = validate(req.session.id);	
 	if(index !== -1)
 	{
 		var toString = user[index].paymentInfo;
@@ -340,7 +349,7 @@ router.get('/PaymentInfo.json', function(req, res) //gives payment info
 
 router.post('/UpdatePaymentInfo.json', function(req, res) //updates payment info when done is clicked
 {
-	var index = validate(req.session.id, user);	
+	var user = validate(req.session.id);	
 	if(index !== -1)
 	{
 		var info = JSON.parse(req.body.info);
@@ -352,10 +361,10 @@ router.post('/UpdatePaymentInfo.json', function(req, res) //updates payment info
 		res.send("-1");
 	}
 });
-router.post('/BusinessInfo.json', function(req, res) //gives business info
+/*router.post('/BusinessInfo.json', function(req, res) //gives business info
 
 {
-	var index = validate(req.session.id, business);	
+	var user = validate(req.session.id, business);	
 	if(index !== -1)
 	{
 		var toString = business[index].details;
@@ -369,7 +378,7 @@ router.post('/BusinessInfo.json', function(req, res) //gives business info
 
 router.post('/UpdateBusinessInfo.json', function(req, res) //updates it when done button pressed
 {
-	var index = validate(req.session.id, business);	
+	var user = validate(req.session.id, business);	
 	if(index !== -1)
 	{
 		var info = JSON.parse(req.body.info);
@@ -380,7 +389,7 @@ router.post('/UpdateBusinessInfo.json', function(req, res) //updates it when don
 	{
 		res.send("-1");
 	}
-});
+});*/
 
 router.post('/addRoom.json', function(req, res) //updates it when done button pressed
 {
@@ -393,28 +402,6 @@ router.post('/addRoom.json', function(req, res) //updates it when done button pr
 	{
 		res.send("-1");
 	}
-});
-
-router.get('/search.json', function(req, res)
-{
-	var searchQueries = req.body.queries; //search words
-	var searchFilters = req.body.filters; //search filters
-	
-	req.pool.getConnection(function(err,connection) 
-	{ 
-		if (err)  
-			throw err;
-		var sql;// = "SELECT * from businesses WHERE ='"++"'"; 
-		console.log(sql);
-		connection.query(sql, function(err, results)
-		{ 
-			/*Some actions to handle the query results*/
-			connection.release(); // release connection
-			console.log(results);
-		}); 
-	});
-
-	res.send(JSON.stringify(results)); //sends the compiled results
 });
 
 /// bookings ///
@@ -434,7 +421,7 @@ router.post('/userBookings.json', function(req, res)
 
 /// reviews and mappage//// 
 
-var fs = require('fs');
+/*var fs = require('fs');
 var reviews = [];
 
 fs.readFile('data/reviews.json', 'utf8', function(err, data) { 
@@ -450,29 +437,74 @@ router.post('/addReview.json', function(req, res) {
     reviews.push({name: req.body.name, date: req.body.date, text: req.body.text});
     res.send();
 });
-
-var fs = require('fs');
-
-router.post('/hotels.json', function(req, res) 
+*/
+router.post('/hotels.json', function(req, res) //searchs for hotels using the given query
 {
 	var search = req.body;
+	var hotels;
 	req.pool.getConnection(function(err,connection) 
 	{ 
 		if (err)  
 			throw err;
-		var sql = "SELECT * from businesses WHERE name LIKE '"+search.query+"'"; 
+		var dirty = "SELECT * from businesses WHERE name LIKE '%"+search.query+"%' OR address LIKE '%"+search.query+"%' OR city LIKE '%"+search.query+"%'";
+		var sql = sanitizeHtml(dirty); 
+		connection.query(sql, function(err, results)
+		{ 
+			connection.release(); // release connection
+			hotels = results;
+			console.log(hotels);
+    //get the query results and send back
+    		res.send(hotels);
+		}); 
+	});
+});
+
+router.post('/searchFilter.json', function(req, res) //filters search and returns array of hotels that match the filters specified with the update button
+{
+	var search = req.body;
+	var hotels;
+	req.pool.getConnection(function(err,connection) 
+	{ 
+		if (err)  
+			throw err;
+		var dirty = "SELECT * from businesses WHERE rating = '"+search.rating+"' AND pool = '"+search.pool+"' AND spa = '"+search.spa+"' AND wifi = '"+search.wifi+"' AND fitness = '"+search.fitness+"' AND parking = '"+search.parking+"' AND restaurant = '"+search.restaurant+"'";
+		var sql = sanitizeHtml(dirty); 
 		console.log(sql);
 		connection.query(sql, function(err, results)
 		{ 
-			/*Some actions to handle the query results*/
 			connection.release(); // release connection
-			console.log(results);
+			JSON.stringify(results);
+			hotels = results;
+			console.log(hotels.length);
+		}); 
+	});
+    //get the query results and send back
+    res.send(hotels);
+});
+
+router.post('/searchRooms.json', function(req, res) //filters rooms by given hotel and returns array of rooms that match the filters specified, filters being price and num guests
+{
+	var search = req.body;
+	var rooms;
+	req.pool.getConnection(function(err,connection) 
+	{ 
+		if (err)  
+			throw err;
+		var dirty = "SELECT * from businesses WHERE price = '"+search.maxPrice+"' AND max_guests = '"+search.numGuests+"'";
+		var sql = sanitizeHtml(dirty); 
+		console.log(sql);
+		connection.query(sql, function(err, results)
+		{ 
+			connection.release(); // release connection
+			JSON.stringify(results);
+			rooms = results;
+			console.log(rooms.length);
 		}); 
 	});
 
 
     //get the query results and send back
-    res.send();
+    res.send(rooms);
 });
 
 module.exports = router;
