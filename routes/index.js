@@ -467,8 +467,6 @@ router.post('/searchFilter.json', function(req, res) //filters search and return
 			console.log(results);
 		}); 
 	});
-
-
     //get the query results and send back
     res.send();
 });
