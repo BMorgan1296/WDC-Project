@@ -451,16 +451,57 @@ router.post('/addReview.json', function(req, res) {
     res.send();
 });
 
-var fs = require('fs');
-
-router.post('/hotels.json', function(req, res) 
+router.post('/hotels.json', function(req, res) //searchs for hotels using the given query
 {
 	var search = req.body;
 	req.pool.getConnection(function(err,connection) 
 	{ 
 		if (err)  
 			throw err;
-		var sql = "SELECT * from businesses WHERE name LIKE '"+search.query+"'"; 
+		var sql = "SELECT * from businesses WHERE name LIKE '%"+search.query+"%' OR address LIKE '%"+search.city+"%' OR city LIKE '%"+search.query+"%'";
+		console.log(sql);
+		connection.query(sql, function(err, results)
+		{ 
+			/*Some actions to handle the query results*/
+			connection.release(); // release connection
+			console.log(results);
+		}); 
+	});
+
+    //get the query results and send back
+    res.send();
+});
+
+router.post('/searchFilter.json', function(req, res) //filters search and returns array of hotels that match the filters specified
+{
+	var search = req.body;
+	req.pool.getConnection(function(err,connection) 
+	{ 
+		if (err)  
+			throw err;
+		var sql = "SELECT * from businesses WHERE rating = '"+search.rating+"' AND pool = '"+search.pool+"' AND spa = '"+search.spa+"' AND wifi = '"+search.wifi+"' AND fitness = '"+search.fitness+"' AND parking = '"+search.parking+"' AND restaurant = '"+search.restaurant+"'";
+		console.log(sql);
+		connection.query(sql, function(err, results)
+		{ 
+			/*Some actions to handle the query results*/
+			connection.release(); // release connection
+			console.log(results);
+		}); 
+	});
+
+
+    //get the query results and send back
+    res.send();
+});
+
+router.post('/searchRooms.json', function(req, res) //filters rooms by given hotel and returns array of rooms that match the filters specified, filters being price and num guests
+{
+	var search = req.body;
+	req.pool.getConnection(function(err,connection) 
+	{ 
+		if (err)  
+			throw err;
+		var sql = "SELECT * from businesses WHERE price = '"+search.maxPrice+"' AND max_guests = '"+search.numGuests+"'";
 		console.log(sql);
 		connection.query(sql, function(err, results)
 		{ 
